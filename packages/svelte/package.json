@@ -1,0 +1,60 @@
+{
+  "name": "@tsuya/svelte",
+  "version": "0.1.0",
+  "description": "tsuya components for Svelte 5.",
+  "keywords": [
+    "svelte",
+    "svelte5",
+    "sveltekit",
+    "design-system",
+    "components",
+    "ui",
+    "accent",
+    "glass",
+    "dark-mode"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/r-witz/tsuya/tree/main/packages/svelte#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/r-witz/tsuya.git",
+    "directory": "packages/svelte"
+  },
+  "bugs": {
+    "url": "https://github.com/r-witz/tsuya/issues"
+  },
+  "type": "module",
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "svelte": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "svelte": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./env": {
+      "types": "./env/env.d.ts",
+      "development": "./env/dev.js",
+      "default": "./env/prod.js"
+    },
+    "./DESIGN.md": "./DESIGN.md",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "env",
+    "DESIGN.md",
+    "CHANGELOG.md"
+  ],
+  "peerDependencies": {
+    "@tsuya/core": "^0.1.0",
+    "svelte": "^5.57.0"
+  },
+  "scripts": {
+    "build": "svelte-package -i src/lib -o dist",
+    "prepack": "svelte-package -i src/lib -o dist"
+  }
+}
