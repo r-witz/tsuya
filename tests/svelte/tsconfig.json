@@ -1,0 +1,16 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "lib": ["es2022", "dom", "dom.iterable"],
+    "types": ["node", "vite/client"],
+    "allowImportingTsExtensions": true,
+    "noEmit": true,
+    "paths": {
+      "@tsuya/core": ["../../packages/core/src/index.ts"],
+      "@tsuya/core/primitives": ["../../packages/core/src/primitives/index.ts"]
+    }
+  },
+  "include": ["**/*"]
+}
