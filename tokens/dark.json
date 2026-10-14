@@ -1,0 +1,47 @@
+{
+  "color": {
+    "$type": "color",
+    "bg": {"$value": "#0A0A0C", "$description": "Screen background, under the ambient background."},
+    "surface": {"$value": "#15151B", "$description": "Opaque raised surface: dialogs, menus without glass, placeholders."},
+    "text": {"$value": "#FFFFFF", "$description": "Primary text and icons."},
+    "text-muted": {"$value": "#FFFFFFA0", "$description": "Secondary text. At least 4.5:1 on bg, surface, any glass, the ambient at its cap, and fill."},
+    "border": {"$value": "#FFFFFF13", "$description": "Hairline, row separator. Decorative only."},
+    "border-strong": {"$value": "#FFFFFF6B", "$description": "Boundary that must be seen: field, checkbox, switch track. At least 3:1."},
+    "fill": {"$value": "#FFFFFF11", "$description": "Control background (chip, field, segmented track); hover of rows and quiet controls."},
+    "fill-strong": {"$value": "#FFFFFF1A", "$description": "Pressed rows, the current navigation item, skeletons."},
+    "fill-selected": {"$value": "#FFFFFF21", "$description": "Selected segment."},
+    "track": {"$value": "#FFFFFF24", "$description": "Unfilled part of a slider or progress bar."},
+    "thumb": {"$value": "#FFFFFF", "$description": "Switch thumb (off), slider thumb. At least 3:1 on border-strong over bg and surface."},
+    "accent": {"$value": "#FFFFFF", "$description": "Neutral accent (monochrome). Replaced by the content's pair in an accent region."},
+    "on-accent": {"$value": "#0A0A0C", "$description": "Text and icons on the accent."},
+    "danger": {"$value": "#FF6B6B", "$description": "Errors, destructive actions."},
+    "warning": {"$value": "#F5B942", "$description": "Warnings."},
+    "success": {"$value": "#3DD68C", "$description": "Success."},
+    "info": {"$value": "#6AA8FF", "$description": "Information."},
+    "on-status": {"$value": "#0A0A0C", "$description": "Text and icons on a status colour."},
+    "scrim": {"$value": "#0000004D", "$description": "Behind a dialog or sheet."},
+    "glass": {"$value": "#101014", "$description": "Glass colour before tint and opacity."},
+    "glass-shade": {"$value": "#0000003D", "$description": "Bottom edge of glass."},
+    "glass-control": {"$value": "#FFFFFF14", "$description": "Control glass veil."}
+  },
+  "shadow": {
+    "$type": "shadow",
+    "sm": {"$value": {"color": "#00000052", "offsetX": {"value": 0, "unit": "px"}, "offsetY": {"value": 4, "unit": "px"}, "blur": {"value": 12, "unit": "px"}, "spread": {"value": 0, "unit": "px"}}, "$description": "Raised segment, slider thumb."},
+    "md": {"$value": {"color": "#00000073", "offsetX": {"value": 0, "unit": "px"}, "offsetY": {"value": 12, "unit": "px"}, "blur": {"value": 32, "unit": "px"}, "spread": {"value": 0, "unit": "px"}}, "$description": "Floating bars, toasts."},
+    "lg": {"$value": {"color": "#00000099", "offsetX": {"value": 0, "unit": "px"}, "offsetY": {"value": 24, "unit": "px"}, "blur": {"value": 64, "unit": "px"}, "spread": {"value": 0, "unit": "px"}}, "$description": "Menus, dialogs, sheets, hero covers."}
+  },
+  "accent": {
+    "$type": "number",
+    "tone-min": {"$value": 60, "$description": "Lowest CIE L* of the accent in this mode."},
+    "tone-max": {"$value": 74, "$description": "Highest CIE L* of the accent in this mode."}
+  },
+  "ambient": {
+    "$type": "number",
+    "max-opacity": {"$value": 0.55, "$description": "Highest opacity of the ambient background."},
+    "cap": {"$value": 0.055, "$description": "Luminance limit of the ambient over bg, so text stays readable: at least this in light mode, at most this in dark mode."}
+  },
+  "glow": {
+    "$type": "number",
+    "opacity": {"$value": 0.06, "$description": "Opacity of the text colour at the centre of the neutral glow."}
+  }
+}

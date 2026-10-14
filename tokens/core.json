@@ -1,0 +1,132 @@
+{
+  "font": {
+    "$type": "fontFamily",
+    "sans": {"$value": ["Inter", "system-ui", "sans-serif"], "$description": "Every text but code."},
+    "mono": {"$value": ["Geist Mono", "ui-monospace", "monospace"], "$description": "Codes, keyboard shortcuts."}
+  },
+  "type": {
+    "$type": "typography",
+    "display-xl": {"$value": {"fontFamily": "{font.sans}", "fontSize": {"value": 76, "unit": "px"}, "fontWeight": 800, "lineHeight": 0.96, "letterSpacing": {"value": -3.42, "unit": "px"}}, "$description": "Content page title on wide screens."},
+    "display-l": {"$value": {"fontFamily": "{font.sans}", "fontSize": {"value": 56, "unit": "px"}, "fontWeight": 800, "lineHeight": 1, "letterSpacing": {"value": -2.52, "unit": "px"}}, "$description": "Home or profile title on desktop."},
+    "display-m": {"$value": {"fontFamily": "{font.sans}", "fontSize": {"value": 44, "unit": "px"}, "fontWeight": 800, "lineHeight": 1, "letterSpacing": {"value": -1.76, "unit": "px"}}, "$description": "Page title on desktop."},
+    "display-s": {"$value": {"fontFamily": "{font.sans}", "fontSize": {"value": 34, "unit": "px"}, "fontWeight": 800, "lineHeight": 1.06, "letterSpacing": {"value": -1.19, "unit": "px"}}, "$description": "Page title on phone."},
+    "title-l": {"$value": {"fontFamily": "{font.sans}", "fontSize": {"value": 24, "unit": "px"}, "fontWeight": 800, "lineHeight": 1.15, "letterSpacing": {"value": -0.72, "unit": "px"}}, "$description": "Section title."},
+    "title-m": {"$value": {"fontFamily": "{font.sans}", "fontSize": {"value": 22, "unit": "px"}, "fontWeight": 700, "lineHeight": 1.18, "letterSpacing": {"value": -0.44, "unit": "px"}}, "$description": "Dialog title, centred bar title."},
+    "title-s": {"$value": {"fontFamily": "{font.sans}", "fontSize": {"value": 17, "unit": "px"}, "fontWeight": 700, "lineHeight": 1.3, "letterSpacing": {"value": -0.17, "unit": "px"}}, "$description": "Title of a rich row or card-like block."},
+    "body-l": {"$value": {"fontFamily": "{font.sans}", "fontSize": {"value": 17, "unit": "px"}, "fontWeight": 500, "lineHeight": 1.5, "letterSpacing": {"value": 0, "unit": "px"}}, "$description": "Intro text, description."},
+    "body": {"$value": {"fontFamily": "{font.sans}", "fontSize": {"value": 15, "unit": "px"}, "fontWeight": 500, "lineHeight": 1.33, "letterSpacing": {"value": 0, "unit": "px"}}, "$description": "Body text, row titles in menus."},
+    "body-strong": {"$value": {"fontFamily": "{font.sans}", "fontSize": {"value": 15, "unit": "px"}, "fontWeight": 600, "lineHeight": 1.27, "letterSpacing": {"value": -0.18, "unit": "px"}}, "$description": "Row titles."},
+    "button": {"$value": {"fontFamily": "{font.sans}", "fontSize": {"value": 15, "unit": "px"}, "fontWeight": 700, "lineHeight": 1.27, "letterSpacing": {"value": -0.15, "unit": "px"}}, "$description": "Button labels."},
+    "control": {"$value": {"fontFamily": "{font.sans}", "fontSize": {"value": 13, "unit": "px"}, "fontWeight": 600, "lineHeight": 1.23, "letterSpacing": {"value": 0, "unit": "px"}}, "$description": "Small controls: chips, segments, field labels, small buttons."},
+    "small": {"$value": {"fontFamily": "{font.sans}", "fontSize": {"value": 13, "unit": "px"}, "fontWeight": 400, "lineHeight": 1.31, "letterSpacing": {"value": 0, "unit": "px"}}, "$description": "Subtitles, hints."},
+    "caption": {"$value": {"fontFamily": "{font.sans}", "fontSize": {"value": 12, "unit": "px"}, "fontWeight": 400, "lineHeight": 1.33, "letterSpacing": {"value": 0, "unit": "px"}}, "$description": "Metadata, timestamps."},
+    "label": {"$value": {"fontFamily": "{font.sans}", "fontSize": {"value": 12, "unit": "px"}, "fontWeight": 700, "lineHeight": 1.17, "letterSpacing": {"value": 1.68, "unit": "px"}}, "$description": "Section labels, in capitals."},
+    "micro": {"$value": {"fontFamily": "{font.sans}", "fontSize": {"value": 11, "unit": "px"}, "fontWeight": 600, "lineHeight": 1.2, "letterSpacing": {"value": 0, "unit": "px"}}, "$description": "Tab bar labels, badges."},
+    "mono": {"$value": {"fontFamily": "{font.mono}", "fontSize": {"value": 13, "unit": "px"}, "fontWeight": 400, "lineHeight": 1.4, "letterSpacing": {"value": 0, "unit": "px"}}, "$description": "Codes, keyboard shortcuts."}
+  },
+  "space": {
+    "$type": "dimension",
+    "4": {"$value": {"value": 4, "unit": "px"}},
+    "8": {"$value": {"value": 8, "unit": "px"}},
+    "12": {"$value": {"value": 12, "unit": "px"}},
+    "16": {"$value": {"value": 16, "unit": "px"}},
+    "20": {"$value": {"value": 20, "unit": "px"}, "$description": "Side margins of the phone shell."},
+    "24": {"$value": {"value": 24, "unit": "px"}},
+    "32": {"$value": {"value": 32, "unit": "px"}},
+    "48": {"$value": {"value": 48, "unit": "px"}},
+    "64": {"$value": {"value": 64, "unit": "px"}},
+    "96": {"$value": {"value": 96, "unit": "px"}}
+  },
+  "radius": {
+    "$type": "dimension",
+    "xs": {"$value": {"value": 6, "unit": "px"}, "$description": "Checkbox, tooltip, thumbnails up to 40 wide."},
+    "sm": {"$value": {"value": 12, "unit": "px"}, "$description": "Field, chip, segment, menu item, thumbnails up to 64 wide."},
+    "md": {"$value": {"value": 18, "unit": "px"}, "$description": "Menu, banner, top bar, thumbnails up to 160 wide."},
+    "lg": {"$value": {"value": 28, "unit": "px"}, "$description": "Dialog, sheet, tab bar, larger thumbnails."},
+    "full": {"$value": {"value": 999, "unit": "px"}, "$description": "Pill, round button, avatar."}
+  },
+  "size": {
+    "$type": "dimension",
+    "control-sm": {"$value": {"value": 32, "unit": "px"}, "$description": "Chip, small button, small search field."},
+    "control-md": {"$value": {"value": 44, "unit": "px"}, "$description": "Button, field, segmented control, menu item, tabs."},
+    "control-lg": {"$value": {"value": 56, "unit": "px"}, "$description": "Large button."},
+    "row": {"$value": {"value": 56, "unit": "px"}, "$description": "Minimum height of a list row."},
+    "row-tall": {"$value": {"value": 72, "unit": "px"}, "$description": "Minimum height of an account row."},
+    "bar": {"$value": {"value": 56, "unit": "px"}, "$description": "Height of the top bar and the screen bar."},
+    "dock": {"$value": {"value": 66, "unit": "px"}, "$description": "Minimum height of the tab bar."},
+    "target": {"$value": {"value": 44, "unit": "px"}, "$description": "Minimum target on touch screens, whatever the drawing."},
+    "target-pointer": {"$value": {"value": 24, "unit": "px"}, "$description": "Minimum target with a mouse."},
+    "icon-sm": {"$value": {"value": 16, "unit": "px"}, "$description": "Small icon."},
+    "icon": {"$value": {"value": 20, "unit": "px"}, "$description": "Icon."},
+    "icon-lg": {"$value": {"value": 24, "unit": "px"}, "$description": "Large icon."}
+  },
+  "breakpoint": {
+    "$type": "dimension",
+    "tablet": {"$value": {"value": 600, "unit": "px"}, "$description": "Minimum container width of the tablet layout; below it is the phone layout."},
+    "desktop": {"$value": {"value": 1024, "unit": "px"}, "$description": "Minimum container width of the desktop layout."},
+    "wide": {"$value": {"value": 1440, "unit": "px"}, "$description": "Minimum container width of the wide layout."}
+  },
+  "container": {
+    "$type": "dimension",
+    "max-width": {"$value": {"value": 1200, "unit": "px"}, "$description": "Widest content column."},
+    "gutter-phone": {"$value": "{space.16}", "$description": "Side gutter of the content column on phone."},
+    "gutter-tablet": {"$value": "{space.24}", "$description": "Side gutter of the content column on tablet."},
+    "gutter-desktop": {"$value": "{space.48}", "$description": "Side gutter of the content column on desktop."}
+  },
+  "duration": {
+    "$type": "duration",
+    "fast": {"$value": {"value": 150, "unit": "ms"}, "$description": "Press, hover, selection."},
+    "base": {"$value": {"value": 280, "unit": "ms"}, "$description": "Dialog, page."},
+    "sheet": {"$value": {"value": 450, "unit": "ms"}, "$description": "A sheet rising or leaving."},
+    "accent": {"$value": {"value": 600, "unit": "ms"}, "$description": "Cross-fade of the accent when the content changes."},
+    "ambient": {"$value": {"value": 900, "unit": "ms"}, "$description": "Cross-fade of the ambient background."},
+    "tooltip-delay": {"$value": {"value": 500, "unit": "ms"}, "$description": "Hover time before a tooltip shows."},
+    "toast": {"$value": {"value": 4000, "unit": "ms"}, "$description": "Time a toast without an action stays."}
+  },
+  "easing": {
+    "$type": "cubicBezier",
+    "standard": {"$value": [0.2, 0, 0, 1], "$description": "Most changes."},
+    "emphasized": {"$value": [0.22, 1, 0.36, 1], "$description": "Sheets rising, menus appearing."}
+  },
+  "state": {
+    "$type": "number",
+    "disabled-opacity": {"$value": 0.38, "$description": "Opacity of a disabled control."},
+    "pressed-scale": {"$value": 0.96, "$description": "Scale of a button, icon button or chip while pressed."},
+    "focus-width": {"$type": "dimension", "$value": {"value": 2, "unit": "px"}, "$description": "Width of the focus ring, and of a focused field's boundary."},
+    "focus-offset": {"$type": "dimension", "$value": {"value": 2, "unit": "px"}, "$description": "Gap between a control and its focus ring, filled with bg."}
+  },
+  "accent": {
+    "$type": "number",
+    "sample": {"$value": 48, "$description": "An image is box-averaged into sample × sample cells."},
+    "bins": {"$value": 24, "$description": "Number of hue bins, 15° each."},
+    "min-chroma": {"$value": 12, "$description": "Cells under this CIE chroma are skipped."},
+    "min-tone": {"$value": 8, "$description": "Cells under this CIE L* are skipped."},
+    "max-tone": {"$value": 97, "$description": "Cells over this CIE L* are skipped."},
+    "status-distance": {"$value": 20, "$description": "Minimum CIE76 distance between the accent and each status colour of its mode."}
+  },
+  "ambient": {
+    "$type": "number",
+    "scale": {"$value": 1.28, "$description": "The leading content is scaled up behind the screen."},
+    "blur": {"$type": "dimension", "$value": {"value": 64, "unit": "px"}, "$description": "Blur radius."},
+    "saturate": {"$value": 1.5, "$description": "Saturation boost."},
+    "height": {"$type": "dimension", "$value": {"value": 720, "unit": "px"}, "$description": "Height of the lit area at the top of its region."},
+    "fade": {"$value": 0.4, "$description": "The light fades out from this share of the height to the bottom."},
+    "safe-opacity": {"$value": 0.2, "$description": "Opacity when the image's own opacity is not computed: safe for any image."}
+  },
+  "glass": {
+    "$type": "number",
+    "opacity": {"$value": 0.82, "$description": "Opacity of the glass fill."},
+    "blur": {"$type": "dimension", "$value": {"value": 24, "unit": "px"}, "$description": "Backdrop blur."},
+    "tint": {"$value": 0.12, "$description": "Share of the accent mixed into the glass colour; 0 for neutral glass."},
+    "control-blur": {"$type": "dimension", "$value": {"value": 13, "unit": "px"}, "$description": "Backdrop blur of control glass."}
+  },
+  "grain": {
+    "$type": "number",
+    "opacity": {"$value": 0.09, "$description": "Opacity of the grain, in overlay blend mode."},
+    "size": {"$type": "dimension", "$value": {"value": 64, "unit": "px"}, "$description": "Side of the generated noise tile, in texels."}
+  },
+  "glow": {
+    "$type": "number",
+    "radius": {"$value": 0.6, "$description": "Radius of the neutral glow, as a share of its region's width."}
+  }
+}
