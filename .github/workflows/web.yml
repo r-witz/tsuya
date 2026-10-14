@@ -1,0 +1,71 @@
+name: Web
+
+# Everything but the Flutter sources: one job, so that the checkout, npm ci, Dart and the browsers are set up once.
+# A change to the Flutter package or the gallery alone runs flutter.yml only. Kept in: what the web side reads or
+# checks there (the generated Dart tokens and doc copies, the files build.test.ts and fonts.test.ts read, the goldens
+# the docs show, and the gallery files Prettier and ESLint cover).
+on:
+  push:
+    branches: [main]
+    paths: &paths
+      - '**'
+      - '!packages/flutter/**'
+      - 'packages/flutter/lib/tsuya.dart'
+      - 'packages/flutter/lib/src/foundation/tokens.g.dart'
+      - 'packages/flutter/*.md'
+      - 'packages/flutter/*.yaml'
+      - 'packages/flutter/fonts/**'
+      - '!apps/gallery/**'
+      - 'apps/gallery/*.md'
+      - 'apps/gallery/*.yaml'
+      - 'apps/gallery/tool/**'
+      - 'apps/gallery/web/**'
+      - 'apps/gallery/test/goldens/**'
+      - '!.github/workflows/flutter.yml'
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+    paths: *paths
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+# a new push stops the run still going for the same branch
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  web:
+    name: Build, lint, tests, docs and packages
+    # a draft runs nothing until it is marked ready for review
+    if: github.event.pull_request.draft != true
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+      # the build formats tokens.g.dart with the Dart of the current Flutter
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          flutter-version: 3.47.x
+          cache: true
+      - run: npm ci
+      - run: npm run build
+      # the generated files are up to date; an untracked one counts too: every generated file is committed
+      - run: git status --porcelain && test -z "$(git status --porcelain)"
+
+      # the browsers are cached by Playwright's version; their system libraries are installed on every run
+      - id: playwright
+        run: echo "version=$(node -p "require('@playwright/test/package.json').version")" >> "$GITHUB_OUTPUT"
+      - uses: actions/cache@v6
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ steps.playwright.outputs.version }}
+      - run: npx playwright install --with-deps chromium firefox webkit
+      # every check, the cheap ones first (scripts/verify.mjs), as `npm run verify` runs them locally
+      - run: npm run verify

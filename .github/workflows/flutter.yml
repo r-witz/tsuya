@@ -1,0 +1,82 @@
+name: Flutter
+
+# The Flutter package, its example and the gallery on the current SDK, then the package on the oldest supported one, in
+# one job so that the checkout is done once. Also run on what they read outside their folders: spec/cases.json, and
+# the docs' Flutter snippets and Dart API tables, which are checked here against the package.
+on:
+  push:
+    branches: [main]
+    paths: &paths
+      - 'packages/flutter/**'
+      - 'apps/gallery/**'
+      - 'spec/cases.json'
+      - 'scripts/dart_api/**'
+      - 'scripts/flutter-snippets.mjs'
+      - 'scripts/lint-lines.mjs'
+      - 'apps/docs/src/routes/components/*/flutter.ts'
+      # scripts/dart_api reads which types each component page shows
+      - 'apps/docs/src/routes/components/*/+page.svelte'
+      - 'apps/docs/src/lib/generated/dart-api/**'
+      - '.github/workflows/flutter.yml'
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+    paths: *paths
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+# a new push stops the run still going for the same branch
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  flutter:
+    name: Package, example and gallery on Flutter 3.47, package on 3.44
+    # a draft runs nothing until it is marked ready for review
+    if: github.event.pull_request.draft != true
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v7
+      # the line limit covers the Dart sources too; web.yml does not run on a Dart-only change
+      - run: node scripts/lint-lines.mjs
+
+      # the current release: everything, the goldens included
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          flutter-version: 3.47.x
+          cache: true
+      - name: Package
+        working-directory: packages/flutter
+        run: flutter pub get && flutter analyze && dart format --set-exit-if-changed . && flutter test
+      # the archive pub.dev would get, with the copies the build writes before a release; a warning fails it, as it
+      # would block the release
+      - name: Publishable
+        run: cp DESIGN.md CHANGELOG.md packages/flutter/ && cd packages/flutter && flutter pub publish --dry-run
+      - name: Example
+        working-directory: packages/flutter/example
+        run: flutter pub get && flutter analyze && flutter test
+      # the Dart API tables of the docs are generated from these sources and committed: they must be fresh
+      - name: Docs' Dart API tables
+        working-directory: scripts/dart_api
+        run: dart pub get && dart run bin/dart_api.dart --check
+      # the Flutter snippets of the docs must compile against the package
+      - name: Docs' Flutter snippets
+        run: node scripts/flutter-snippets.mjs
+      - name: Gallery
+        working-directory: apps/gallery
+        run: >-
+          flutter pub get && flutter analyze && dart format --set-exit-if-changed . && flutter test
+
+      # the oldest supported release: the package alone, which the example and the gallery only use
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          flutter-version: 3.44.x
+          cache: true
+      - name: Package (3.44)
+        working-directory: packages/flutter
+        run: flutter pub get && flutter analyze && dart format --set-exit-if-changed . && flutter test
