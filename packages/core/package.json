@@ -1,0 +1,70 @@
+{
+  "name": "@tsuya/core",
+  "version": "0.1.0",
+  "description": "tsuya tokens, colour engine, CSS for the base, the material and every component, primitives, labels and fonts. No dependencies.",
+  "keywords": [
+    "design-system",
+    "design-tokens",
+    "css",
+    "colour-engine",
+    "accent",
+    "dark-mode",
+    "fonts",
+    "i18n"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/r-witz/tsuya/tree/main/packages/core#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/r-witz/tsuya.git",
+    "directory": "packages/core"
+  },
+  "bugs": {
+    "url": "https://github.com/r-witz/tsuya/issues"
+  },
+  "type": "module",
+  "sideEffects": [
+    "*.css"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./engine": {
+      "types": "./dist/engine/index.d.ts",
+      "default": "./dist/engine/index.js"
+    },
+    "./tokens": {
+      "types": "./dist/tokens.d.ts",
+      "default": "./dist/tokens.js"
+    },
+    "./primitives": {
+      "types": "./dist/primitives/index.d.ts",
+      "default": "./dist/primitives/index.js"
+    },
+    "./tokens.css": "./src/css/tokens.css",
+    "./base.css": "./src/css/base.css",
+    "./material.css": "./src/css/material.css",
+    "./tsuya.css": "./src/css/tsuya.css",
+    "./fonts.css": "./fonts/fonts.css",
+    "./fonts/*": "./fonts/*",
+    "./DESIGN.md": "./DESIGN.md",
+    "./package.json": "./package.json"
+  },
+  "bin": {
+    "tsuya": "bin/init.mjs"
+  },
+  "files": [
+    "bin",
+    "dist",
+    "src/css",
+    "fonts",
+    "DESIGN.md",
+    "CHANGELOG.md"
+  ],
+  "scripts": {
+    "build": "tsc -p .",
+    "prepack": "tsc -p ."
+  }
+}
