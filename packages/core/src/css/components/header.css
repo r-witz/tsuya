@@ -1,0 +1,71 @@
+/* PageHeader and SectionHeader (DESIGN.md, PageHeader, SectionHeader): a page's title, its count line and its actions,
+   and a section's title, its count and its action. */
+@layer tsuya.tokens, tsuya.base, tsuya.material, tsuya.components;
+
+@layer tsuya.components {
+  .t-page-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--t-space-16);
+    /* the header is the container its title asks: it spans its parent, so its width does not depend on its content */
+    container-type: inline-size;
+  }
+  .t-page-header-heading {
+    min-width: 0;
+  }
+  .t-page-header-title,
+  .t-page-header-subtitle {
+    margin: 0;
+  }
+  .t-page-header-title {
+    font: var(--t-type-display-s);
+    letter-spacing: var(--t-type-display-s-tracking);
+  }
+  .t-page-header-subtitle {
+    margin-top: var(--t-space-8);
+    font: var(--t-type-small);
+    letter-spacing: var(--t-type-small-tracking);
+    color: var(--t-text-muted);
+  }
+  .t-page-header-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--t-space-8);
+  }
+  /* the desktop breakpoint, of the header's container */
+  @container (min-width: 1024px) /* raw: --t-breakpoint-desktop, which a query cannot read */ {
+    .t-page-header-title {
+      font: var(--t-type-display-m);
+      letter-spacing: var(--t-type-display-m-tracking);
+    }
+    .t-page-header-large .t-page-header-title {
+      font: var(--t-type-display-l);
+      letter-spacing: var(--t-type-display-l-tracking);
+    }
+  }
+
+  .t-section-header {
+    display: flex;
+    /* the count and the action go under the title rather than squeeze it, as in Flutter */
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--t-space-8);
+    margin: var(--t-space-32) 0 var(--t-space-12);
+  }
+  .t-section-header-title {
+    margin: 0;
+    font: var(--t-type-title-l);
+    letter-spacing: var(--t-type-title-l-tracking);
+  }
+  .t-section-header-count {
+    font: var(--t-type-control);
+    letter-spacing: var(--t-type-control-tracking);
+    color: var(--t-text-muted);
+  }
+  .t-section-header .t-button {
+    margin-inline-start: auto;
+  }
+}

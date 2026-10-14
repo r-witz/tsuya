@@ -1,0 +1,45 @@
+/* Spinner (DESIGN.md, Spinner): a quarter arc turning on its track. */
+@layer tsuya.tokens, tsuya.base, tsuya.material, tsuya.components;
+
+@layer tsuya.components {
+  .t-spinner {
+    display: inline-flex;
+    flex: none;
+    width: var(--t-size-icon);
+    height: var(--t-size-icon);
+    color: var(--t-accent);
+  }
+  .t-spinner[aria-hidden='true'] {
+    color: inherit;
+  }
+  .t-spinner-sm {
+    width: var(--t-size-icon-sm);
+    height: var(--t-size-icon-sm);
+  }
+  .t-spinner-lg {
+    width: var(--t-size-icon-lg);
+    height: var(--t-size-icon-lg);
+  }
+  .t-spinner-svg {
+    width: 100%;
+    height: 100%;
+    animation: t-spinner-turn 0.8s linear infinite; /* raw: a turn every 0.8 s */
+  }
+  .t-spinner-circle {
+    stroke-width: var(--t-state-focus-width);
+    vector-effect: non-scaling-stroke;
+  }
+  .t-spinner-track {
+    stroke: var(--t-track);
+  }
+  .t-spinner-arc {
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-dasharray: 1 3;
+  }
+  @keyframes t-spinner-turn {
+    to {
+      rotate: 1turn;
+    }
+  }
+}

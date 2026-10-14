@@ -1,0 +1,16 @@
+/* Combobox (DESIGN.md, Combobox): the status line of its panel, while options load and when nothing matches. */
+@layer tsuya.tokens, tsuya.base, tsuya.material, tsuya.components;
+
+@layer tsuya.components {
+  .t-combobox-status {
+    display: flex;
+    align-items: center;
+    gap: var(--t-space-8);
+    min-height: var(--t-size-control-md);
+    padding: 0 var(--t-space-12);
+    color: var(--t-text-muted);
+    font: var(--t-type-body);
+    letter-spacing: var(--t-type-body-tracking);
+    --_t-glyph-size: var(--t-size-icon-sm);
+  }
+}

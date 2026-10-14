@@ -1,0 +1,253 @@
+/* tsuya base (DESIGN.md: Theme and mode, Type, States): the page, the type helpers, the focus ring, the CSS of the
+   pressable primitive and the field box. Import after tokens.css, or import tsuya.css. Everything sits in cascade
+   layers: any CSS of yours outside a layer wins. */
+@layer tsuya.tokens, tsuya.base, tsuya.material, tsuya.components;
+
+/* the gap of the focus ring: set on the focused element only, never inherited */
+@property --_t-focus-gap {
+  syntax: '*';
+  inherits: false;
+}
+
+@layer tsuya.base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+  html {
+    background: var(--t-bg);
+    color: var(--t-text);
+    font: var(--t-type-body);
+    letter-spacing: var(--t-type-body-tracking);
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  body {
+    margin: 0;
+  }
+  /* a region forced into a mode takes that mode's text colour */
+  [data-theme] {
+    color: var(--t-text);
+  }
+  button,
+  input,
+  textarea,
+  select {
+    font: inherit;
+    letter-spacing: inherit;
+    color: inherit;
+  }
+
+  /* Focus, keyboard only: a ring in the accent, away from the control, the gap filled with bg so that the ring keeps
+     3:1 on any surface. A component that draws its own box-shadow adds var(--_t-focus-gap) to it. */
+  :focus-visible {
+    --_t-focus-gap: 0 0 0 var(--t-state-focus-offset) var(--t-bg);
+    outline: var(--t-state-focus-width) solid var(--t-accent);
+    outline-offset: var(--t-state-focus-offset);
+  }
+  :where(a, button, input, textarea, select, summary, [tabindex]):focus-visible {
+    box-shadow: var(--_t-focus-gap);
+  }
+  /* the ring around a control whose focus sits on an element inside it (a native input under a drawn thumb) */
+  .t-focus-within:has(:focus-visible) {
+    outline: var(--t-state-focus-width) solid var(--t-accent);
+    outline-offset: var(--t-state-focus-offset);
+    box-shadow: 0 0 0 var(--t-state-focus-offset) var(--t-bg);
+  }
+
+  /* Type helpers: a style of the type scale, its tracking included */
+  :where(
+    .t-display-xl,
+    .t-display-l,
+    .t-display-m,
+    .t-display-s,
+    .t-title-l,
+    .t-title-m,
+    .t-title-s,
+    .t-body-l,
+    .t-body,
+    .t-body-strong,
+    .t-button,
+    .t-control,
+    .t-small,
+    .t-caption,
+    .t-label,
+    .t-micro,
+    .t-mono
+  ) {
+    margin: 0;
+  }
+  .t-display-xl {
+    font: var(--t-type-display-xl);
+    letter-spacing: var(--t-type-display-xl-tracking);
+  }
+  .t-display-l {
+    font: var(--t-type-display-l);
+    letter-spacing: var(--t-type-display-l-tracking);
+  }
+  .t-display-m {
+    font: var(--t-type-display-m);
+    letter-spacing: var(--t-type-display-m-tracking);
+  }
+  .t-display-s {
+    font: var(--t-type-display-s);
+    letter-spacing: var(--t-type-display-s-tracking);
+  }
+  .t-title-l {
+    font: var(--t-type-title-l);
+    letter-spacing: var(--t-type-title-l-tracking);
+  }
+  .t-title-m {
+    font: var(--t-type-title-m);
+    letter-spacing: var(--t-type-title-m-tracking);
+  }
+  .t-title-s {
+    font: var(--t-type-title-s);
+    letter-spacing: var(--t-type-title-s-tracking);
+  }
+  .t-body-l {
+    font: var(--t-type-body-l);
+    letter-spacing: var(--t-type-body-l-tracking);
+  }
+  .t-body {
+    font: var(--t-type-body);
+    letter-spacing: var(--t-type-body-tracking);
+  }
+  .t-body-strong {
+    font: var(--t-type-body-strong);
+    letter-spacing: var(--t-type-body-strong-tracking);
+  }
+  .t-button {
+    font: var(--t-type-button);
+    letter-spacing: var(--t-type-button-tracking);
+  }
+  .t-control {
+    font: var(--t-type-control);
+    letter-spacing: var(--t-type-control-tracking);
+  }
+  .t-small {
+    font: var(--t-type-small);
+    letter-spacing: var(--t-type-small-tracking);
+  }
+  .t-caption {
+    font: var(--t-type-caption);
+    letter-spacing: var(--t-type-caption-tracking);
+  }
+  .t-label {
+    font: var(--t-type-label);
+    letter-spacing: var(--t-type-label-tracking);
+    text-transform: uppercase;
+  }
+  .t-micro {
+    font: var(--t-type-micro);
+    letter-spacing: var(--t-type-micro-tracking);
+  }
+  .t-mono {
+    font: var(--t-type-mono);
+    letter-spacing: var(--t-type-mono-tracking);
+  }
+  .t-tabular {
+    font-variant-numeric: tabular-nums;
+  }
+  .t-ellipsis {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  /* Pressable: how a control answers a press, its target, its disabled state. data-press says how it
+     answers: shrink (the default: buttons, icon buttons, chips), highlight (rows, menu items) or none (the control
+     shows its own change). The target is an invisible ::after of at least --t-size-target-pointer, and
+     --t-size-target on touch, centred on the drawing and under it: a pressable label around a small input lets the
+     input take the presses on itself, and takes those around it. A pressable keeps ::after free for it. */
+  .t-pressable {
+    position: relative;
+    isolation: isolate;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+  .t-pressable::after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    /* what the drawing lacks, half on each side; no transform, whose rounding would move the edges */
+    inset: calc(min(0px, 100% - var(--t-size-target-pointer)) / 2);
+  }
+  @media (pointer: coarse) {
+    .t-pressable::after {
+      inset: calc(min(0px, 100% - var(--t-size-target)) / 2);
+    }
+  }
+  .t-pressable[data-press='highlight']:not(:disabled, [aria-disabled='true']):active {
+    background-color: var(--t-fill-strong);
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .t-pressable[data-press='highlight']:not(:disabled, [aria-disabled='true'], :active):hover {
+      background-color: var(--t-fill);
+    }
+  }
+  .t-pressable:is(:disabled, [aria-disabled='true']) {
+    opacity: var(--t-state-disabled-opacity);
+    cursor: default;
+  }
+
+  /* reduced motion: nothing scales, the highlight comes at once */
+  @media (prefers-reduced-motion: no-preference) {
+    .t-pressable {
+      transition:
+        scale var(--t-duration-fast) var(--t-easing-standard),
+        background-color var(--t-duration-fast) var(--t-easing-standard);
+    }
+    .t-pressable:not([data-press='highlight'], [data-press='none'], :disabled, [aria-disabled='true']):active {
+      scale: var(--t-state-pressed-scale);
+    }
+  }
+}
+
+/* The field box (DESIGN.md, TextField, Textarea, Search): the box of a text input, a text area or a select's trigger,
+   and its states. In the components layer, where those components' own styles are. */
+@layer tsuya.components {
+  .t-field-box {
+    min-height: var(--t-size-control-md);
+    border: 1px solid var(--t-border-strong);
+    border-radius: var(--t-radius-sm);
+    background: var(--t-fill);
+    color: var(--t-text);
+    font: var(--t-type-body);
+    letter-spacing: var(--t-type-body-tracking);
+  }
+  /* on control glass: the veil of material.css, and its fallbacks */
+  .t-field-box.t-glass-control {
+    border-color: transparent;
+    background: revert-layer;
+  }
+  .t-field-box::placeholder,
+  .t-field-box ::placeholder {
+    color: var(--t-text-muted);
+    opacity: 1;
+  }
+  /* An error turns the boundary danger. Focus turns it accent (danger with an error) and focus-width thick, inside
+     the box: the focus of anything in a text input's box (its input, its buttons), the keyboard's only on a button */
+  .t-field-box:is([aria-invalid='true'], :has(input[aria-invalid='true'])) {
+    --_t-field-focus: var(--t-danger);
+    border-color: var(--t-danger);
+  }
+  .t-field-box:is(:focus-visible, :not(button):focus-within) {
+    outline: none;
+    border-color: var(--_t-field-focus, var(--t-accent));
+    box-shadow: inset 0 0 0 calc(var(--t-state-focus-width) - 1px) var(--_t-field-focus, var(--t-accent));
+  }
+  .t-field-box:is(:disabled, :has(input:disabled)) {
+    opacity: var(--t-state-disabled-opacity);
+    cursor: default;
+  }
+  @media (forced-colors: active) {
+    .t-field-box:is(:focus-visible, :not(button):focus-within) {
+      outline: var(--t-state-focus-width) solid Highlight;
+    }
+  }
+}

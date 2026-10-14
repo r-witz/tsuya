@@ -1,0 +1,48 @@
+/* Accordion.Item, Accordion.Trigger and Accordion.Content (DESIGN.md, Accordion): the hairline between items, the
+   header button with its turning chevron, and the content's padding. */
+@layer tsuya.tokens, tsuya.base, tsuya.material, tsuya.components;
+
+@layer tsuya.components {
+  .t-accordion-item + .t-accordion-item {
+    border-top: 1px solid var(--t-border);
+  }
+  .t-accordion-heading {
+    margin: 0;
+    font: inherit;
+  }
+  .t-accordion-trigger {
+    --_t-glyph-size: var(--t-size-icon-sm);
+    display: flex;
+    align-items: center;
+    gap: var(--t-space-12);
+    width: 100%;
+    min-height: var(--t-size-row);
+    margin: 0;
+    padding: var(--t-space-8) 0;
+    border: 0;
+    background: none;
+    color: var(--t-text);
+    font: var(--t-type-body-strong);
+    letter-spacing: var(--t-type-body-strong-tracking);
+    text-align: start;
+  }
+  .t-accordion-trigger-title {
+    flex: 1;
+    min-width: 0;
+  }
+  .t-accordion-trigger svg {
+    flex: none;
+    color: var(--t-text-muted);
+  }
+  .t-accordion-trigger[aria-expanded='true'] svg {
+    rotate: 180deg;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .t-accordion-trigger svg {
+      transition: rotate var(--t-duration-base) var(--t-easing-standard);
+    }
+  }
+  .t-accordion-content-inner {
+    padding: var(--t-space-16);
+  }
+}

@@ -1,0 +1,55 @@
+/* Progress (DESIGN.md, Progress): the native bar's track and fill, the thin variant, and the sweep of an
+   indeterminate one. */
+@layer tsuya.tokens, tsuya.base, tsuya.material, tsuya.components;
+
+@layer tsuya.components {
+  .t-progress {
+    display: block;
+    appearance: none;
+    width: 100%;
+    height: var(--t-space-4);
+    border: 0;
+    border-radius: var(--t-radius-full);
+    overflow: hidden;
+    background: var(--t-track);
+    color: var(--t-accent);
+  }
+  /* the element draws the track; Chromium's bar would draw it a second time over it */
+  .t-progress::-webkit-progress-bar {
+    background: transparent;
+  }
+  .t-progress::-webkit-progress-value {
+    border-radius: inherit;
+    background: var(--t-accent);
+  }
+  .t-progress::-moz-progress-bar {
+    border-radius: inherit;
+    background: var(--t-accent);
+  }
+  .t-progress-thin {
+    height: 2px; /* raw: the thin bar is 2 tall */
+  }
+  /* without a value, the sweep is the element's own background, which every browser paints (Firefox draws no
+     ::after on a progress bar): a third of the bar, from just off one end to just off the other */
+  .t-progress:indeterminate {
+    background: linear-gradient(var(--t-accent), var(--t-accent)) no-repeat var(--t-track);
+    background-size: 33.333% 100%; /* raw: a third of the bar */
+    animation: t-progress-sweep 1.2s linear infinite; /* raw: a sweep every 1.2 s */
+  }
+  .t-progress:indeterminate:dir(rtl) {
+    animation-direction: reverse;
+  }
+  /* Firefox's bar spans the whole track while there is no value: out of the way of the sweep (a rule of its own,
+     which other browsers drop) */
+  .t-progress:indeterminate::-moz-progress-bar {
+    background: transparent;
+  }
+  @keyframes t-progress-sweep {
+    from {
+      background-position-x: -50%; /* raw: from just off one end */
+    }
+    to {
+      background-position-x: 150%; /* raw: to just off the other */
+    }
+  }
+}

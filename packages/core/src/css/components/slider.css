@@ -1,0 +1,70 @@
+/* Slider (DESIGN.md, Slider): a native range input over a drawn track, fill and thumb. */
+@layer tsuya.tokens, tsuya.base, tsuya.material, tsuya.components;
+
+@layer tsuya.components {
+  .t-slider {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-height: var(--t-size-target);
+  }
+  .t-slider:has(.t-slider-input:disabled) {
+    opacity: var(--t-state-disabled-opacity);
+  }
+  .t-slider-input {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    appearance: none;
+    opacity: 0;
+  }
+  .t-slider-track {
+    position: relative;
+    width: 100%;
+    height: var(--t-space-4);
+    border-radius: var(--t-radius-full);
+    background: var(--t-track);
+    pointer-events: none;
+  }
+  .t-slider-fill {
+    position: absolute;
+    inset-inline-start: 0;
+    height: 100%;
+    border-radius: var(--t-radius-full);
+    background: var(--t-accent);
+  }
+  .t-slider-thumb {
+    --_t-thumb-size: 20px; /* raw: a 20 thumb */
+    position: absolute;
+    inset-inline-start: 0;
+    width: var(--_t-thumb-size);
+    height: var(--_t-thumb-size);
+    border: 1px solid var(--t-border-strong);
+    border-radius: var(--t-radius-full);
+    background: var(--t-thumb);
+    box-shadow: var(--t-shadow-sm);
+    pointer-events: none;
+  }
+  .t-slider:has(.t-slider-input:focus-visible) .t-slider-thumb {
+    outline: var(--t-state-focus-width) solid var(--t-accent);
+    outline-offset: var(--t-state-focus-offset);
+    box-shadow:
+      0 0 0 var(--t-state-focus-offset) var(--t-bg),
+      var(--t-shadow-sm);
+  }
+  @media (forced-colors: active) {
+    .t-slider-track {
+      background: Canvas;
+      border: 1px solid CanvasText;
+    }
+    .t-slider-fill {
+      background: Highlight;
+    }
+    .t-slider-thumb {
+      background: Highlight;
+      border-color: CanvasText;
+    }
+  }
+}

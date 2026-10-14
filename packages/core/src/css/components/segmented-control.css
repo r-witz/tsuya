@@ -1,0 +1,82 @@
+/* SegmentedControl (DESIGN.md, SegmentedControl): a track of segments, each a label around a native radio. */
+@layer tsuya.tokens, tsuya.base, tsuya.material, tsuya.components;
+
+@layer tsuya.components {
+  .t-segmented {
+    display: inline-flex;
+    /* nothing overflows at 400 % zoom: the segments shrink to the width left and their labels wrap */
+    max-width: 100%;
+    gap: var(--t-space-4);
+    padding: var(--t-space-4);
+    border: 1px solid var(--t-border);
+    border-radius: calc(var(--t-radius-sm) + var(--t-space-4));
+    background: var(--t-fill);
+  }
+  .t-segmented-expand {
+    display: flex;
+  }
+  /* equal shares, but a word is not broken while another segment has room to spare: the automatic minimum is
+     the longest word, as in Flutter */
+  .t-segmented-expand .t-segmented-segment {
+    flex: 1;
+    min-width: auto;
+    overflow-wrap: break-word;
+  }
+  .t-segmented-segment {
+    position: relative;
+    display: flex;
+    flex: 0 1 auto;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+    min-height: calc(var(--t-size-control-md) - 2 * var(--t-space-4));
+    padding-inline: var(--t-space-16);
+    border-radius: var(--t-radius-sm);
+    color: var(--t-text-muted);
+    font: var(--t-type-control);
+    letter-spacing: var(--t-type-control-tracking);
+    text-align: center;
+    overflow-wrap: anywhere;
+  }
+  .t-segmented-segment:has(.t-segmented-input:checked) {
+    background: var(--t-fill-selected);
+    box-shadow: var(--t-shadow-sm);
+    color: var(--t-text);
+  }
+  .t-segmented-segment:has(.t-segmented-input:disabled) {
+    opacity: var(--t-state-disabled-opacity);
+  }
+  .t-segmented-input {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    appearance: none;
+    opacity: 0;
+  }
+  .t-segmented-content {
+    display: flex;
+    min-width: 0;
+    align-items: center;
+    gap: var(--t-space-8);
+    pointer-events: none;
+  }
+  .t-segmented-content svg {
+    width: var(--t-size-icon-sm);
+    height: var(--t-size-icon-sm);
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .t-segmented-segment {
+      transition:
+        background-color var(--t-duration-fast) var(--t-easing-standard),
+        box-shadow var(--t-duration-fast) var(--t-easing-standard),
+        color var(--t-duration-fast) var(--t-easing-standard);
+    }
+  }
+  @media (forced-colors: active) {
+    .t-segmented-segment:has(.t-segmented-input:checked) {
+      outline: 1px solid Highlight;
+    }
+  }
+}

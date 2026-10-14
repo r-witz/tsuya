@@ -1,0 +1,70 @@
+/* Dialog.Content, Dialog.Title, Dialog.Description and Dialog.Actions (DESIGN.md, Dialog): the modal box that fades
+   in over the scrim, its title and text, and its actions. */
+@layer tsuya.tokens, tsuya.base, tsuya.material, tsuya.components;
+
+@layer tsuya.components {
+  .t-dialog {
+    box-sizing: border-box;
+    position: fixed;
+    inset: 0;
+    margin: auto;
+    flex-direction: column;
+    gap: var(--t-space-16);
+    width: calc(100% - var(--t-space-16) * 2);
+    max-width: 420px; /* raw: at most 420 wide */
+    max-height: calc(100% - var(--t-space-16) * 2);
+    padding: var(--t-space-24);
+    border: 1px solid var(--t-border);
+    border-radius: var(--t-radius-lg);
+    background: var(--t-surface);
+    color: var(--t-text);
+    box-shadow: var(--t-shadow-lg);
+    overflow: auto;
+    opacity: 0;
+    scale: 0.98;
+  }
+  .t-dialog[open] {
+    /* only while open: a display of its own would beat the user agent's display: none of a closed dialog */
+    display: flex;
+    opacity: 1;
+    scale: none; /* none, not 1: a transformed box would be the containing block of a toast portalled into it */
+  }
+  .t-dialog-lg {
+    max-width: 560px; /* raw: or 560 */
+  }
+  .t-dialog::backdrop {
+    background: var(--t-scrim);
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .t-dialog {
+      transition:
+        opacity var(--t-duration-base) var(--t-easing-standard),
+        scale var(--t-duration-base) var(--t-easing-standard),
+        display var(--t-duration-base) allow-discrete,
+        overlay var(--t-duration-base) allow-discrete;
+    }
+    @starting-style {
+      .t-dialog[open] {
+        opacity: 0;
+        scale: 0.98;
+      }
+    }
+  }
+  .t-dialog-title {
+    margin: 0;
+    font: var(--t-type-title-m);
+    letter-spacing: var(--t-type-title-m-tracking);
+  }
+  .t-dialog-description {
+    margin: 0;
+    color: var(--t-text-muted);
+    font: var(--t-type-body);
+    letter-spacing: var(--t-type-body-tracking);
+  }
+  .t-dialog-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: var(--t-space-8);
+  }
+}

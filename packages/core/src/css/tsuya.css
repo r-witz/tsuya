@@ -1,0 +1,41 @@
+/* tsuya for the web: the tokens, the base, the material and the components' styles, in their cascade layers; the fonts
+   are in fonts.css. The components come after the base: at equal specificity, a component's rule wins over the field
+   box's. */
+@layer tsuya.tokens, tsuya.base, tsuya.material, tsuya.components;
+@import url('tokens.css');
+@import url('base.css');
+@import url('material.css');
+@import url('components/accordion.css');
+@import url('components/avatar.css');
+@import url('components/badge.css');
+@import url('components/banner.css');
+@import url('components/bar.css');
+@import url('components/button.css');
+@import url('components/checkbox.css');
+@import url('components/chip.css');
+@import url('components/combobox.css');
+@import url('components/command-palette.css');
+@import url('components/dialog.css');
+@import url('components/field.css');
+@import url('components/glyph.css');
+@import url('components/header.css');
+@import url('components/list.css');
+@import url('components/menu.css');
+@import url('components/panel.css');
+@import url('components/progress.css');
+@import url('components/radio-group.css');
+@import url('components/screen.css');
+@import url('components/segmented-control.css');
+@import url('components/select.css');
+@import url('components/sheet.css');
+@import url('components/sidebar.css');
+@import url('components/skeleton.css');
+@import url('components/slider.css');
+@import url('components/spinner.css');
+@import url('components/switch.css');
+@import url('components/tab-bar.css');
+@import url('components/tabs.css');
+@import url('components/text-input.css');
+@import url('components/thumbnail.css');
+@import url('components/toast.css');
+@import url('components/tooltip.css');

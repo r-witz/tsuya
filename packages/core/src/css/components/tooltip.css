@@ -1,0 +1,24 @@
+/* Tooltip (DESIGN.md, Tooltip): the inverted label above its trigger, with an edge where the fill is gone. */
+@layer tsuya.tokens, tsuya.base, tsuya.material, tsuya.components;
+
+@layer tsuya.components {
+  .t-tooltip {
+    box-sizing: border-box;
+    max-width: min(240px, var(--_t-anchored-max-width, 240px)); /* raw: at most 240 wide */
+    margin: 0;
+    padding: var(--t-space-4) var(--t-space-8);
+    border: 0;
+    border-radius: var(--t-radius-xs);
+    background: var(--t-text);
+    color: var(--t-bg);
+    font: var(--t-type-caption);
+    letter-spacing: var(--t-type-caption-tracking);
+    overflow: visible;
+  }
+  /* where the fill is gone, an edge keeps it apart from what it covers */
+  @media (forced-colors: active) {
+    .t-tooltip {
+      outline: 1px solid CanvasText;
+    }
+  }
+}

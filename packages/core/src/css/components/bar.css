@@ -1,0 +1,166 @@
+/* TopBar and ScreenBar (DESIGN.md, TopBar, ScreenBar): the floating bar of a website or a desktop app, with its start,
+   centre, end and links, and the bar of a pushed screen. */
+@layer tsuya.tokens, tsuya.base, tsuya.material, tsuya.components;
+
+@layer tsuya.components {
+  .t-top-bar {
+    position: sticky;
+    top: var(--t-space-12);
+    z-index: 1;
+    display: flex;
+    /* the start and the end that do not fit side by side (a labelled button at 400 % zoom) wrap onto a second row;
+       the centre, which can shrink to nothing, stays beside the start */
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--t-space-8);
+    min-height: var(--t-size-bar);
+    margin: var(--t-space-12) var(--t-space-12) 0;
+    padding: calc((var(--t-size-bar) - var(--t-size-target)) / 2) var(--t-space-12);
+    border-radius: var(--t-radius-md);
+    /* the bar is the container its links ask: it spans its parent, so its width does not depend on its content */
+    container-type: inline-size;
+  }
+  .t-top-bar-start,
+  .t-top-bar-center,
+  .t-top-bar-end {
+    display: flex;
+    align-items: center;
+    gap: var(--t-space-8);
+    min-width: 0;
+  }
+  /* the links and the centre (asking at least three targets of room, or a row of their own) scroll sideways when they do not fit between the start and the end, as on Flutter,
+     instead of running over them: the scrollbar is hidden (the keys and the focus scroll it). Centred when they
+     fit, by the auto margins of the first and last child: `justify-content: center` would cut off the start. The
+     padding and the matching negative margin keep a focus ring from being clipped by the scrolling box; the
+     bar's own padding and gap leave room for them. */
+  .t-top-bar-center {
+    flex: 1 1 calc(var(--t-size-target) * 3);
+    overflow-x: auto;
+    padding: var(--t-space-8);
+    margin: calc(var(--t-space-8) * -1);
+    scrollbar-width: none;
+  }
+  .t-top-bar-center::-webkit-scrollbar {
+    display: none;
+  }
+  /* with nothing in it, it asks no room: the end is pushed to the edge by its own auto margin */
+  .t-top-bar-center:empty {
+    display: none;
+  }
+  /* the links only: what an app puts in the centre keeps its own margins */
+  .t-top-bar-center > .t-top-bar-links:first-child {
+    margin-inline-start: auto;
+  }
+  .t-top-bar-center > .t-top-bar-links:last-child {
+    margin-inline-end: auto;
+  }
+  .t-top-bar-end {
+    margin-inline-start: auto;
+  }
+  .t-top-bar-links,
+  .t-top-bar-list {
+    display: flex;
+    gap: var(--t-space-4);
+  }
+  .t-top-bar-links {
+    flex: none;
+  }
+  /* navigation links: --t-text-muted, the current one in --t-text on --t-fill-strong */
+  .t-top-bar-link {
+    display: flex;
+    align-items: center;
+    padding: 0 var(--t-space-12);
+    border-radius: var(--t-radius-sm);
+    color: var(--t-text-muted);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .t-top-bar-links .t-top-bar-link {
+    min-height: var(--t-size-control-sm);
+    font: var(--t-type-control);
+    letter-spacing: var(--t-type-control-tracking);
+  }
+  @media (pointer: coarse) {
+    .t-top-bar-links .t-top-bar-link {
+      min-height: var(--t-size-target);
+    }
+  }
+  /* in the menu, rows as a menu's, 4 in from its edge */
+  .t-top-bar-list {
+    flex-direction: column;
+    margin: calc(var(--t-space-12) * -1);
+  }
+  .t-top-bar-list .t-top-bar-link {
+    min-height: var(--t-size-control-md);
+    color: var(--t-text);
+    font: var(--t-type-body);
+    letter-spacing: var(--t-type-body-tracking);
+  }
+  .t-top-bar-link[aria-current='page'] {
+    background: var(--t-fill-strong);
+    color: var(--t-text);
+  }
+  /* where the fill is gone, an edge marks the current link */
+  @media (forced-colors: active) {
+    .t-top-bar-link[aria-current='page'] {
+      outline: 1px solid Highlight;
+    }
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .t-top-bar-link:not([aria-current]):hover {
+      background: var(--t-fill);
+    }
+  }
+  /* below the tablet width of the bar's container, the links go into the menu: the token's value less the bar's 12
+     margin and 12 padding on each side, as the query reads the bar's content box, and it is the container's width
+     that is compared, as on Flutter */
+  .t-top-bar-compact {
+    display: none;
+  }
+  @container (width < 552px) /* raw: --t-breakpoint-tablet, which a query cannot read */ {
+    .t-top-bar-links {
+      display: none;
+    }
+    .t-top-bar-center:has(> .t-top-bar-links:only-child) {
+      display: none;
+    }
+    .t-top-bar-compact {
+      display: flex;
+    }
+  }
+
+  .t-screen-bar {
+    display: grid;
+    grid-template-columns: minmax(var(--t-size-control-md), 1fr) minmax(0, auto) minmax(var(--t-size-control-md), 1fr);
+    align-items: center;
+    gap: var(--t-space-8);
+    min-height: var(--t-size-bar);
+  }
+  .t-screen-bar-side {
+    display: flex;
+    align-items: center;
+  }
+  .t-screen-bar-end {
+    justify-content: flex-end;
+  }
+  .t-screen-bar-heading {
+    min-width: 0;
+    text-align: center;
+  }
+  .t-screen-bar-title,
+  .t-screen-bar-subtitle {
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .t-screen-bar-title {
+    font: var(--t-type-title-m);
+    letter-spacing: var(--t-type-title-m-tracking);
+  }
+  .t-screen-bar-subtitle {
+    color: var(--t-text-muted);
+    font: var(--t-type-caption);
+    letter-spacing: var(--t-type-caption-tracking);
+  }
+}

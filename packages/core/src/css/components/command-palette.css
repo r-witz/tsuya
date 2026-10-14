@@ -1,0 +1,35 @@
+/* CommandPalette (DESIGN.md, CommandPalette): the dialog near the top, its list in groups under their headings, and the
+   status line when no command is found. */
+@layer tsuya.tokens, tsuya.base, tsuya.material, tsuya.components;
+
+@layer tsuya.components {
+  /* near the top rather than centred, so that the field stays put while the list shrinks */
+  .t-dialog.t-command-palette {
+    margin-block: var(--t-space-64) auto;
+    max-height: calc(100% - var(--t-space-64) - var(--t-space-16));
+    gap: var(--t-space-8);
+    padding: var(--t-space-12);
+  }
+  .t-command-palette-list {
+    min-height: 0;
+    overflow-y: auto;
+  }
+  .t-command-palette-group + .t-command-palette-group {
+    margin-top: var(--t-space-8);
+  }
+  .t-command-palette-heading {
+    padding: var(--t-space-8) var(--t-space-12) var(--t-space-4);
+    color: var(--t-text-muted);
+    font: var(--t-type-label);
+    letter-spacing: var(--t-type-label-tracking);
+  }
+  .t-command-palette-status {
+    display: flex;
+    align-items: center;
+    min-height: var(--t-size-control-md);
+    padding: 0 var(--t-space-12);
+    color: var(--t-text-muted);
+    font: var(--t-type-body);
+    letter-spacing: var(--t-type-body-tracking);
+  }
+}

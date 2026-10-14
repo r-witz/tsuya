@@ -1,0 +1,73 @@
+/* Checkbox (DESIGN.md, Checkbox): a label around a native input drawn as a box, its tick or dash, and the text. */
+@layer tsuya.tokens, tsuya.base, tsuya.material, tsuya.components;
+
+@layer tsuya.components {
+  .t-checkbox {
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--t-size-target);
+    color: var(--t-text);
+    font: var(--t-type-body);
+    letter-spacing: var(--t-type-body-tracking);
+  }
+  .t-checkbox:has(.t-checkbox-input:disabled) {
+    opacity: var(--t-state-disabled-opacity);
+    cursor: default;
+  }
+  .t-checkbox-box {
+    position: relative;
+    flex: none;
+    width: 20px; /* raw: a 20 box */
+    height: 20px; /* raw: a 20 box */
+  }
+  .t-checkbox-input {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    appearance: none;
+    opacity: 0;
+  }
+  /* decorative, drawn under the input but never hit-tested: clicks reach the input everywhere in the box */
+  .t-checkbox-frame {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    border: 1.5px solid var(--t-border-strong); /* raw: a 1.5 boundary */
+    border-radius: var(--t-radius-xs);
+    color: var(--t-on-accent);
+    pointer-events: none;
+  }
+  .t-checkbox-frame svg {
+    width: 100%;
+    height: 100%;
+  }
+  .t-checkbox-frame path {
+    stroke-width: 2px; /* raw: a 2 tick at any size it is drawn at */
+    vector-effect: non-scaling-stroke;
+  }
+  .t-checkbox-box:has(.t-checkbox-input:checked) .t-checkbox-frame,
+  .t-checkbox-box:has(.t-checkbox-input:indeterminate) .t-checkbox-frame {
+    border-color: transparent;
+    background: var(--t-accent);
+  }
+  .t-checkbox-text {
+    margin-inline-start: var(--t-space-12);
+  }
+  @media (forced-colors: active) {
+    .t-checkbox-frame {
+      border-color: CanvasText;
+    }
+    .t-checkbox-box:has(.t-checkbox-input:checked) .t-checkbox-frame,
+    .t-checkbox-box:has(.t-checkbox-input:indeterminate) .t-checkbox-frame {
+      border-color: Highlight;
+      background: Highlight;
+      color: HighlightText;
+    }
+    .t-checkbox:has(.t-checkbox-input:disabled) .t-checkbox-frame {
+      border-color: GrayText;
+    }
+  }
+}

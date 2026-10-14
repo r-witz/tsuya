@@ -1,0 +1,33 @@
+/* Skeleton and Skeleton.Text (DESIGN.md, Skeleton): a pulsing block of fill-strong, and the column of lines that
+   stands for a paragraph. */
+@layer tsuya.tokens, tsuya.base, tsuya.material, tsuya.components;
+
+@layer tsuya.components {
+  .t-skeleton {
+    display: block;
+    width: 100%;
+    height: 1em; /* raw: a line of text by default, the size of what loads */
+    border-radius: var(--t-radius-xs);
+    background: var(--t-fill-strong);
+    opacity: 1;
+    animation: t-skeleton-pulse 1.6s ease-in-out infinite alternate; /* raw: a slow pulse, 1.6 s each way */
+  }
+  @keyframes t-skeleton-pulse {
+    from {
+      opacity: 0.5;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .t-skeleton {
+      animation: none;
+    }
+  }
+  .t-skeleton-text {
+    display: flex;
+    flex-direction: column;
+    gap: var(--t-space-8);
+  }
+}

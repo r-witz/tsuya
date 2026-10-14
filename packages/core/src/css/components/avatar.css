@@ -1,0 +1,44 @@
+/* Avatar (DESIGN.md, Avatar): a round photo, or initials on fill or on a gradient, and a badge pinned on its
+   corner. */
+@layer tsuya.tokens, tsuya.base, tsuya.material, tsuya.components;
+
+@layer tsuya.components {
+  .t-avatar {
+    position: relative;
+    display: inline-block;
+    flex: none;
+    width: var(--_t-size);
+    height: var(--_t-size);
+  }
+  .t-avatar-circle {
+    display: grid;
+    place-items: center;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: var(--t-radius-full);
+    background: var(--t-fill);
+    color: var(--t-text-muted);
+    font-size: var(--_t-font-size);
+    font-weight: 600;
+  }
+  .t-avatar-gradient {
+    color: #fff;
+  }
+  .t-avatar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .t-avatar-badge-pin {
+    position: absolute;
+    top: 0;
+    inset-inline-end: 0;
+    display: flex;
+    translate: 30% -30%; /* raw: a pin overlaps the corner by 30 % of its size */
+    pointer-events: none;
+  }
+  .t-avatar-badge-pin:dir(rtl) {
+    translate: -30% -30%; /* raw: the same overlap, mirrored */
+  }
+}

@@ -1,0 +1,96 @@
+/* List, ListItem, Section (DESIGN.md, List, ListItem, Section): the column of rows, a row with its leading content,
+   title and subtitle, trailing value and chevron, and the label of a section. */
+@layer tsuya.tokens, tsuya.base, tsuya.material, tsuya.components;
+
+@layer tsuya.components {
+  .t-list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .t-list-item {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: var(--t-space-12);
+    min-height: var(--t-size-row);
+    margin: 0;
+    padding: var(--t-space-8) 0;
+    border: 0;
+    background: none;
+    color: var(--t-text);
+    font: inherit;
+    text-align: start;
+    text-decoration: none;
+  }
+  /* hairlines between rows */
+  .t-list-item + .t-list-item {
+    border-top: 1px solid var(--t-border);
+  }
+  .t-list-item-tall {
+    min-height: var(--t-size-row-tall);
+  }
+  .t-list-item-leading {
+    display: flex;
+    flex: none;
+    align-items: center;
+    color: var(--t-text-muted);
+  }
+  .t-list-item-leading > svg {
+    width: var(--t-size-icon);
+    height: var(--t-size-icon);
+  }
+  .t-list-item-main {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    min-width: 0;
+  }
+  .t-list-item-title,
+  .t-list-item-subtitle {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  .t-list-item-title {
+    font: var(--t-type-body-strong);
+    letter-spacing: var(--t-type-body-strong-tracking);
+  }
+  .t-list-item-subtitle {
+    font: var(--t-type-small);
+    letter-spacing: var(--t-type-small-tracking);
+    color: var(--t-text-muted);
+  }
+  .t-list-item[aria-current='true'] .t-list-item-title {
+    font-weight: 800;
+  }
+  .t-list-item-destructive .t-list-item-title {
+    color: var(--t-danger);
+  }
+  .t-list-item-trailing {
+    display: flex;
+    flex: none;
+    align-items: center;
+    gap: var(--t-space-8);
+    max-width: 50%; /* raw: at most half the row */
+    min-width: 0;
+    overflow: hidden;
+    color: var(--t-text-muted);
+    font: var(--t-type-small);
+    letter-spacing: var(--t-type-small-tracking);
+    font-variant-numeric: tabular-nums;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .t-list-item-chevron {
+    --_t-glyph-size: var(--t-size-icon-sm);
+    display: flex;
+    flex: none;
+    color: var(--t-text-muted);
+  }
+
+  .t-section-label {
+    margin: var(--t-space-24) 0 var(--t-space-8);
+    color: var(--t-text-muted);
+  }
+}

@@ -1,0 +1,103 @@
+/* Sheet.Content and Sheet.Title (DESIGN.md, Sheet): the native dialog that slides in from the bottom or the end
+   edge, its handle and body, and its title. */
+@layer tsuya.tokens, tsuya.base, tsuya.material, tsuya.components;
+
+@layer tsuya.components {
+  .t-sheet {
+    box-sizing: border-box;
+    position: fixed;
+    margin: 0;
+    padding: 0;
+    /* a <dialog> has its own default max-width/max-height (fit within the viewport): only Sheet's own say so */
+    max-width: none;
+    max-height: none;
+    border: 1px solid transparent;
+    color: var(--t-text);
+    overflow: auto;
+  }
+  /* glass brings its own edges, and the shadow of data-shadow="lg" */
+  .t-sheet:not(.t-glass) {
+    border-color: var(--t-border);
+    background: var(--t-surface);
+    box-shadow: var(--t-shadow-lg);
+  }
+  .t-sheet-bottom {
+    inset-inline: 0;
+    top: auto;
+    bottom: 0;
+    width: 100%;
+    max-width: var(--t-breakpoint-tablet);
+    margin-inline: auto;
+    max-height: calc(100dvh - var(--t-space-48)); /* raw: the viewport's height */
+    border-end-end-radius: 0;
+    border-end-start-radius: 0;
+    border-start-start-radius: var(--t-radius-lg);
+    border-start-end-radius: var(--t-radius-lg);
+    translate: 0 100%;
+  }
+  .t-sheet-bottom[open] {
+    translate: none;
+  }
+  .t-sheet-end {
+    inset-block: 0;
+    left: auto;
+    right: 0;
+    width: min(400px, calc(100% - var(--t-space-16))); /* raw: 400 wide */
+    height: 100%;
+    border-radius: 0;
+    translate: 100% 0;
+  }
+  .t-sheet-end:dir(rtl) {
+    left: 0;
+    right: auto;
+    translate: -100% 0; /* raw: off its own width, to the start in RTL */
+  }
+  .t-sheet-end[open] {
+    translate: none;
+  }
+  .t-sheet-handle-row {
+    display: flex;
+    justify-content: center;
+    padding: var(--t-space-12) 0;
+    touch-action: none;
+  }
+  .t-sheet-handle {
+    width: var(--t-space-32);
+    height: var(--t-space-4);
+    border-radius: var(--t-radius-full);
+    background: var(--t-border-strong);
+  }
+  .t-sheet-body {
+    padding: 0 var(--t-space-24) calc(var(--t-space-32) + env(safe-area-inset-bottom, 0px));
+  }
+  .t-sheet-end .t-sheet-body {
+    padding: var(--t-space-24);
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .t-sheet {
+      transition:
+        translate var(--t-duration-sheet) var(--t-easing-emphasized),
+        display var(--t-duration-sheet) allow-discrete,
+        overlay var(--t-duration-sheet) allow-discrete;
+    }
+    @starting-style {
+      .t-sheet-bottom[open] {
+        translate: 0 100%;
+      }
+      .t-sheet-end[open] {
+        translate: 100% 0;
+      }
+      .t-sheet-end:dir(rtl)[open] {
+        translate: -100% 0; /* raw: off its own width, to the start in RTL */
+      }
+    }
+  }
+  .t-sheet::backdrop {
+    background: var(--t-scrim);
+  }
+  .t-sheet-title {
+    margin: 0;
+    font: var(--t-type-title-m);
+    letter-spacing: var(--t-type-title-m-tracking);
+  }
+}

@@ -1,0 +1,76 @@
+/* Banner (DESIGN.md, Banner): a tinted box with a status icon, a title and a message, and actions that move under
+   them when it is narrow. */
+@layer tsuya.tokens, tsuya.base, tsuya.material, tsuya.components;
+
+@layer tsuya.components {
+  .t-banner {
+    --_t-glyph-size: var(--t-size-icon);
+    display: flex;
+    align-items: flex-start;
+    gap: var(--t-space-12);
+    padding: var(--t-space-12) var(--t-space-16);
+    border: 1px solid color-mix(in srgb, var(--_t-banner-color) 32%, transparent); /* raw: a ring at 32 % */
+    border-radius: var(--t-radius-md);
+    background: color-mix(in srgb, var(--_t-banner-color) 13%, transparent); /* raw: a fill at 13 % */
+    color: var(--_t-banner-color);
+  }
+  .t-banner-info {
+    --_t-banner-color: var(--t-info);
+  }
+  .t-banner-success {
+    --_t-banner-color: var(--t-success);
+  }
+  .t-banner-warning {
+    --_t-banner-color: var(--t-warning);
+  }
+  .t-banner-danger {
+    --_t-banner-color: var(--t-danger);
+  }
+  .t-banner-body {
+    flex: 1;
+    min-width: 0;
+    container-type: inline-size;
+  }
+  .t-banner-row {
+    display: flex;
+    flex-direction: column;
+    gap: var(--t-space-12);
+  }
+  .t-banner-text-col {
+    display: flex;
+    flex-direction: column;
+    gap: var(--t-space-4);
+    min-width: 0;
+    color: var(--t-text);
+  }
+  .t-banner-title {
+    margin: 0;
+    font: var(--t-type-body-strong);
+    letter-spacing: var(--t-type-body-strong-tracking);
+  }
+  .t-banner-text {
+    font: var(--t-type-small);
+    letter-spacing: var(--t-type-small-tracking);
+    color: var(--t-text-muted);
+  }
+  .t-banner-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--t-space-8);
+  }
+  /* enough room: the actions join the title and message on their row, at the end */
+  @container (min-width: 480px) /* raw: the room for them, not a breakpoint */ {
+    .t-banner-row {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--t-space-16);
+    }
+    .t-banner-text-col {
+      flex: 1;
+    }
+    .t-banner-actions {
+      flex: none;
+    }
+  }
+}

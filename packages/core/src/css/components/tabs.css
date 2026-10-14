@@ -1,0 +1,42 @@
+/* Tabs (DESIGN.md, Tabs): the row of tabs, which scrolls sideways, and a tab with the bar under the selected one. */
+@layer tsuya.tokens, tsuya.base, tsuya.material, tsuya.components;
+
+@layer tsuya.components {
+  .t-tabs-list {
+    display: flex;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .t-tab {
+    position: relative;
+    flex: none;
+    min-height: var(--t-size-control-md);
+    margin: 0;
+    padding: 0 var(--t-space-12);
+    border: 0;
+    border-radius: var(--t-radius-sm) var(--t-radius-sm) 0 0;
+    background: none;
+    color: var(--t-text-muted);
+    font: var(--t-type-body-strong);
+    letter-spacing: var(--t-type-body-strong-tracking);
+    white-space: nowrap;
+  }
+  .t-tab[aria-selected='true'] {
+    color: var(--t-text);
+  }
+  /* the bar, under the label; it slides from the tab selected before (TabsList) */
+  .t-tab[aria-selected='true']::before {
+    content: '';
+    position: absolute;
+    inset: auto var(--t-space-12) 0;
+    height: 2px; /* raw: a 2 tall bar */
+    border-radius: var(--t-radius-full);
+    background: var(--t-accent);
+    transform-origin: left;
+  }
+  @media (forced-colors: active) {
+    .t-tab[aria-selected='true']::before {
+      background: Highlight;
+    }
+  }
+}

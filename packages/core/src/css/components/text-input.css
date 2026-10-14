@@ -1,0 +1,77 @@
+/* TextInput, Textarea, SearchInput (DESIGN.md, TextField, Textarea, Search): the field box of a text input, its input,
+   slots and action buttons, the text area, and the search field's pill and its small size. */
+@layer tsuya.tokens, tsuya.base, tsuya.material, tsuya.components;
+
+@layer tsuya.components {
+  /* the box, its boundary and its states: .t-field-box of @tsuya/core's base.css */
+  .t-text-input {
+    display: flex;
+    align-items: center;
+    gap: var(--t-space-8);
+    padding-inline: var(--t-space-12);
+    cursor: text;
+  }
+  .t-text-input-input {
+    flex: 1;
+    min-width: 0;
+    align-self: stretch;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: none;
+    outline: none;
+  }
+  .t-text-input-input:focus-visible {
+    box-shadow: none;
+  }
+  .t-text-input-input::-webkit-search-cancel-button {
+    appearance: none;
+  }
+  .t-text-input-slot {
+    display: flex;
+    align-items: center;
+    color: var(--t-text-muted);
+  }
+  .t-text-input-action {
+    display: grid;
+    place-items: center;
+    margin: 0;
+    padding: var(--t-space-4);
+    border: 0;
+    border-radius: var(--t-radius-full);
+    background: none;
+    color: var(--t-text-muted);
+  }
+  /* on touch, a box shorter than the target (a small search field) answers around it too: a layer under its
+     content, which a press there reaches, and the box focuses the input */
+  @media (pointer: coarse) {
+    .t-text-input {
+      position: relative;
+      isolation: isolate;
+    }
+    .t-text-input::after {
+      content: '';
+      position: absolute;
+      /* as tall as the target: what the box lacks, half above and half below */
+      inset: calc(min(0px, 100% - var(--t-size-target)) / 2) 0;
+      z-index: -1;
+    }
+  }
+
+  /* the box, its boundary and its states: .t-field-box of @tsuya/core's base.css */
+  .t-textarea {
+    display: block;
+    width: 100%;
+    min-height: calc(var(--t-size-control-md) * 2);
+    margin: 0;
+    padding: var(--t-space-12);
+    resize: none;
+  }
+
+  .t-text-input.t-search {
+    border-radius: var(--t-radius-full);
+  }
+  .t-text-input.t-search-sm {
+    min-height: var(--t-size-control-sm);
+  }
+}

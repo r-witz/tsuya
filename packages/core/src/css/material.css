@@ -1,0 +1,194 @@
+/* tsuya material (DESIGN.md, The material): accent regions, the surface with its ambient background or glow and its
+   grain, glass, and their fallbacks. Import after tokens.css, or import tsuya.css. Everything sits in cascade layers:
+   any CSS of yours outside a layer wins. */
+@layer tsuya.tokens, tsuya.base, tsuya.material, tsuya.components;
+
+/* registered as colours: a cross-fade (setAccent, AccentRegion) reads the colour shown in the middle of one */
+@property --t-accent-light {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: transparent;
+}
+@property --t-accent-dark {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: transparent;
+}
+
+@layer tsuya.material {
+  /* An accent region (setAccent, AccentRegion): the class t-accent with --t-accent-light and --t-accent-dark. It
+     computes --t-accent again: the value it inherits was computed from the pair above. A nested region of the other
+     mode does the same in tokens.css. The pair of a content tints glass; the neutral pair does not. */
+  .t-accent {
+    --t-accent: color-mix(in srgb, var(--t-accent-dark) calc(var(--t-mode-dark) * 100%), var(--t-accent-light));
+    --_t-glass-accent: 1;
+  }
+  .t-accent[data-accent='neutral'] {
+    --_t-glass-accent: 0;
+  }
+  [data-glass='neutral'] {
+    --_t-glass-neutral: 1;
+  }
+  [data-glass='tinted'] {
+    --_t-glass-neutral: 0;
+  }
+
+  /* A surface (Surface, TsuyaSurface): back to front its background, the ambient background or the glow, the grain
+     (::after; data-grain="bg|all|off"), then the content */
+  /* the light of the ambient or the glow ends with the surface: a short page does not scroll for it */
+  .t-surface {
+    position: relative;
+    isolation: isolate;
+    overflow: clip;
+    background: var(--t-bg);
+    color: var(--t-text);
+  }
+  .t-surface::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background: url('grain.png') 0 0 / var(--t-grain-size);
+    mix-blend-mode: overlay;
+    opacity: var(--t-grain-opacity);
+  }
+  /* poster-like pages: over the content too; text inputs sit above it */
+  .t-surface[data-grain='all']::after {
+    z-index: 1;
+  }
+  .t-surface[data-grain='off']::after {
+    content: none;
+  }
+  /* one texel per device pixel */
+  @media (resolution >= 2x) {
+    .t-surface::after {
+      background-size: calc(var(--t-grain-size) / 2);
+    }
+  }
+  @media (resolution >= 3x) {
+    .t-surface::after {
+      background-size: calc(var(--t-grain-size) / 3);
+    }
+  }
+
+  /* The ambient background (setAmbient, Ambient): two layers, so that a new image cross-fades. Each layer takes the
+     opacity of its pair for the mode (--_t-ambient-light, --_t-ambient-dark), never above the mode's maximum. The
+     glow takes its place when no content leads. */
+  .t-ambient,
+  .t-glow {
+    position: absolute;
+    inset: 0 0 auto;
+    z-index: -1;
+    height: var(--t-ambient-height);
+    overflow: hidden;
+    pointer-events: none;
+    mask-image: linear-gradient(#000 calc(var(--t-ambient-fade) * 100%), transparent);
+  }
+  .t-ambient > i {
+    position: absolute;
+    inset: 0;
+    background: center / cover no-repeat;
+    scale: var(--t-ambient-scale);
+    filter: blur(var(--t-ambient-blur)) saturate(var(--t-ambient-saturate));
+    opacity: 0;
+  }
+  .t-ambient > i[data-on] {
+    opacity: min(
+      var(--t-ambient-max-opacity),
+      var(--_t-ambient-light, var(--t-ambient-safe-opacity)) * (1 - var(--t-mode-dark)) +
+        var(--_t-ambient-dark, var(--t-ambient-safe-opacity)) * var(--t-mode-dark)
+    );
+  }
+  /* the radius is a share of the width: the glow is a container, so its layer can say so in cqw */
+  .t-glow {
+    container-type: inline-size;
+  }
+  .t-glow > i {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      circle calc(var(--t-glow-radius) * 100cqw) at 50% 0,
+      color-mix(in srgb, var(--t-text) calc(var(--t-glow-opacity) * 100%), transparent),
+      transparent
+    );
+  }
+
+  /* Glass, for surfaces that float above content; data-shadow="md" for bars and toasts, "lg" for menus and sheets.
+     An outer box-shadow is clipped inside the border box: it does not show through the glass. */
+  .t-glass {
+    --_t-glass-fill: color-mix(
+      in srgb,
+      var(--t-accent) calc(var(--t-glass-tint) * var(--_t-glass-accent, 0) * (1 - var(--_t-glass-neutral, 0)) * 100%),
+      var(--t-glass)
+    );
+    --_t-glass-edges: inset 0 -1px 0 var(--t-glass-shade);
+    background: color-mix(in srgb, var(--_t-glass-fill) calc(var(--t-glass-opacity) * 100%), transparent);
+    -webkit-backdrop-filter: blur(var(--t-glass-blur));
+    backdrop-filter: blur(var(--t-glass-blur));
+    box-shadow: var(--_t-glass-edges);
+  }
+  .t-glass[data-shadow='md'] {
+    box-shadow: var(--_t-glass-edges), var(--t-shadow-md);
+  }
+  .t-glass[data-shadow='lg'] {
+    box-shadow: var(--_t-glass-edges), var(--t-shadow-lg);
+  }
+  /* control glass, for small controls over artwork: a veil, not a surface */
+  .t-glass-control {
+    background: var(--t-glass-control);
+    -webkit-backdrop-filter: blur(var(--t-glass-control-blur));
+    backdrop-filter: blur(var(--t-glass-control-blur));
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .t-ambient > i {
+      transition: opacity var(--t-duration-ambient) var(--t-easing-standard);
+    }
+  }
+
+  /* Fallbacks: opaque glass (its fill without opacity, no blur), control glass as a surface, no ambient background
+     or glow; high contrast, forced colours and print also remove the grain */
+  [data-transparency='reduce'] .t-glass {
+    background: var(--_t-glass-fill);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+  [data-transparency='reduce'] .t-glass-control {
+    background: var(--t-surface);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+  [data-transparency='reduce'] :is(.t-ambient, .t-glow) {
+    display: none;
+  }
+  @media (prefers-reduced-transparency: reduce), (prefers-contrast: more), (forced-colors: active), print {
+    .t-glass {
+      background: var(--_t-glass-fill);
+      -webkit-backdrop-filter: none;
+      backdrop-filter: none;
+    }
+    .t-glass-control {
+      background: var(--t-surface);
+      -webkit-backdrop-filter: none;
+      backdrop-filter: none;
+    }
+    .t-ambient,
+    .t-glow {
+      display: none;
+    }
+  }
+  @media (prefers-contrast: more), (forced-colors: active), print {
+    .t-surface::after {
+      content: none;
+    }
+  }
+  @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    .t-glass {
+      background: var(--_t-glass-fill);
+    }
+    .t-glass-control {
+      background: var(--t-surface);
+    }
+  }
+}

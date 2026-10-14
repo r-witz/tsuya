@@ -1,0 +1,39 @@
+/* SelectTrigger, SelectGroup, SelectSeparator (DESIGN.md, Select): the trigger's field box with its value and chevron,
+   the heading of a group, and the hairline between options. */
+@layer tsuya.tokens, tsuya.base, tsuya.material, tsuya.components;
+
+@layer tsuya.components {
+  /* the box, its boundary and its states: .t-field-box of @tsuya/core's base.css */
+  .t-select-trigger {
+    display: flex;
+    align-items: center;
+    gap: var(--t-space-8);
+    width: 100%;
+    margin: 0;
+    padding: 0 var(--t-space-12);
+    text-align: start;
+    cursor: pointer;
+  }
+  .t-select-trigger-value {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .t-select-trigger-placeholder,
+  .t-select-trigger .t-glyph {
+    color: var(--t-text-muted);
+  }
+
+  .t-select-group-heading {
+    padding: var(--t-space-8) var(--t-space-12) var(--t-space-4);
+    color: var(--t-text-muted);
+  }
+
+  .t-select-separator {
+    height: 1px;
+    margin: var(--t-space-4) 0;
+    background: var(--t-border);
+  }
+}

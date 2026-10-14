@@ -1,0 +1,14 @@
+/* Glyph (DESIGN.md, Icons): the few glyphs tsuya draws itself, at --t-size-icon unless the component sizes it with
+   --_t-glyph-size; directional ones mirror right to left. */
+@layer tsuya.tokens, tsuya.base, tsuya.material, tsuya.components;
+
+@layer tsuya.components {
+  .t-glyph {
+    flex: none;
+    width: var(--_t-glyph-size, var(--t-size-icon));
+    height: var(--_t-glyph-size, var(--t-size-icon));
+  }
+  .t-glyph-mirror:dir(rtl) {
+    scale: -1 1;
+  }
+}

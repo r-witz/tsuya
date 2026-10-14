@@ -1,0 +1,26 @@
+/* Badge (DESIGN.md, Badge): a count pill or a dot, pinned on the corner of a host. */
+@layer tsuya.tokens, tsuya.base, tsuya.material, tsuya.components;
+
+@layer tsuya.components {
+  .t-badge {
+    display: inline-flex;
+    flex: none;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--t-radius-full);
+    background: var(--t-accent);
+  }
+  .t-badge-count {
+    height: 18px; /* raw: a count is 18 tall */
+    padding-inline: 5px; /* raw: with 5 at its sides */
+    color: var(--t-on-accent);
+    font: var(--t-type-micro);
+    font-weight: 700;
+    letter-spacing: var(--t-type-micro-tracking);
+    white-space: nowrap;
+  }
+  .t-badge-dot {
+    width: 8px; /* raw: a dot is 8 across */
+    height: 8px; /* raw: a dot is 8 across */
+  }
+}

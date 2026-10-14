@@ -1,0 +1,86 @@
+/* Switch (DESIGN.md, Switch): a label around the control, its input, track and thumb, and the optional text. */
+@layer tsuya.tokens, tsuya.base, tsuya.material, tsuya.components;
+
+@layer tsuya.components {
+  .t-switch {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--t-space-12);
+    color: var(--t-text);
+    font: var(--t-type-body);
+    letter-spacing: var(--t-type-body-tracking);
+  }
+  .t-switch:has(.t-switch-input:disabled) {
+    opacity: var(--t-state-disabled-opacity);
+  }
+  .t-switch-control {
+    position: relative;
+    flex: none;
+    width: var(--t-space-48);
+    height: calc(var(--t-space-32) - var(--t-space-4));
+  }
+  .t-switch-input {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    appearance: none;
+    opacity: 0;
+  }
+  /* decorative, drawn under the input but never hit-tested: clicks reach the input everywhere in the track */
+  .t-switch-track {
+    position: absolute;
+    inset: 0;
+    border-radius: var(--t-radius-full);
+    background: var(--t-border-strong);
+    pointer-events: none;
+  }
+  .t-switch-thumb {
+    position: absolute;
+    top: 2px; /* raw: 2 from the edge */
+    inset-inline-start: 2px; /* raw: 2 from the edge */
+    width: 24px; /* raw: a 24 thumb */
+    height: 24px; /* raw: a 24 thumb */
+    border-radius: var(--t-radius-full);
+    background: var(--t-thumb);
+    pointer-events: none;
+  }
+  .t-switch:has(.t-switch-input:checked) .t-switch-track {
+    background: var(--t-accent);
+  }
+  .t-switch:has(.t-switch-input:checked) .t-switch-thumb {
+    inset-inline-start: calc(100% - 24px - 2px); /* raw: the 24 thumb, 2 from the other edge */
+    background: var(--t-on-accent);
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .t-switch-track {
+      transition: background-color var(--t-duration-fast) var(--t-easing-standard);
+    }
+    .t-switch-thumb {
+      transition:
+        inset-inline-start var(--t-duration-fast) var(--t-easing-standard),
+        background-color var(--t-duration-fast) var(--t-easing-standard);
+    }
+  }
+  @media (forced-colors: active) {
+    .t-switch-track {
+      border: 1px solid CanvasText;
+    }
+    .t-switch-thumb {
+      background: CanvasText;
+    }
+    .t-switch:has(.t-switch-input:checked) .t-switch-track {
+      border-color: Highlight;
+      background: Highlight;
+    }
+    .t-switch:has(.t-switch-input:checked) .t-switch-thumb {
+      background: HighlightText;
+    }
+    .t-switch:has(.t-switch-input:disabled) .t-switch-track,
+    .t-switch:has(.t-switch-input:disabled) .t-switch-thumb {
+      border-color: GrayText;
+      background: GrayText;
+    }
+  }
+}

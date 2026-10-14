@@ -1,0 +1,39 @@
+/* Toast (DESIGN.md, Toast): the glass pill at the bottom centre, its icon and message, lifted above a tab bar's
+   dock. */
+@layer tsuya.tokens, tsuya.base, tsuya.material, tsuya.components;
+
+@layer tsuya.components {
+  .t-toast {
+    box-sizing: border-box;
+    position: fixed;
+    inset-inline: 0;
+    top: auto;
+    bottom: calc(var(--t-space-16) + env(safe-area-inset-bottom, 0px));
+    width: fit-content;
+    max-width: calc(100% - var(--t-space-32));
+    margin-inline: auto;
+    display: flex;
+    align-items: center;
+    gap: var(--t-space-8);
+    min-height: var(--t-space-48);
+    padding-inline: 14px var(--t-space-20); /* raw: 14 before the glyph */
+    /* transparent, so that forced colours (which paint a border, not a fill) give it an edge */
+    border: 1px solid transparent;
+    border-radius: var(--t-radius-full);
+    font: var(--t-type-body-strong);
+    letter-spacing: var(--t-type-body-strong-tracking);
+    color: var(--t-text);
+  }
+  .t-toast .t-glyph {
+    color: var(--t-accent);
+  }
+  .t-toast-message {
+    flex: 1;
+    min-width: 0;
+    margin: 0;
+  }
+  /* the dock floats space-12 from the edge (DESIGN.md, TabBar): clear it, and its own floating gap, plus ours */
+  :root:has(.t-tab-bar) .t-toast {
+    bottom: calc(var(--t-size-dock) + var(--t-space-12) + var(--t-space-16) + env(safe-area-inset-bottom, 0px));
+  }
+}

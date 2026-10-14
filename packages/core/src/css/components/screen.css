@@ -1,0 +1,32 @@
+/* Screen (DESIGN.md, TabBar, Screen): the phone shell, its content within the safe areas and its dock floating at the
+   bottom over a fade into the background. */
+@layer tsuya.tokens, tsuya.base, tsuya.material, tsuya.components;
+
+@layer tsuya.components {
+  .t-screen {
+    display: flex;
+    flex-direction: column;
+    min-height: 100dvh; /* raw: a screen tall */
+  }
+  .t-screen-content {
+    flex: 1;
+    padding: env(safe-area-inset-top) calc(var(--t-space-20) + env(safe-area-inset-right)) var(--t-space-24)
+      calc(var(--t-space-20) + env(safe-area-inset-left));
+  }
+  .t-screen-dock {
+    position: sticky;
+    bottom: 0;
+    z-index: 1;
+    padding: 0 calc(var(--t-space-12) + env(safe-area-inset-right))
+      calc(var(--t-space-12) + env(safe-area-inset-bottom)) calc(var(--t-space-12) + env(safe-area-inset-left));
+  }
+  /* the content fades into the background under the dock */
+  .t-screen-dock::before {
+    content: '';
+    position: absolute;
+    inset: calc(-1 * var(--t-space-24)) 0 0;
+    z-index: -1;
+    background: linear-gradient(transparent, var(--t-bg));
+    pointer-events: none;
+  }
+}

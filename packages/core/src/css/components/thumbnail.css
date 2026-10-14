@@ -1,0 +1,49 @@
+/* Thumbnail (DESIGN.md, Thumbnail): a square, portrait or wide box with a radius that grows with its width, its
+   placeholder and its picture. */
+@layer tsuya.tokens, tsuya.base, tsuya.material, tsuya.components;
+
+@layer tsuya.components {
+  .t-thumbnail {
+    position: relative;
+    display: grid;
+    flex: none;
+    place-items: center;
+    aspect-ratio: 1;
+    overflow: hidden;
+    outline: 1px solid var(--t-border);
+    outline-offset: -1px; /* raw: the hairline over the picture's edge, not around it */
+    background: var(--t-fill);
+    color: var(--t-text-muted);
+  }
+  .t-thumbnail-portrait {
+    aspect-ratio: 2 / 3;
+  }
+  .t-thumbnail-wide {
+    aspect-ratio: 16 / 9;
+  }
+  .t-thumbnail-xs {
+    border-radius: var(--t-radius-xs);
+  }
+  .t-thumbnail-sm {
+    border-radius: var(--t-radius-sm);
+  }
+  .t-thumbnail-md {
+    border-radius: var(--t-radius-md);
+  }
+  .t-thumbnail-lg {
+    border-radius: var(--t-radius-lg);
+  }
+  .t-thumbnail-placeholder svg {
+    width: var(--t-size-icon);
+    height: var(--t-size-icon);
+  }
+  .t-thumbnail-placeholder,
+  .t-thumbnail-img {
+    grid-area: 1 / 1;
+  }
+  .t-thumbnail-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}

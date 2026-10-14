@@ -1,0 +1,64 @@
+/* MenuRow, MenuLabel, MenuSeparator (DESIGN.md, Menu): a row with its icon, label, shortcut and tick, the heading over
+   a few rows, and the hairline between groups. */
+@layer tsuya.tokens, tsuya.base, tsuya.material, tsuya.components;
+
+@layer tsuya.components {
+  .t-menu-item {
+    display: flex;
+    align-items: center;
+    gap: var(--t-space-12);
+    width: 100%;
+    min-height: var(--t-size-control-md);
+    margin: 0;
+    padding: 0 var(--t-space-12);
+    border: 0;
+    border-radius: var(--t-radius-sm);
+    background: none;
+    color: var(--t-text);
+    font: var(--t-type-body);
+    letter-spacing: var(--t-type-body-tracking);
+    text-align: start;
+  }
+  .t-menu-item[aria-disabled='true'] {
+    opacity: var(--t-state-disabled-opacity);
+    cursor: default;
+  }
+  .t-menu-item-icon {
+    display: contents;
+    color: var(--t-text-muted);
+  }
+  .t-menu-item-icon svg {
+    flex: none;
+    width: var(--t-size-icon);
+    height: var(--t-size-icon);
+  }
+  .t-menu-item-label {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .t-menu-item-shortcut {
+    color: var(--t-text-muted);
+    font: var(--t-type-mono);
+    letter-spacing: var(--t-type-mono-tracking);
+  }
+  .t-menu-item-destructive,
+  .t-menu-item-destructive .t-menu-item-icon {
+    color: var(--t-danger);
+  }
+
+  .t-menu-label {
+    padding: var(--t-space-8) var(--t-space-12) var(--t-space-4);
+    color: var(--t-text-muted);
+    font: var(--t-type-caption);
+    letter-spacing: var(--t-type-caption-tracking);
+  }
+
+  .t-menu-separator {
+    height: 1px;
+    margin: var(--t-space-4) 0;
+    background: var(--t-border);
+  }
+}

@@ -1,0 +1,31 @@
+/* Field (DESIGN.md, Field): the frame of a form control, its label and optional marker, and the hint or the error. */
+@layer tsuya.tokens, tsuya.base, tsuya.material, tsuya.components;
+
+@layer tsuya.components {
+  .t-field {
+    display: flex;
+    flex-direction: column;
+    gap: var(--t-space-8);
+    min-width: 0;
+  }
+  .t-field-label {
+    font: var(--t-type-control);
+    letter-spacing: var(--t-type-control-tracking);
+    color: var(--t-text-muted);
+  }
+  .t-field-marker {
+    font-weight: 400;
+  }
+  .t-field-message {
+    display: flex;
+    gap: var(--t-space-4);
+    margin: 0;
+    font: var(--t-type-small);
+    letter-spacing: var(--t-type-small-tracking);
+    color: var(--t-text-muted);
+    --_t-glyph-size: var(--t-size-icon-sm);
+  }
+  .t-field-error {
+    color: var(--t-danger);
+  }
+}
