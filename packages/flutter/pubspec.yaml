@@ -1,0 +1,43 @@
+name: tsuya
+description: The tsuya design system for Flutter. Tokens, material and components on the widgets layer, without Material or Cupertino.
+version: 0.1.0
+repository: https://github.com/r-witz/tsuya/tree/main/packages/flutter
+issue_tracker: https://github.com/r-witz/tsuya/issues
+topics:
+  - design-system
+  - ui
+  - widgets
+  - accessibility
+  - theming
+
+environment:
+  sdk: ^3.12.0
+  flutter: ">=3.44.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_lints: ^6.0.0
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  fonts:
+    - family: Inter
+      fonts:
+        - asset: fonts/Inter-400.ttf
+          weight: 400
+        - asset: fonts/Inter-500.ttf
+          weight: 500
+        - asset: fonts/Inter-600.ttf
+          weight: 600
+        - asset: fonts/Inter-700.ttf
+          weight: 700
+        - asset: fonts/Inter-800.ttf
+          weight: 800
+    - family: Geist Mono
+      fonts:
+        - asset: fonts/GeistMono-400.ttf
+          weight: 400

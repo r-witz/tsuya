@@ -1,0 +1,6 @@
+# the tests are for the repository: the archive keeps what a user of the package needs
+/test/
+/pubspec.lock
+/example/pubspec.lock
+.dart_tool/
+build/

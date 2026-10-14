@@ -1,0 +1,4 @@
+# the copies the build writes, so that the package ships with them: pub reads .pubignore instead of this file, so
+# they reach the archive
+/DESIGN.md
+/CHANGELOG.md
