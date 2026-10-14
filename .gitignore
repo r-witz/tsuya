@@ -1,0 +1,28 @@
+node_modules/
+dist/
+build/
+.svelte-kit/
+.dart_tool/
+coverage/
+test-results/
+playwright-report/
+*.tgz
+# a library package does not pin its dependencies for its users
+packages/flutter/pubspec.lock
+packages/flutter/example/pubspec.lock
+# apps/docs: the props tables generated from @tsuya/svelte's built declarations, never committed
+apps/docs/.generated/
+# apps/gallery: unpinned, as the package and its example are
+apps/gallery/pubspec.lock
+.flutter-plugins-dependencies
+*.iml
+# apps/gallery: the diffs flutter_test writes when a golden fails
+apps/gallery/test/failures/
+.DS_Store
+# the copies the build writes into the npm packages, so that each one ships with them (packages/flutter/.gitignore
+# for the Flutter package's)
+packages/core/DESIGN.md
+packages/core/CHANGELOG.md
+packages/svelte/DESIGN.md
+packages/svelte/CHANGELOG.md
+.env*
