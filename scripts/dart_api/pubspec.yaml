@@ -1,0 +1,9 @@
+name: tsuya_dart_api
+description: Lists the public Dart API of package:tsuya for the docs' tables.
+publish_to: none
+
+environment:
+  sdk: ^3.12.0
+
+dependencies:
+  analyzer: ^13.0.0
