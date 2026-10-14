@@ -1,0 +1,12 @@
+{
+  "kind": "class",
+  "description": "A short message about something that just happened (DESIGN.md, Toast): glass, at least 48 tall, fully round, at the bottom centre above everything — dialogs and sheets included, and above the dock of a Screen. One at a time: a new one replaces the current one. Read politely as a status. Without an action it leaves after TsuyaDuration.toast (paused while hovered or focused); with one it also has a dismiss button and stays until the action is used, Escape, a swipe down on touch, or another toast replaces it. F6 moves focus to it while one is shown, and gives it back to where it was when it goes.",
+  "constructors": [],
+  "statics": [
+    {
+      "name": "show",
+      "signature": "Future<void> show(BuildContext context, {required String message, Widget? icon, String? actionLabel, VoidCallback? onAction})",
+      "description": "Shows message, with icon in the accent before it, and, when both actionLabel and onAction are given, a small ghost button that runs onAction and dismisses it. Completes once it has gone."
+    }
+  ]
+}

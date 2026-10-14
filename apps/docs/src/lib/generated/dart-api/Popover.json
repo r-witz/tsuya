@@ -1,0 +1,75 @@
+{
+  "kind": "class",
+  "description": "A secondary button that opens a popover (DESIGN.md, Popover): a non-modal panel of builder's content, padded TsuyaSpace.s16, under the button at its start edge (above when there is no room). Opened from the keyboard, focus moves to the first control inside, or to the panel; Escape closes it and focus returns to the button, and so does an outside press or focus leaving. Named by label.",
+  "constructors": [
+    {
+      "name": "",
+      "description": "A popover button labelled label showing builder's content; icon is optional, before the label.",
+      "params": [
+        {
+          "name": "icon",
+          "type": "Widget?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "Before the label; never read itself."
+        },
+        {
+          "name": "label",
+          "type": "String",
+          "required": true,
+          "named": true,
+          "default": "",
+          "description": "The button's one-line label, which also names the panel."
+        },
+        {
+          "name": "builder",
+          "type": "WidgetBuilder",
+          "required": true,
+          "named": true,
+          "default": "",
+          "description": "The panel's content."
+        },
+        {
+          "name": "side",
+          "type": "AnchorSide",
+          "required": false,
+          "named": true,
+          "default": "AnchorSide.bottom",
+          "description": "Which side of the button it prefers."
+        },
+        {
+          "name": "align",
+          "type": "AnchorAlign",
+          "required": false,
+          "named": true,
+          "default": "AnchorAlign.start",
+          "description": "How it aligns across from side."
+        },
+        {
+          "name": "focusNode",
+          "type": "FocusNode?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "The node to track the button's focus with, when the caller manages one."
+        },
+        {
+          "name": "autofocus",
+          "type": "bool",
+          "required": false,
+          "named": true,
+          "default": "false",
+          "description": "Focuses the button as soon as it is built."
+        }
+      ]
+    }
+  ],
+  "statics": [
+    {
+      "name": "show",
+      "signature": "Future<void> show(BuildContext anchor, {required WidgetBuilder builder, String? label, AnchorSide side = AnchorSide.bottom, AnchorAlign align = AnchorAlign.start, bool? byKeyboard})",
+      "description": "Shows a popover of builder's content anchored to anchor's own render box, named label for a screen reader. Focus moves into it when byKeyboard (by default, while the last input was the keyboard)."
+    }
+  ]
+}

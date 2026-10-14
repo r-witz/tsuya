@@ -1,0 +1,37 @@
+{
+  "kind": "class",
+  "description": "A progress bar (DESIGN.md, Progress): TsuyaSpace.s4 tall (thin: 2), TsuyaRadius.full, TsuyaColors.track filled with the accent, proportional to value (0 to 1). Without value, a third of the bar sweeps across the track every 1.2 s, in the reading direction, kept moving under reduced motion: it is the information. Always named, with label (the `loading` label by default), through the progress bar role.",
+  "constructors": [
+    {
+      "name": "",
+      "description": "A progress bar, value from 0 to 1; indeterminate without one.",
+      "params": [
+        {
+          "name": "value",
+          "type": "double?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "0 to 1 (clamped to it); indeterminate without one, or when NaN."
+        },
+        {
+          "name": "label",
+          "type": "String?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "Names the bar; the `loading` label by default."
+        },
+        {
+          "name": "thin",
+          "type": "bool",
+          "required": false,
+          "named": true,
+          "default": "false",
+          "description": "2 tall, for along an edge."
+        }
+      ]
+    }
+  ],
+  "statics": []
+}

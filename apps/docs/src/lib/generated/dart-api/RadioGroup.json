@@ -1,0 +1,45 @@
+{
+  "kind": "class",
+  "description": "A single-selection group of radios (DESIGN.md, RadioGroup): one tab stop with roving focus; arrows both move and select, as native radios do on the web. Each radio is a 20 circle with a 1.5 px TsuyaColors.borderStrong boundary; selected: accent fill with an 8 px TsuyaColors.onAccent dot.",
+  "constructors": [
+    {
+      "name": "",
+      "description": "A group of options, value selected, named label for screen readers.",
+      "params": [
+        {
+          "name": "label",
+          "type": "String",
+          "required": true,
+          "named": true,
+          "default": "",
+          "description": "The group's accessible name."
+        },
+        {
+          "name": "value",
+          "type": "T?",
+          "required": true,
+          "named": true,
+          "default": "",
+          "description": "The selected value, or null when nothing is selected yet."
+        },
+        {
+          "name": "onChanged",
+          "type": "ValueChanged<T>",
+          "required": true,
+          "named": true,
+          "default": "",
+          "description": "Called with an option's value when it is selected."
+        },
+        {
+          "name": "options",
+          "type": "List<RadioOption<T>>",
+          "required": true,
+          "named": true,
+          "default": "",
+          "description": "The radios, in order."
+        }
+      ]
+    }
+  ],
+  "statics": []
+}

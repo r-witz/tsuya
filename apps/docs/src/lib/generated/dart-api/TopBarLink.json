@@ -1,0 +1,37 @@
+{
+  "kind": "class",
+  "description": "A navigation link of a TopBar: labelled label, current when it names the page already shown.",
+  "constructors": [
+    {
+      "name": "",
+      "description": "A link labelled label, firing onPressed.",
+      "params": [
+        {
+          "name": "label",
+          "type": "String",
+          "required": true,
+          "named": true,
+          "default": "",
+          "description": "The link's accessible name and visible text."
+        },
+        {
+          "name": "current",
+          "type": "bool",
+          "required": false,
+          "named": true,
+          "default": "false",
+          "description": "Whether it names the page already shown: TsuyaColors.fillStrong, TsuyaColors.text."
+        },
+        {
+          "name": "onPressed",
+          "type": "VoidCallback",
+          "required": true,
+          "named": true,
+          "default": "",
+          "description": "Called when the link is pressed."
+        }
+      ]
+    }
+  ],
+  "statics": []
+}

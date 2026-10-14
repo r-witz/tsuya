@@ -1,0 +1,53 @@
+{
+  "kind": "class",
+  "description": "A secondary button that opens a Menu of items (DESIGN.md, Menu): a press, Enter or Space opens it on its first item, the up arrow on its last; icon is optional, before label.",
+  "constructors": [
+    {
+      "name": "",
+      "description": "A menu button labelled label, opening items.",
+      "params": [
+        {
+          "name": "icon",
+          "type": "Widget?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "Before the label; never read itself."
+        },
+        {
+          "name": "label",
+          "type": "String",
+          "required": true,
+          "named": true,
+          "default": "",
+          "description": "The button's one-line label."
+        },
+        {
+          "name": "items",
+          "type": "List<MenuItem>",
+          "required": true,
+          "named": true,
+          "default": "",
+          "description": "The menu's items, opened in this order."
+        },
+        {
+          "name": "focusNode",
+          "type": "FocusNode?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "The node to track the button's focus with, when the caller manages one."
+        },
+        {
+          "name": "autofocus",
+          "type": "bool",
+          "required": false,
+          "named": true,
+          "default": "false",
+          "description": "Focuses it as soon as it is built."
+        }
+      ]
+    }
+  ],
+  "statics": []
+}

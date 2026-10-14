@@ -1,0 +1,12 @@
+{
+  "extends": "$app/tsconfig",
+  "include": ["src", "*"],
+  "compilerOptions": {
+    // kept in step with tsconfig.base.json at the repository's root; $app/tsconfig (extended above) sets the
+    // module/resolution options this app needs, so only the stricter flags are repeated here
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
+    "noFallthroughCasesInSwitch": true
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "kind": "class",
+  "description": "The frame of every form control (DESIGN.md, Field): FieldLabel above, child, then the hint or the error below (replacing the hint), read together with child by a screen reader. Every tsuya input builds this in (`label:`, `hint:`, `error:`, `optional:`, `required:`); wrap a custom control in it directly.",
+  "constructors": [
+    {
+      "name": "",
+      "description": "A frame around child, labelled label.",
+      "params": [
+        {
+          "name": "label",
+          "type": "String",
+          "required": true,
+          "named": true,
+          "default": "",
+          "description": "The label above child."
+        },
+        {
+          "name": "hint",
+          "type": "String?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "Shown under child when there is no error."
+        },
+        {
+          "name": "error",
+          "type": "String?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "Shown under child instead of hint, with the alert glyph; also marks child invalid in semantics."
+        },
+        {
+          "name": "optional",
+          "type": "bool",
+          "required": false,
+          "named": true,
+          "default": "false",
+          "description": "Appends the optional marker to label."
+        },
+        {
+          "name": "required",
+          "type": "bool",
+          "required": false,
+          "named": true,
+          "default": "false",
+          "description": "Marks child as required in semantics; drawn no differently (not marked visually)."
+        },
+        {
+          "name": "child",
+          "type": "Widget",
+          "required": true,
+          "named": true,
+          "default": "",
+          "description": "The control this frame labels."
+        }
+      ]
+    }
+  ],
+  "statics": []
+}

@@ -1,0 +1,133 @@
+{
+  "kind": "class",
+  "description": "A text input that filters a listbox (DESIGN.md, Combobox), with the model of the web's: typing filters options and opens the panel below it (menu panel styling) with no option active; a press on the field, or an arrow, opens every option, the chosen one active; arrows move the active option with no wrap, from none down to the first and up to the last; Enter chooses it, or with none active keeps the text, which chooses an option it names (in any case) and otherwise stays with freeText or goes back to the last chosen label; focus leaving does the same. Escape closes the panel, then clears the text, then passes on. loading shows a spinner row instead of the options; an empty list shows a \"no results\" row; the number of results is announced 500 ms after typing pauses, and again when the options change.",
+  "constructors": [
+    {
+      "name": "",
+      "description": "A combobox named label, searching options.",
+      "params": [
+        {
+          "name": "label",
+          "type": "String",
+          "required": true,
+          "named": true,
+          "default": "",
+          "description": "The accessible name, shown above the field."
+        },
+        {
+          "name": "options",
+          "type": "List<ListboxOption<T>>",
+          "required": true,
+          "named": true,
+          "default": "",
+          "description": "The candidate options; matched by filter against the typed text."
+        },
+        {
+          "name": "onSelected",
+          "type": "ValueChanged<T>?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "Called with an option's value when it is chosen."
+        },
+        {
+          "name": "filter",
+          "type": "bool Function(ListboxOption<T> option, String query)?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "Matches an option against the query; a case-insensitive substring match on ListboxOption.label by default."
+        },
+        {
+          "name": "loading",
+          "type": "bool",
+          "required": false,
+          "named": true,
+          "default": "false",
+          "description": "Shows a loading row instead of the filtered options (an async fetch of them is in flight)."
+        },
+        {
+          "name": "freeText",
+          "type": "bool",
+          "required": false,
+          "named": true,
+          "default": "false",
+          "description": "Allows text matching no option to stand as typed; otherwise it reverts once the field loses focus."
+        },
+        {
+          "name": "placeholder",
+          "type": "String?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "Shown in TsuyaColors.textMuted while the field is empty."
+        },
+        {
+          "name": "hint",
+          "type": "String?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "Under the field, replaced by error."
+        },
+        {
+          "name": "error",
+          "type": "String?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "Under the field instead of hint, with the alert glyph; also marks the field invalid in semantics."
+        },
+        {
+          "name": "optional",
+          "type": "bool",
+          "required": false,
+          "named": true,
+          "default": "false",
+          "description": "Appends the optional marker to label."
+        },
+        {
+          "name": "required",
+          "type": "bool",
+          "required": false,
+          "named": true,
+          "default": "false",
+          "description": "Marks the field as required in semantics."
+        },
+        {
+          "name": "enabled",
+          "type": "bool",
+          "required": false,
+          "named": true,
+          "default": "true",
+          "description": "Disables the field: faded, read-only, not focusable."
+        },
+        {
+          "name": "controller",
+          "type": "TextEditingController?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "Uncontrolled when null (the field keeps its own)."
+        },
+        {
+          "name": "focusNode",
+          "type": "FocusNode?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "The node to track focus with, when the caller manages one."
+        },
+        {
+          "name": "autofocus",
+          "type": "bool",
+          "required": false,
+          "named": true,
+          "default": "false",
+          "description": "Focuses the field as soon as it is built."
+        }
+      ]
+    }
+  ],
+  "statics": []
+}

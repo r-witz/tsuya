@@ -1,0 +1,283 @@
+{
+  "kind": "class",
+  "description": "A labelled text input (DESIGN.md, TextField): label sits above the field; hint or error goes under it. The box turns to the accent when focused, to TsuyaColors.danger with an error. Built on EditableText: its own selection handles (accent teardrops) and its own context menu (Cut, Copy, Paste, Select all), except on iOS where the system context menu is used. Use TextField.search for a search field (a pill with no visible label).",
+  "constructors": [
+    {
+      "name": "",
+      "description": "A text field labelled label.",
+      "params": [
+        {
+          "name": "label",
+          "type": "String",
+          "required": true,
+          "named": true,
+          "default": "",
+          "description": "Above the field, or only announced for a search field."
+        },
+        {
+          "name": "controller",
+          "type": "TextEditingController?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "Uncontrolled when null (the field keeps its own)."
+        },
+        {
+          "name": "focusNode",
+          "type": "FocusNode?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "A node the field keeps when none is given."
+        },
+        {
+          "name": "placeholder",
+          "type": "String?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "Shown in TsuyaColors.textMuted while the field is empty; never read by a screen reader."
+        },
+        {
+          "name": "hint",
+          "type": "String?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "Under the field, replaced by error."
+        },
+        {
+          "name": "error",
+          "type": "String?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "Under the field instead of hint, with the alert glyph; also marks the field invalid in semantics."
+        },
+        {
+          "name": "optional",
+          "type": "bool",
+          "required": false,
+          "named": true,
+          "default": "false",
+          "description": "Appends the optional marker to label."
+        },
+        {
+          "name": "required",
+          "type": "bool",
+          "required": false,
+          "named": true,
+          "default": "false",
+          "description": "Marks the field as required in semantics."
+        },
+        {
+          "name": "leading",
+          "type": "Widget?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "Before the text, in TsuyaColors.textMuted."
+        },
+        {
+          "name": "trailing",
+          "type": "Widget?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "After the text, after any clear or reveal button."
+        },
+        {
+          "name": "clearable",
+          "type": "bool",
+          "required": false,
+          "named": true,
+          "default": "false",
+          "description": "Shows a clear button (from the labels) while the field holds text."
+        },
+        {
+          "name": "obscureText",
+          "type": "bool",
+          "required": false,
+          "named": true,
+          "default": "false",
+          "description": "Hides the text, one line only."
+        },
+        {
+          "name": "revealable",
+          "type": "bool",
+          "required": false,
+          "named": true,
+          "default": "true",
+          "description": "With obscureText, shows a show/hide button (from the labels)."
+        },
+        {
+          "name": "enabled",
+          "type": "bool",
+          "required": false,
+          "named": true,
+          "default": "true",
+          "description": "Disables the field: faded, read-only, not focusable."
+        },
+        {
+          "name": "autofocus",
+          "type": "bool",
+          "required": false,
+          "named": true,
+          "default": "false",
+          "description": "Focuses the field as soon as it is built."
+        },
+        {
+          "name": "maxLines",
+          "type": "int?",
+          "required": false,
+          "named": true,
+          "default": "1",
+          "description": "At least twice TsuyaSize.controlMd tall and scrolling once reached, when more than 1 (or null)."
+        },
+        {
+          "name": "minLines",
+          "type": "int?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "The fewest lines the field reserves room for."
+        },
+        {
+          "name": "keyboardType",
+          "type": "TextInputType?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "The on-screen keyboard to show."
+        },
+        {
+          "name": "textInputAction",
+          "type": "TextInputAction?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "The action its submit key performs."
+        },
+        {
+          "name": "autofillHints",
+          "type": "Iterable<String>?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "Autofill group hints (email, password…)."
+        },
+        {
+          "name": "onChanged",
+          "type": "ValueChanged<String>?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "Called on every change."
+        },
+        {
+          "name": "onSubmitted",
+          "type": "ValueChanged<String>?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "Called when the field is submitted."
+        },
+        {
+          "name": "contextMenuBuilder",
+          "type": "EditableTextContextMenuBuilder?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "Replaces the field's own context menu; `null` keeps it (the system one on iOS where supported)."
+        }
+      ]
+    },
+    {
+      "name": "search",
+      "description": "A search field (DESIGN.md, Search): a pill with a leading search glyph, a clear button by default, and no visible label (label is still required, used for semantics). glass uses control glass over content.",
+      "params": [
+        {
+          "name": "label",
+          "type": "String",
+          "required": true,
+          "named": true,
+          "default": "",
+          "description": "Above the field, or only announced for a search field."
+        },
+        {
+          "name": "controller",
+          "type": "TextEditingController?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "Uncontrolled when null (the field keeps its own)."
+        },
+        {
+          "name": "focusNode",
+          "type": "FocusNode?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "A node the field keeps when none is given."
+        },
+        {
+          "name": "placeholder",
+          "type": "String?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "Shown in TsuyaColors.textMuted while the field is empty; never read by a screen reader."
+        },
+        {
+          "name": "autofocus",
+          "type": "bool",
+          "required": false,
+          "named": true,
+          "default": "false",
+          "description": "Focuses the field as soon as it is built."
+        },
+        {
+          "name": "enabled",
+          "type": "bool",
+          "required": false,
+          "named": true,
+          "default": "true",
+          "description": "Disables the field: faded, read-only, not focusable."
+        },
+        {
+          "name": "onChanged",
+          "type": "ValueChanged<String>?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "Called on every change."
+        },
+        {
+          "name": "onSubmitted",
+          "type": "ValueChanged<String>?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "Called when the field is submitted."
+        },
+        {
+          "name": "glass",
+          "type": "bool",
+          "required": false,
+          "named": true,
+          "default": "false",
+          "description": "Control glass instead of a plain fill; set by TextField.search only."
+        },
+        {
+          "name": "size",
+          "type": "TextFieldSize",
+          "required": false,
+          "named": true,
+          "default": "TextFieldSize.md",
+          "description": "The field's height; set by TextField.search only (TsuyaSize.controlMd otherwise, and by default, as the web's `SearchInput`)."
+        }
+      ]
+    }
+  ],
+  "statics": []
+}

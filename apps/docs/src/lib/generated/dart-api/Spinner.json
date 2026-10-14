@@ -1,0 +1,37 @@
+{
+  "kind": "class",
+  "description": "A spinner (DESIGN.md, Spinner): a quarter arc in color (the accent by default, or a button's own content colour) over its TsuyaColors.track, turning once every 0.8 s. It keeps turning under reduced motion: its motion is the information. Announced alone as a progress indicator named label (the `loading` label by default); wrap it in `ExcludeSemantics` where another control, such as a loading Button, already announces its own state.",
+  "constructors": [
+    {
+      "name": "",
+      "description": "A turning spinner, size square.",
+      "params": [
+        {
+          "name": "label",
+          "type": "String?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "Names the wait; the `loading` label by default."
+        },
+        {
+          "name": "size",
+          "type": "SpinnerSize",
+          "required": false,
+          "named": true,
+          "default": "SpinnerSize.md",
+          "description": "The spinner's size."
+        },
+        {
+          "name": "color",
+          "type": "Color?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "The arc's colour; the accent by default."
+        }
+      ]
+    }
+  ],
+  "statics": []
+}

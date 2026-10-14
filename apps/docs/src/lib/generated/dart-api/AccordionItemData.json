@@ -1,0 +1,45 @@
+{
+  "kind": "class",
+  "description": "One row of an Accordion: identified by value, headed by label, holding content below it while open.",
+  "constructors": [
+    {
+      "name": "",
+      "description": "A row for value, headed label, opening content.",
+      "params": [
+        {
+          "name": "value",
+          "type": "String",
+          "required": true,
+          "named": true,
+          "default": "",
+          "description": "What Accordion.onChanged adds or removes."
+        },
+        {
+          "name": "label",
+          "type": "String",
+          "required": true,
+          "named": true,
+          "default": "",
+          "description": "The row's header, in TsuyaType.bodyStrong (ListItem styling): shown, and read for screen readers."
+        },
+        {
+          "name": "content",
+          "type": "Widget",
+          "required": true,
+          "named": true,
+          "default": "",
+          "description": "Shown below the header, TsuyaSpace.s16 padded, while the row is open."
+        },
+        {
+          "name": "disabled",
+          "type": "bool",
+          "required": false,
+          "named": true,
+          "default": "false",
+          "description": "Excluded from toggling (not toggled and not focusable: the header is skipped by Tab, as a native disabled button is)."
+        }
+      ]
+    }
+  ],
+  "statics": []
+}

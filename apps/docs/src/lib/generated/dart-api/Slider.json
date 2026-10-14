@@ -1,0 +1,93 @@
+{
+  "kind": "class",
+  "description": "A continuous value between min and max (DESIGN.md, Slider): TsuyaSize.target tall; a TsuyaSpace.s4 track in TsuyaColors.track, filled with the accent from the start (from the end under right-to-left); a 20 thumb in TsuyaColors.thumb with TsuyaShadows.sm and a hairline ring, the focus ring around it. Arrow keys move by step (a twentieth of the range by default), Page Up/Down by a tenth (at least one step), Home/End to the ends. The value is announced as a percentage unless valueLabel formats it.",
+  "constructors": [
+    {
+      "name": "",
+      "description": "A slider at value, named label.",
+      "params": [
+        {
+          "name": "value",
+          "type": "double",
+          "required": true,
+          "named": true,
+          "default": "",
+          "description": "The current value, between min and max."
+        },
+        {
+          "name": "onChanged",
+          "type": "ValueChanged<double>?",
+          "required": true,
+          "named": true,
+          "default": "",
+          "description": "Called with the next value as it is dragged or pressed; null disables it."
+        },
+        {
+          "name": "onChangeEnd",
+          "type": "ValueChanged<double>?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "Called once with the final value when a drag or a key press ends."
+        },
+        {
+          "name": "label",
+          "type": "String",
+          "required": true,
+          "named": true,
+          "default": "",
+          "description": "The accessible name."
+        },
+        {
+          "name": "min",
+          "type": "double",
+          "required": false,
+          "named": true,
+          "default": "0.0",
+          "description": "The lower end."
+        },
+        {
+          "name": "max",
+          "type": "double",
+          "required": false,
+          "named": true,
+          "default": "1.0",
+          "description": "The upper end."
+        },
+        {
+          "name": "step",
+          "type": "double?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "The amount arrow keys move by, and dragging snaps to; a twentieth of the range when null."
+        },
+        {
+          "name": "valueLabel",
+          "type": "String Function(double value)?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "Formats the announced value; a percentage of the range by default."
+        },
+        {
+          "name": "focusNode",
+          "type": "FocusNode?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "The node to track focus with, when the caller manages one."
+        },
+        {
+          "name": "autofocus",
+          "type": "bool",
+          "required": false,
+          "named": true,
+          "default": "false",
+          "description": "Focuses it as soon as it is built."
+        }
+      ]
+    }
+  ],
+  "statics": []
+}

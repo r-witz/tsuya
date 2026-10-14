@@ -1,0 +1,53 @@
+{
+  "kind": "class",
+  "description": "A short label shown above child (DESIGN.md, Tooltip): on a mouse or a pen, after TsuyaDuration.tooltipDelay; on keyboard focus, at once; never on touch. Stays open while the pointer is over the bubble itself, with a TsuyaDuration.fast grace after leaving either; Escape or a press on child hides it. With describe, message is attached as child's semantics `tooltip` (set describe to false when child already carries one of its own, as `Pressable(tooltip:)` does for an icon button repeating its own label). side can be any of the four, AnchorSide.start and AnchorSide.end following the text direction; while not enabled it never shows (and goes if it was), with child kept in the same place in the tree.",
+  "constructors": [
+    {
+      "name": "",
+      "description": "Shows message above child (or on side, flipped when it does not fit).",
+      "params": [
+        {
+          "name": "message",
+          "type": "String",
+          "required": true,
+          "named": true,
+          "default": "",
+          "description": "The tooltip's text."
+        },
+        {
+          "name": "side",
+          "type": "AnchorSide",
+          "required": false,
+          "named": true,
+          "default": "AnchorSide.top",
+          "description": "The preferred side. Default AnchorSide.top."
+        },
+        {
+          "name": "describe",
+          "type": "bool",
+          "required": false,
+          "named": true,
+          "default": "true",
+          "description": "Attaches message as child's `tooltip` semantics. Default true; false when child already carries it."
+        },
+        {
+          "name": "enabled",
+          "type": "bool",
+          "required": false,
+          "named": true,
+          "default": "true",
+          "description": "Whether it shows at all. Default true."
+        },
+        {
+          "name": "child",
+          "type": "Widget",
+          "required": true,
+          "named": true,
+          "default": "",
+          "description": "The trigger."
+        }
+      ]
+    }
+  ],
+  "statics": []
+}

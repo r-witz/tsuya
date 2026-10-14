@@ -1,0 +1,61 @@
+{
+  "kind": "class",
+  "description": "A labelled checkbox (DESIGN.md, Checkbox): a 20 box, TsuyaRadius.xs, a 1.5 px TsuyaColors.borderStrong boundary; checked, or (with tristate) mixed: accent-filled with a TsuyaColors.onAccent mark. The row (the box and label) is pressable and at least TsuyaSize.target tall.",
+  "constructors": [
+    {
+      "name": "",
+      "description": "A checkbox at value, labelled label.",
+      "params": [
+        {
+          "name": "value",
+          "type": "bool?",
+          "required": true,
+          "named": true,
+          "default": "",
+          "description": "Checked, unchecked, or (only with tristate) null for mixed."
+        },
+        {
+          "name": "onChanged",
+          "type": "ValueChanged<bool?>?",
+          "required": true,
+          "named": true,
+          "default": "",
+          "description": "Called with the next value on a press; null disables it."
+        },
+        {
+          "name": "label",
+          "type": "String",
+          "required": true,
+          "named": true,
+          "default": "",
+          "description": "Beside the box, TsuyaSpace.s12 away."
+        },
+        {
+          "name": "tristate",
+          "type": "bool",
+          "required": false,
+          "named": true,
+          "default": "false",
+          "description": "Allows value to be null (a mixed state), which the app sets, as on the web: a press never does. It checks a mixed checkbox (as the web's `<input type=\"checkbox\">` does), and toggles a checked or an unchecked one."
+        },
+        {
+          "name": "focusNode",
+          "type": "FocusNode?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "The node to track focus with, when the caller manages one."
+        },
+        {
+          "name": "autofocus",
+          "type": "bool",
+          "required": false,
+          "named": true,
+          "default": "false",
+          "description": "Focuses it as soon as it is built."
+        }
+      ]
+    }
+  ],
+  "statics": []
+}

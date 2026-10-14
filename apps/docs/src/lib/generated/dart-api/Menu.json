@@ -1,0 +1,12 @@
+{
+  "kind": "class",
+  "description": "Actions anchored to the control that opens them (DESIGN.md, Menu). Opens under anchor aligned to its end edge, above when there is no room; the first item is focused (fromEnd: the last), arrows wrap, Home, End and type-ahead move, Enter and Space choose; Escape, Tab and an outside press close it, and focus returns to anchor. barrierLabel names an invisible full-screen control behind the panel that closes it, for a screen reader; without one, it carries no label.",
+  "constructors": [],
+  "statics": [
+    {
+      "name": "show",
+      "signature": "Future<void> show(BuildContext anchor, {required List<MenuItem> items, String? barrierLabel, bool fromEnd = false})",
+      "description": "Shows a menu of items anchored to anchor's own render box."
+    }
+  ]
+}

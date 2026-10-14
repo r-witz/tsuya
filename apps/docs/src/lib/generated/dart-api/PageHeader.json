@@ -1,0 +1,45 @@
+{
+  "kind": "class",
+  "description": "A page's header (DESIGN.md, PageHeader): a large left-aligned title, a count line (subtitle) 8 below it, and actions at the end that wrap under the title when the header is narrow. The title grows from TsuyaType.displayS (phone) to TsuyaType.displayM from the desktop breakpoint, or to TsuyaType.displayL when large.",
+  "constructors": [
+    {
+      "name": "",
+      "description": "A header titled title.",
+      "params": [
+        {
+          "name": "title",
+          "type": "String",
+          "required": true,
+          "named": true,
+          "default": "",
+          "description": "The page's title."
+        },
+        {
+          "name": "subtitle",
+          "type": "String?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "The count line below the title (\"412 albums · 3 208 tracks\")."
+        },
+        {
+          "name": "large",
+          "type": "bool",
+          "required": false,
+          "named": true,
+          "default": "false",
+          "description": "The title reaches TsuyaType.displayL from the desktop breakpoint, for a page that opens on it."
+        },
+        {
+          "name": "actions",
+          "type": "Widget?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "Shown at the end, wrapping under the title when narrow."
+        }
+      ]
+    }
+  ],
+  "statics": []
+}

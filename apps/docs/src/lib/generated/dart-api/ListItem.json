@@ -1,0 +1,93 @@
+{
+  "kind": "class",
+  "description": "A row of a list (DESIGN.md, List, ListItem, Section): a pressable row when onPressed is set, a plain row otherwise, with an optional leading icon, avatar or thumbnail, a title and subtitle, and trailing (a value or a control) — a chevron by default when the row navigates and nothing else trails. current bolds the title (weight 800) and marks it as the current item; destructive puts the title in TsuyaColors.danger (keep it alone in the last group); tall grows the row for an account row.",
+  "constructors": [
+    {
+      "name": "",
+      "description": "A row titled title.",
+      "params": [
+        {
+          "name": "title",
+          "type": "String",
+          "required": true,
+          "named": true,
+          "default": "",
+          "description": "The row's title, one line (ellipsized if it must)."
+        },
+        {
+          "name": "subtitle",
+          "type": "String?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "Below the title, one line, muted."
+        },
+        {
+          "name": "onPressed",
+          "type": "VoidCallback?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "Called on a press; makes the row pressable (fill on hover, fill-strong on press). Null for a plain row."
+        },
+        {
+          "name": "navigates",
+          "type": "bool",
+          "required": false,
+          "named": true,
+          "default": "false",
+          "description": "Whether the row opens another screen: the default trailing chevron, when nothing else trails it."
+        },
+        {
+          "name": "tall",
+          "type": "bool",
+          "required": false,
+          "named": true,
+          "default": "false",
+          "description": "Grows the row to TsuyaSize.rowTall, for an account row."
+        },
+        {
+          "name": "current",
+          "type": "bool",
+          "required": false,
+          "named": true,
+          "default": "false",
+          "description": "The current item: a bold (800) title and a marker."
+        },
+        {
+          "name": "destructive",
+          "type": "bool",
+          "required": false,
+          "named": true,
+          "default": "false",
+          "description": "Puts the title in TsuyaColors.danger; keep it alone in the last group."
+        },
+        {
+          "name": "selected",
+          "type": "bool?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "In a selectable list, whether this is the chosen row: a tick at the end. Null outside a selectable list."
+        },
+        {
+          "name": "leading",
+          "type": "Widget?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "An icon 20, an avatar 40, or a thumbnail 40 to 48."
+        },
+        {
+          "name": "trailing",
+          "type": "Widget?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "A value or a control; a chevron shows by default when navigates and this is null."
+        }
+      ]
+    }
+  ],
+  "statics": []
+}

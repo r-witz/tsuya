@@ -1,0 +1,53 @@
+{
+  "kind": "class",
+  "description": "A sidebar item (DESIGN.md, Sidebar): TsuyaSize.controlSm tall (TsuyaSize.target on touch), TsuyaRadius.sm, icon and label in TsuyaType.control TsuyaColors.textMuted, count at the end; the current one in TsuyaColors.text on TsuyaColors.fillStrong. Collapsed, the icon only, still named label (count is left out while collapsed, drawn and named alike); its label shows as a Tooltip at its end.",
+  "constructors": [
+    {
+      "name": "",
+      "description": "An item labelled label, shown over icon, current when it names the page already shown.",
+      "params": [
+        {
+          "name": "icon",
+          "type": "Widget",
+          "required": true,
+          "named": true,
+          "default": "",
+          "description": "Drawn at TsuyaSize.icon."
+        },
+        {
+          "name": "label",
+          "type": "String",
+          "required": true,
+          "named": true,
+          "default": "",
+          "description": "The item's label: shown unless the sidebar is collapsed, and always its accessible name (with count, when there is one: \"Albums 12\")."
+        },
+        {
+          "name": "count",
+          "type": "int?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "A number at the end (such as unread items); hidden, but not its own name, while collapsed."
+        },
+        {
+          "name": "current",
+          "type": "bool",
+          "required": false,
+          "named": true,
+          "default": "false",
+          "description": "Whether it names the page already shown."
+        },
+        {
+          "name": "onPressed",
+          "type": "VoidCallback?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "Called on a press; null disables it."
+        }
+      ]
+    }
+  ],
+  "statics": []
+}

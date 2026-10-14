@@ -1,0 +1,53 @@
+{
+  "kind": "class",
+  "description": "A row of text tabs (DESIGN.md, Tabs): one tab stop with roving focus; arrows both move and select (as native radios do on the web) unless manual, in which only Enter, Space or a press select. A 2 px accent bar slides under the selected tab over TsuyaDuration.fast (instant under reduced motion). Scrolls sideways when the tabs do not fit. While selected is null the first tab counts as selected, but onChanged is only called when a tab is actually chosen. Pair with TabView for the panels.",
+  "constructors": [
+    {
+      "name": "",
+      "description": "A row named label (the tab list's accessible name) over tabs, selected chosen.",
+      "params": [
+        {
+          "name": "label",
+          "type": "String",
+          "required": true,
+          "named": true,
+          "default": "",
+          "description": "The tab list's accessible name."
+        },
+        {
+          "name": "tabs",
+          "type": "List<TabItem<T>>",
+          "required": true,
+          "named": true,
+          "default": "",
+          "description": "The tabs, in order."
+        },
+        {
+          "name": "selected",
+          "type": "T?",
+          "required": true,
+          "named": true,
+          "default": "",
+          "description": "The selected tab's value; the first tab while null."
+        },
+        {
+          "name": "onChanged",
+          "type": "ValueChanged<T>",
+          "required": true,
+          "named": true,
+          "default": "",
+          "description": "Called with a tab's value when it is chosen."
+        },
+        {
+          "name": "manual",
+          "type": "bool",
+          "required": false,
+          "named": true,
+          "default": "false",
+          "description": "Arrows move focus only; Enter, Space or a press select. Default false: arrows select as they move."
+        }
+      ]
+    }
+  ],
+  "statics": []
+}

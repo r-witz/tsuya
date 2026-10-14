@@ -1,0 +1,53 @@
+{
+  "kind": "class",
+  "description": "2 to 5 options seen together, one always selected (DESIGN.md, SegmentedControl): one tab stop with roving focus; arrows both move and select, as native radios do on the web. A TsuyaColors.fill track with a hairline, TsuyaSpace.s4 inside; the selected segment is TsuyaColors.fillSelected with TsuyaShadows.sm. expand shares the width between segments; otherwise each hugs its own content, until they no longer fit: they then share the width in proportion to their content and labels wrap onto more lines.",
+  "constructors": [
+    {
+      "name": "",
+      "description": "A control over segments, selected chosen, named label for screen readers.",
+      "params": [
+        {
+          "name": "label",
+          "type": "String",
+          "required": true,
+          "named": true,
+          "default": "",
+          "description": "The control's accessible name."
+        },
+        {
+          "name": "segments",
+          "type": "List<Segment<T>>",
+          "required": true,
+          "named": true,
+          "default": "",
+          "description": "The segments, in order (2 to 5)."
+        },
+        {
+          "name": "selected",
+          "type": "T",
+          "required": true,
+          "named": true,
+          "default": "",
+          "description": "The chosen value."
+        },
+        {
+          "name": "onChanged",
+          "type": "ValueChanged<T>",
+          "required": true,
+          "named": true,
+          "default": "",
+          "description": "Called with a segment's value when it is chosen."
+        },
+        {
+          "name": "expand",
+          "type": "bool",
+          "required": false,
+          "named": true,
+          "default": "false",
+          "description": "Shares the width equally between segments, instead of each hugging its own content."
+        }
+      ]
+    }
+  ],
+  "statics": []
+}

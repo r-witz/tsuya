@@ -1,0 +1,10 @@
+<script>
+  // the repository's CHANGELOG.md, the one every package ships, so the page cannot drift from it
+  import Changelog from '../../../../../../CHANGELOG.md';
+</script>
+
+<svelte:head>
+  <title>Changelog — tsuya</title>
+</svelte:head>
+
+<Changelog />

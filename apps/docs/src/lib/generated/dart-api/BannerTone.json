@@ -1,0 +1,22 @@
+{
+  "kind": "enum",
+  "description": "The colour family of a Banner.",
+  "values": [
+    {
+      "name": "info",
+      "description": "Neutral news: TsuyaColors.info."
+    },
+    {
+      "name": "success",
+      "description": "Something went well: TsuyaColors.success."
+    },
+    {
+      "name": "warning",
+      "description": "Something needs attention: TsuyaColors.warning."
+    },
+    {
+      "name": "danger",
+      "description": "Something failed: TsuyaColors.danger."
+    }
+  ]
+}

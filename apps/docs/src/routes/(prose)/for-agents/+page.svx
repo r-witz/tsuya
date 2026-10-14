@@ -1,0 +1,22 @@
+<svelte:head>
+  <title>For agents — tsuya</title>
+</svelte:head>
+
+# For agents
+
+An agent reads tsuya from two plain files, both on this site:
+
+- [`/DESIGN.md`](/DESIGN.md) — the contract, the same file every package ships.
+- [`/llms.txt`](/llms.txt) — an index of this site: every page, with one line on what it covers.
+
+## Reading tsuya itself
+
+Before changing a user interface, read `DESIGN.md`: it is the contract both `@tsuya/svelte` and the Flutter package
+implement, and it has every token's name and every component's rules. `npx tsuya init` (Node) or `dart run
+tsuya:init` (Dart) adds a line to `AGENTS.md`/`CLAUDE.md` pointing at the installed copy, the one that matches the
+version the project uses; see [Getting started](/getting-started).
+
+## Don't invent
+
+Every value tsuya uses is a token or a prop named in `DESIGN.md`; a component built with tsuya should never need a
+raw colour, a raw pixel value, or a string not passed in through the labels or the app's own content.

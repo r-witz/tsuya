@@ -1,0 +1,77 @@
+{
+  "kind": "class",
+  "description": "A choice among options too many to show at once, or not all seen together (DESIGN.md, Select). The trigger looks like a text field with a chevron and the selected label (or placeholder); Enter, Space or an arrow key opens a listbox panel (menu panel styling) anchored under it, the selected option ticked and scrolled into view. Type-ahead, groups and separators come from the listbox; Escape closes it. Below TsuyaBreakpoint.tablet the options open in a Sheet titled by label instead, unless sheetOnPhone is false.",
+  "constructors": [
+    {
+      "name": "",
+      "description": "A select named label, value chosen among options.",
+      "params": [
+        {
+          "name": "label",
+          "type": "String",
+          "required": true,
+          "named": true,
+          "default": "",
+          "description": "The accessible name, shown above the trigger."
+        },
+        {
+          "name": "value",
+          "type": "T?",
+          "required": true,
+          "named": true,
+          "default": "",
+          "description": "The chosen value, or null when nothing is chosen yet."
+        },
+        {
+          "name": "onChanged",
+          "type": "ValueChanged<T>?",
+          "required": true,
+          "named": true,
+          "default": "",
+          "description": "Called with an option's value when it is chosen; null disables the control."
+        },
+        {
+          "name": "options",
+          "type": "List<ListboxOption<T>>",
+          "required": true,
+          "named": true,
+          "default": "",
+          "description": "The options, in order; options sharing a ListboxOption.group should be adjacent."
+        },
+        {
+          "name": "placeholder",
+          "type": "String?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "Shown in TsuyaColors.textMuted while nothing is chosen; never announced (a placeholder is not a value)."
+        },
+        {
+          "name": "sheetOnPhone",
+          "type": "bool",
+          "required": false,
+          "named": true,
+          "default": "true",
+          "description": "Below the tablet width, the options open in a sheet rather than a panel."
+        },
+        {
+          "name": "focusNode",
+          "type": "FocusNode?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "The node to track the trigger's focus with, when the caller manages one."
+        },
+        {
+          "name": "autofocus",
+          "type": "bool",
+          "required": false,
+          "named": true,
+          "default": "false",
+          "description": "Focuses the trigger as soon as it is built."
+        }
+      ]
+    }
+  ],
+  "statics": []
+}

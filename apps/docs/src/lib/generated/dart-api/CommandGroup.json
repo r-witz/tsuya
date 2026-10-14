@@ -1,0 +1,29 @@
+{
+  "kind": "class",
+  "description": "A titled group of commands in a CommandPalette.",
+  "constructors": [
+    {
+      "name": "",
+      "description": "A group headed label.",
+      "params": [
+        {
+          "name": "label",
+          "type": "String",
+          "required": true,
+          "named": true,
+          "default": "",
+          "description": "The group's heading."
+        },
+        {
+          "name": "commands",
+          "type": "List<Command<T>>",
+          "required": true,
+          "named": true,
+          "default": "",
+          "description": "Its commands, in order."
+        }
+      ]
+    }
+  ],
+  "statics": []
+}

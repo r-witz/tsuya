@@ -1,0 +1,37 @@
+{
+  "kind": "class",
+  "description": "A command the palette can run, with the value CommandPalette.show's `onSelected` gets.",
+  "constructors": [
+    {
+      "name": "",
+      "description": "A command named label that runs as value.",
+      "params": [
+        {
+          "name": "value",
+          "type": "T",
+          "required": true,
+          "named": true,
+          "default": "",
+          "description": "What `onSelected` is called with."
+        },
+        {
+          "name": "label",
+          "type": "String",
+          "required": true,
+          "named": true,
+          "default": "",
+          "description": "What it is called; matched against the query and read by a screen reader."
+        },
+        {
+          "name": "disabled",
+          "type": "bool",
+          "required": false,
+          "named": true,
+          "default": "false",
+          "description": "Shown but cannot be run."
+        }
+      ]
+    }
+  ],
+  "statics": []
+}

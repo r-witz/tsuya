@@ -1,0 +1,53 @@
+{
+  "kind": "class",
+  "description": "A sideways-scrolling row of Chips (DESIGN.md, Chip: ChipGroup), one tab stop with roving focus: arrow keys move between chips, Space or Enter chooses. multiple allows more than one chosen at once and changes only how each is announced (a toggle button, or one radio of a mutually exclusive group). value holds the chosen values; onChanged is called with the next set on a choice.",
+  "constructors": [
+    {
+      "name": "",
+      "description": "A group of chips, value chosen, named label for screen readers.",
+      "params": [
+        {
+          "name": "label",
+          "type": "String",
+          "required": true,
+          "named": true,
+          "default": "",
+          "description": "The group's accessible name."
+        },
+        {
+          "name": "value",
+          "type": "Set<T>",
+          "required": true,
+          "named": true,
+          "default": "",
+          "description": "The chosen values."
+        },
+        {
+          "name": "onChanged",
+          "type": "ValueChanged<Set<T>>",
+          "required": true,
+          "named": true,
+          "default": "",
+          "description": "Called with the next chosen set when a chip is pressed."
+        },
+        {
+          "name": "chips",
+          "type": "List<ChipOption<T>>",
+          "required": true,
+          "named": true,
+          "default": "",
+          "description": "The chips, in order."
+        },
+        {
+          "name": "multiple",
+          "type": "bool",
+          "required": false,
+          "named": true,
+          "default": "false",
+          "description": "Whether more than one chip can be chosen at once."
+        }
+      ]
+    }
+  ],
+  "statics": []
+}

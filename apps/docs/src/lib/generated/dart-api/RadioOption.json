@@ -1,0 +1,29 @@
+{
+  "kind": "class",
+  "description": "One radio of a RadioGroup: identified by value, labelled label.",
+  "constructors": [
+    {
+      "name": "",
+      "description": "An option for value, shown as label.",
+      "params": [
+        {
+          "name": "value",
+          "type": "T",
+          "required": true,
+          "named": true,
+          "default": "",
+          "description": "What RadioGroup.onChanged is called with."
+        },
+        {
+          "name": "label",
+          "type": "String",
+          "required": true,
+          "named": true,
+          "default": "",
+          "description": "The radio's label."
+        }
+      ]
+    }
+  ],
+  "statics": []
+}

@@ -1,0 +1,18 @@
+{
+  "kind": "enum",
+  "description": "The size of a Spinner: TsuyaSize.iconSm, TsuyaSize.icon or TsuyaSize.iconLg.",
+  "values": [
+    {
+      "name": "sm",
+      "description": "TsuyaSize.iconSm."
+    },
+    {
+      "name": "md",
+      "description": "TsuyaSize.icon."
+    },
+    {
+      "name": "lg",
+      "description": "TsuyaSize.iconLg."
+    }
+  ]
+}

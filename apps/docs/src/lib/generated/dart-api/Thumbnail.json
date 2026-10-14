@@ -1,0 +1,53 @@
+{
+  "kind": "class",
+  "description": "The picture of a content (DESIGN.md, Thumbnail): ThumbnailRatio.square by default, ThumbnailRatio.portrait or ThumbnailRatio.wide, with a radius that grows with size. A TsuyaColors.fill placeholder, with an optional placeholder icon, shows while image loads, fails, or is null. Decorative unless it has label. image is decoded at the thumbnail's own display size.",
+  "constructors": [
+    {
+      "name": "",
+      "description": "A thumbnail of image, size wide.",
+      "params": [
+        {
+          "name": "image",
+          "type": "ImageProvider?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "The picture; the placeholder shows while it is null, loading or failed."
+        },
+        {
+          "name": "size",
+          "type": "double",
+          "required": false,
+          "named": true,
+          "default": "48",
+          "description": "Its width, in px; the height follows from ratio. Default 48."
+        },
+        {
+          "name": "ratio",
+          "type": "ThumbnailRatio",
+          "required": false,
+          "named": true,
+          "default": "ThumbnailRatio.square",
+          "description": "Its shape."
+        },
+        {
+          "name": "label",
+          "type": "String?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "The accessible name; decorative when left out."
+        },
+        {
+          "name": "placeholder",
+          "type": "Widget?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "Shown, centred, on the placeholder."
+        }
+      ]
+    }
+  ],
+  "statics": []
+}

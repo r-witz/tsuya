@@ -1,0 +1,29 @@
+{
+  "kind": "class",
+  "description": "The label above a field or a group (DESIGN.md, Field): TsuyaType.control in TsuyaColors.textMuted. With optional, a space and the optional label follow at normal weight, in the same run of text, so a screen reader reads \"Email Optional\" together rather than two separate texts. A required control marks no visual change here (it is in semantics only, carried by the control itself, not this label).",
+  "constructors": [
+    {
+      "name": "",
+      "description": "A label reading text, with the optional marker appended when optional.",
+      "params": [
+        {
+          "name": "text",
+          "type": "String",
+          "required": true,
+          "named": false,
+          "default": "",
+          "description": "The label text."
+        },
+        {
+          "name": "optional",
+          "type": "bool",
+          "required": false,
+          "named": true,
+          "default": "false",
+          "description": "Appends the optional marker after a single space, at normal weight."
+        }
+      ]
+    }
+  ],
+  "statics": []
+}

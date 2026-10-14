@@ -1,0 +1,45 @@
+{
+  "kind": "class",
+  "description": "A section's header (DESIGN.md, SectionHeader): a title, an optional count, and a ghost \"see all\" button at the end (actionLabel, called by onAction); TsuyaSpace.s32 above, TsuyaSpace.s12 below.",
+  "constructors": [
+    {
+      "name": "",
+      "description": "A header titled title.",
+      "params": [
+        {
+          "name": "title",
+          "type": "String",
+          "required": true,
+          "named": true,
+          "default": "",
+          "description": "The section's title."
+        },
+        {
+          "name": "count",
+          "type": "String?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "Shown after the title, muted."
+        },
+        {
+          "name": "actionLabel",
+          "type": "String?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "The ghost button's label at the end, such as \"See all\"; the button is hidden when this is null."
+        },
+        {
+          "name": "onAction",
+          "type": "VoidCallback?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "Called on a press of the ghost button; null disables it."
+        }
+      ]
+    }
+  ],
+  "statics": []
+}

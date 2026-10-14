@@ -1,0 +1,45 @@
+{
+  "kind": "class",
+  "description": "The tab bar of the phone shell (DESIGN.md, TabBar, Screen): glass, at least TsuyaSize.dock tall, TsuyaRadius.lg, items sharing its width equally; each an icon over a TsuyaType.micro label (one line, ellipsis). The current tab draws its icon in the accent, its label at weight 700, over a TsuyaColors.fillStrong capsule. One tab stop: arrows move focus; Enter, Space or a press choose (choosing a tab changes the screen, so moving focus alone does not). A press on the already-current tab instead scrolls the nearest PrimaryScrollController to the top (instant under reduced motion) — Screen sets one up around its own content. While current is null, the first tab counts as current. Put it in a Screen's `dock`.",
+  "constructors": [
+    {
+      "name": "",
+      "description": "A bar over items, current chosen; label names the bar itself for screen readers, if it needs one.",
+      "params": [
+        {
+          "name": "items",
+          "type": "List<TabBarItem<T>>",
+          "required": true,
+          "named": true,
+          "default": "",
+          "description": "The tabs, in order (3 to 5)."
+        },
+        {
+          "name": "current",
+          "type": "T?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "The current tab's value; the first tab counts as current while this is null."
+        },
+        {
+          "name": "onSelect",
+          "type": "ValueChanged<T>",
+          "required": true,
+          "named": true,
+          "default": "",
+          "description": "Called with a tab's value when it is chosen (never on a focus move, and not when the current tab is pressed again — that scrolls to the top instead)."
+        },
+        {
+          "name": "label",
+          "type": "String?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "The bar's own accessible name, if it needs one; Svelte's forwards one the same optional way."
+        }
+      ]
+    }
+  ],
+  "statics": []
+}

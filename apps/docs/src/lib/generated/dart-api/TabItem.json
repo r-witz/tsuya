@@ -1,0 +1,37 @@
+{
+  "kind": "class",
+  "description": "One tab of a Tabs row: identified by value, labelled label.",
+  "constructors": [
+    {
+      "name": "",
+      "description": "A tab for value, labelled label.",
+      "params": [
+        {
+          "name": "value",
+          "type": "T",
+          "required": true,
+          "named": true,
+          "default": "",
+          "description": "What Tabs.onChanged is called with."
+        },
+        {
+          "name": "label",
+          "type": "String",
+          "required": true,
+          "named": true,
+          "default": "",
+          "description": "The tab's label: shown in TsuyaType.bodyStrong, and read for screen readers."
+        },
+        {
+          "name": "disabled",
+          "type": "bool",
+          "required": false,
+          "named": true,
+          "default": "false",
+          "description": "Excluded from arrows, Home, End and a press."
+        }
+      ]
+    }
+  ],
+  "statics": []
+}

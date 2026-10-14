@@ -1,0 +1,45 @@
+{
+  "kind": "class",
+  "description": "The phone shell (DESIGN.md, Screen): a TsuyaSurface (ambient or the neutral glow, with grain); builder builds the scrolling content, padded by the EdgeInsets it is given (the safe areas, the TsuyaSpace.s20 side margins, and room for dock, at whatever height it takes); dock floats TsuyaSpace.s12 from the edges above the safe area, the content fading into TsuyaColors.bg under it. On Flutter, also the keyboard: the content's own height shrinks by MediaQuery.viewInsetsOf's bottom inset, so a focused field's own \"scroll into view\" lands it above the keyboard instead of under it.",
+  "constructors": [
+    {
+      "name": "",
+      "description": "A shell lit by ambient (or the neutral glow without one), builder building the scrolling content, dock floating over it.",
+      "params": [
+        {
+          "name": "ambient",
+          "type": "ImageProvider?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "The leading content's picture, lighting the top; without one, the neutral glow."
+        },
+        {
+          "name": "grain",
+          "type": "GrainMode",
+          "required": false,
+          "named": true,
+          "default": "GrainMode.bg",
+          "description": "Where the grain is drawn."
+        },
+        {
+          "name": "builder",
+          "type": "Widget Function(BuildContext context, EdgeInsets padding)",
+          "required": true,
+          "named": true,
+          "default": "",
+          "description": "Builds the scrolling content (a ListView or a CustomScrollView, say) padded by the given EdgeInsets. Leave its own `controller` unset so it picks up the nearest PrimaryScrollController — the one Screen itself sets up — letting dock's tab bar scroll it to the top."
+        },
+        {
+          "name": "dock",
+          "type": "Widget?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "A tab bar, floating over the content."
+        }
+      ]
+    }
+  ],
+  "statics": []
+}

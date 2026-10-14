@@ -1,0 +1,21 @@
+{
+  "kind": "class",
+  "description": "The round size of an IconButton: a preset (sm, md, lg) or IconButtonSize.custom for the large primary action (40 to 72).",
+  "constructors": [
+    {
+      "name": "custom",
+      "description": "A custom diameter from 40 to 72, its icon 38 % of it, at least 18.",
+      "params": [
+        {
+          "name": "diameter",
+          "type": "double",
+          "required": true,
+          "named": false,
+          "default": "",
+          "description": "The button's diameter."
+        }
+      ]
+    }
+  ],
+  "statics": []
+}

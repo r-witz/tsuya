@@ -1,0 +1,22 @@
+{
+  "kind": "enum",
+  "description": "Which side of the anchor a floating element prefers. start and end follow the text direction (so they mean before/after, not left/right).",
+  "values": [
+    {
+      "name": "top",
+      "description": "Above the anchor."
+    },
+    {
+      "name": "bottom",
+      "description": "Below the anchor."
+    },
+    {
+      "name": "start",
+      "description": "Before the anchor (left in left-to-right, right in right-to-left)."
+    },
+    {
+      "name": "end",
+      "description": "After the anchor (right in left-to-right, left in right-to-left)."
+    }
+  ]
+}

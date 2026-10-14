@@ -1,0 +1,37 @@
+{
+  "kind": "class",
+  "description": "A badge pinned to a TabBarItem's icon: a count (shown as \"99+\" above 99) or a dot, and what it means (label, read after the tab's own label: \"Inbox, 3 new\"). Purely decorative otherwise.",
+  "constructors": [
+    {
+      "name": "",
+      "description": "A badge of count or a dot, meaning label.",
+      "params": [
+        {
+          "name": "count",
+          "type": "int?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "Shown as \"99+\" above 99; ignored when dot is true."
+        },
+        {
+          "name": "dot",
+          "type": "bool",
+          "required": false,
+          "named": true,
+          "default": "false",
+          "description": "A plain dot instead of a count."
+        },
+        {
+          "name": "label",
+          "type": "String",
+          "required": true,
+          "named": true,
+          "default": "",
+          "description": "What the badge means, read after the tab's own label."
+        }
+      ]
+    }
+  ],
+  "statics": []
+}

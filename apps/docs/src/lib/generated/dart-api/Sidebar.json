@@ -1,0 +1,37 @@
+{
+  "kind": "class",
+  "description": "The navigation of a desktop shell (DESIGN.md, Sidebar): _kWidth wide, TsuyaSpace.s12 around its children (SidebarItems and SidebarGroups); it replaces the tab bar from TsuyaBreakpoint.desktop wide. collapsed, it shows icons only, _kCollapsedWidth wide.",
+  "constructors": [
+    {
+      "name": "",
+      "description": "A sidebar over children, named label for screen readers.",
+      "params": [
+        {
+          "name": "collapsed",
+          "type": "bool",
+          "required": false,
+          "named": true,
+          "default": "false",
+          "description": "Shows the icons only, _kCollapsedWidth wide."
+        },
+        {
+          "name": "label",
+          "type": "String?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "The sidebar's own accessible name, if it needs one."
+        },
+        {
+          "name": "children",
+          "type": "List<Widget>",
+          "required": true,
+          "named": true,
+          "default": "",
+          "description": "SidebarItems and SidebarGroups, in order."
+        }
+      ]
+    }
+  ],
+  "statics": []
+}

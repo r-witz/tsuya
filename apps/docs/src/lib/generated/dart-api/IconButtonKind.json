@@ -1,0 +1,22 @@
+{
+  "kind": "enum",
+  "description": "What an IconButton looks like.",
+  "values": [
+    {
+      "name": "filled",
+      "description": "TsuyaColors.fill with a hairline. The default."
+    },
+    {
+      "name": "plain",
+      "description": "No fill, the icon in TsuyaColors.textMuted; TsuyaColors.fill on hover."
+    },
+    {
+      "name": "accent",
+      "description": "The accent, for the icon-only primary action of a group (like play)."
+    },
+    {
+      "name": "glass",
+      "description": "Control glass, over artwork."
+    }
+  ]
+}

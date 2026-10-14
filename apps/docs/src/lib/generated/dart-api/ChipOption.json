@@ -1,0 +1,37 @@
+{
+  "kind": "class",
+  "description": "One chip of a ChipGroup: identified by value, labelled label, with an optional icon.",
+  "constructors": [
+    {
+      "name": "",
+      "description": "An option for value, shown as label.",
+      "params": [
+        {
+          "name": "value",
+          "type": "T",
+          "required": true,
+          "named": true,
+          "default": "",
+          "description": "What ChipGroup.onChanged is called with."
+        },
+        {
+          "name": "label",
+          "type": "String",
+          "required": true,
+          "named": true,
+          "default": "",
+          "description": "The chip's label."
+        },
+        {
+          "name": "icon",
+          "type": "Widget?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "The chip's icon."
+        }
+      ]
+    }
+  ],
+  "statics": []
+}

@@ -1,0 +1,18 @@
+{
+  "kind": "enum",
+  "description": "The height of a Button: sm (TsuyaSize.controlSm), md (TsuyaSize.controlMd, default) or lg (TsuyaSize.controlLg).",
+  "values": [
+    {
+      "name": "sm",
+      "description": "TsuyaSize.controlSm, TsuyaType.control label."
+    },
+    {
+      "name": "md",
+      "description": "TsuyaSize.controlMd, TsuyaType.button label. The default."
+    },
+    {
+      "name": "lg",
+      "description": "TsuyaSize.controlLg, TsuyaType.button label."
+    }
+  ]
+}

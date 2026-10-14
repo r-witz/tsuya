@@ -1,0 +1,51 @@
+{
+  "kind": "class",
+  "description": "A loading placeholder (DESIGN.md, Skeleton): a block of TsuyaColors.fillStrong at the final size of what loads, with the radius of the real element, and a slow opacity pulse that stops under reduced motion. Hidden from screen readers: marking the region that loads as busy is the app's own concern, not the block's.",
+  "constructors": [
+    {
+      "name": "",
+      "description": "A block width by height (default: fills its container, one text line tall), radius (default TsuyaRadius.xs).",
+      "params": [
+        {
+          "name": "width",
+          "type": "double?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "Its width, or null to fill the container (the default)."
+        },
+        {
+          "name": "height",
+          "type": "double?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "Its height, or null for one text line (the ambient DefaultTextStyle's size, at the text scale)."
+        },
+        {
+          "name": "radius",
+          "type": "double?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "Its corner radius; default TsuyaRadius.xs."
+        }
+      ]
+    },
+    {
+      "name": "text",
+      "description": "lines rows at a text line's height (default 3), the last one at 60 % so it reads like a paragraph.",
+      "params": [
+        {
+          "name": "lines",
+          "type": "int?",
+          "required": false,
+          "named": true,
+          "default": "3",
+          "description": "How many lines, for Skeleton.text; null for a plain block."
+        }
+      ]
+    }
+  ],
+  "statics": []
+}

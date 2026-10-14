@@ -1,0 +1,26 @@
+{
+  "kind": "class",
+  "description": "A badge (DESIGN.md, Badge): a Badge.count pill (\"99+\" above 99) or a Badge.dot, meant to be pinned on a host's corner through its `badge:` slot (see pinBadge, used by IconButton and Avatar). Always decorative: its meaning belongs to the host's accessible name, not to the badge itself.",
+  "constructors": [
+    {
+      "name": "count",
+      "description": "A pill showing count, \"99+\" above 99.",
+      "params": [
+        {
+          "name": "count",
+          "type": "int?",
+          "required": true,
+          "named": false,
+          "default": "",
+          "description": "Shown as text, \"99+\" above 99; null for a dot."
+        }
+      ]
+    },
+    {
+      "name": "dot",
+      "description": "An 8 px dot.",
+      "params": []
+    }
+  ],
+  "statics": []
+}

@@ -1,0 +1,12 @@
+{
+  "kind": "class",
+  "description": "A search-driven list of commands (DESIGN.md, CommandPalette): a dialog at most 560 wide near the top, a search field with no visible label over a listbox of CommandGroups. Type to filter, the arrows move (stopping at the ends), Enter runs the active command, Escape closes it; with no match it says so. Groups show in the order given: put the recent commands in the first one. The app opens it, usually on Ctrl or Cmd+K; tsuya binds no shortcut.",
+  "constructors": [],
+  "statics": [
+    {
+      "name": "show",
+      "signature": "Future<void> show<T>(BuildContext context, {required List<CommandGroup<T>> groups, required ValueChanged<T> onSelected, bool Function(Command<T> command, String query)? filter, String? barrierLabel})",
+      "description": "Shows a palette of groups above everything; a command runs through onSelected once the palette has closed and focus has returned to where it was, so that the command can move it. filter says whether a command matches the query (a case-insensitive substring of its label by default). barrierLabel names the scrim for a screen reader."
+    }
+  ]
+}

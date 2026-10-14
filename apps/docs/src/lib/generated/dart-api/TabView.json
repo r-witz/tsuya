@@ -1,0 +1,45 @@
+{
+  "kind": "class",
+  "description": "The panel of a Tabs row (DESIGN.md, Tabs): shown only while its own tab is selected — otherwise nothing builds, so a hidden panel's child does no work either.",
+  "constructors": [
+    {
+      "name": "",
+      "description": "A panel for value, named label (the same text as its TabItem.label), shown while selected equals it.",
+      "params": [
+        {
+          "name": "value",
+          "type": "T",
+          "required": true,
+          "named": true,
+          "default": "",
+          "description": "The tab this panel belongs to."
+        },
+        {
+          "name": "selected",
+          "type": "T?",
+          "required": true,
+          "named": true,
+          "default": "",
+          "description": "The selected tab's value, as given to the paired Tabs."
+        },
+        {
+          "name": "label",
+          "type": "String",
+          "required": true,
+          "named": true,
+          "default": "",
+          "description": "The panel's accessible name (its tab's label)."
+        },
+        {
+          "name": "child",
+          "type": "Widget",
+          "required": true,
+          "named": true,
+          "default": "",
+          "description": "The panel's content."
+        }
+      ]
+    }
+  ],
+  "statics": []
+}

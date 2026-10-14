@@ -1,0 +1,14 @@
+{
+  "kind": "enum",
+  "description": "Where a Sheet comes from.",
+  "values": [
+    {
+      "name": "bottom",
+      "description": "Rises from the bottom, at most tablet wide: the phone's sheet."
+    },
+    {
+      "name": "end",
+      "description": "Comes from the end edge (the right, or the left in right-to-left), 400 wide and full height: a desktop panel."
+    }
+  ]
+}

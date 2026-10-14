@@ -1,0 +1,85 @@
+{
+  "kind": "class",
+  "description": "A labelled action (DESIGN.md, Button): a pill ButtonSize.height tall that grows with the text (up to block's full width). loading replaces icon with a spinner (or shows it before the label when there is no icon), keeps the button's width — the label ellipsizes if it must — and ignores presses.",
+  "constructors": [
+    {
+      "name": "",
+      "description": "A button labelled label.",
+      "params": [
+        {
+          "name": "label",
+          "type": "String",
+          "required": true,
+          "named": true,
+          "default": "",
+          "description": "The button's one-line label; ellipsized if it must."
+        },
+        {
+          "name": "onPressed",
+          "type": "VoidCallback?",
+          "required": true,
+          "named": true,
+          "default": "",
+          "description": "Called on a press; null, or while loading, disables it."
+        },
+        {
+          "name": "icon",
+          "type": "Widget?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "Before the label, TsuyaSpace.s8 away; replaced by a spinner while loading."
+        },
+        {
+          "name": "kind",
+          "type": "ButtonKind",
+          "required": false,
+          "named": true,
+          "default": "ButtonKind.secondary",
+          "description": "What the button is for."
+        },
+        {
+          "name": "size",
+          "type": "ButtonSize",
+          "required": false,
+          "named": true,
+          "default": "ButtonSize.md",
+          "description": "The button's height."
+        },
+        {
+          "name": "block",
+          "type": "bool",
+          "required": false,
+          "named": true,
+          "default": "false",
+          "description": "Grows to fill the width it is given."
+        },
+        {
+          "name": "loading",
+          "type": "bool",
+          "required": false,
+          "named": true,
+          "default": "false",
+          "description": "Shows a spinner, keeps the width, and ignores presses."
+        },
+        {
+          "name": "focusNode",
+          "type": "FocusNode?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "The node to track focus with, when the caller manages one."
+        },
+        {
+          "name": "autofocus",
+          "type": "bool",
+          "required": false,
+          "named": true,
+          "default": "false",
+          "description": "Focuses it as soon as it is built."
+        }
+      ]
+    }
+  ],
+  "statics": []
+}

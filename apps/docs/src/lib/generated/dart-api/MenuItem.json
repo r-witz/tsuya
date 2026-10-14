@@ -1,0 +1,142 @@
+{
+  "kind": "class",
+  "description": "One entry of a Menu: an action (with onSelect), a MenuItem.radio option, a MenuItem.label over a few items, or MenuItem.separator between groups.",
+  "constructors": [
+    {
+      "name": "",
+      "description": "An action labelled label; onSelect runs after the menu has closed and focus has returned to its opener.",
+      "params": [
+        {
+          "name": "label",
+          "type": "String",
+          "required": true,
+          "named": true,
+          "default": "",
+          "description": "The item's label; read by a screen reader, matched by type-ahead."
+        },
+        {
+          "name": "onSelect",
+          "type": "VoidCallback?",
+          "required": true,
+          "named": true,
+          "default": "",
+          "description": "Called after the menu has closed; null for a separator."
+        },
+        {
+          "name": "icon",
+          "type": "Widget?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "Before the label, in TsuyaColors.textMuted."
+        },
+        {
+          "name": "shortcut",
+          "type": "String?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "Shown at the end in TsuyaType.mono; seen, not read."
+        },
+        {
+          "name": "checked",
+          "type": "bool?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "Ticked at the end when true, and announced as a checkbox item (a radio item for MenuItem.radio) when not null."
+        },
+        {
+          "name": "destructive",
+          "type": "bool",
+          "required": false,
+          "named": true,
+          "default": "false",
+          "description": "In TsuyaColors.danger; put it last, after a MenuItem.separator."
+        },
+        {
+          "name": "disabled",
+          "type": "bool",
+          "required": false,
+          "named": true,
+          "default": "false",
+          "description": "Takes focus but cannot be chosen."
+        }
+      ]
+    },
+    {
+      "name": "radio",
+      "description": "An option of which one in a run of radio items is checked, announced as a radio menu item and ticked at the end when it is. Choosing it runs onSelect (the caller moves the check), after the menu has closed.",
+      "params": [
+        {
+          "name": "label",
+          "type": "String",
+          "required": true,
+          "named": true,
+          "default": "",
+          "description": "The item's label; read by a screen reader, matched by type-ahead."
+        },
+        {
+          "name": "onSelect",
+          "type": "VoidCallback?",
+          "required": true,
+          "named": true,
+          "default": "",
+          "description": "Called after the menu has closed; null for a separator."
+        },
+        {
+          "name": "checked",
+          "type": "bool",
+          "required": true,
+          "named": true,
+          "default": "",
+          "description": "Ticked at the end when true, and announced as a checkbox item (a radio item for MenuItem.radio) when not null."
+        },
+        {
+          "name": "icon",
+          "type": "Widget?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "Before the label, in TsuyaColors.textMuted."
+        },
+        {
+          "name": "shortcut",
+          "type": "String?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "Shown at the end in TsuyaType.mono; seen, not read."
+        },
+        {
+          "name": "disabled",
+          "type": "bool",
+          "required": false,
+          "named": true,
+          "default": "false",
+          "description": "Takes focus but cannot be chosen."
+        }
+      ]
+    },
+    {
+      "name": "label",
+      "description": "A heading over a few items, in TsuyaType.caption and TsuyaColors.textMuted. It is not an item: focus, arrows and type-ahead pass it, and it cannot be chosen.",
+      "params": [
+        {
+          "name": "label",
+          "type": "String",
+          "required": true,
+          "named": false,
+          "default": "",
+          "description": "The item's label; read by a screen reader, matched by type-ahead."
+        }
+      ]
+    },
+    {
+      "name": "separator",
+      "description": "A hairline between groups of items, as before a destructive one.",
+      "params": []
+    }
+  ],
+  "statics": []
+}

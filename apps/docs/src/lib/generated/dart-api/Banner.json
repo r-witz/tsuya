@@ -1,0 +1,53 @@
+{
+  "kind": "class",
+  "description": "A lasting state — offline, a sync error, a trial ending (DESIGN.md, Banner): a status icon, a title, a message and actions at the end, under the text when narrow. The fill is tone's colour at 13 % with a 1 px ring at 32 %, never a coloured side stripe. onClose adds a close button. It does not announce itself: it is part of the page, not an interruption (use a Toast for that).",
+  "constructors": [
+    {
+      "name": "",
+      "description": "A banner of tone titled title.",
+      "params": [
+        {
+          "name": "tone",
+          "type": "BannerTone",
+          "required": true,
+          "named": true,
+          "default": "",
+          "description": "Which status it shows."
+        },
+        {
+          "name": "title",
+          "type": "String",
+          "required": true,
+          "named": true,
+          "default": "",
+          "description": "What the state is, in TsuyaType.bodyStrong."
+        },
+        {
+          "name": "message",
+          "type": "String?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "A sentence of detail under the title, in TsuyaColors.textMuted."
+        },
+        {
+          "name": "actions",
+          "type": "List<Widget>",
+          "required": false,
+          "named": true,
+          "default": "const []",
+          "description": "Buttons at the end of the banner, usually small ones."
+        },
+        {
+          "name": "onClose",
+          "type": "VoidCallback?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "Shows a close button, called when it is pressed."
+        }
+      ]
+    }
+  ],
+  "statics": []
+}

@@ -1,0 +1,53 @@
+{
+  "kind": "class",
+  "description": "A toggle switch (DESIGN.md, Switch): a 48 × 28 track, a 24 thumb 2 from the edge, sliding over TsuyaDuration.fast. Off: TsuyaColors.borderStrong track, TsuyaColors.thumb thumb; on: the accent track, TsuyaColors.onAccent thumb. Applies at once, with no save step. Named by label, or by the caller's row (wrapped in its own `MergeSemantics`: a plain ListItem does it for its trailing switch) when it is null.",
+  "constructors": [
+    {
+      "name": "",
+      "description": "A switch at value.",
+      "params": [
+        {
+          "name": "value",
+          "type": "bool",
+          "required": true,
+          "named": true,
+          "default": "",
+          "description": "On or off."
+        },
+        {
+          "name": "onChanged",
+          "type": "ValueChanged<bool>?",
+          "required": true,
+          "named": true,
+          "default": "",
+          "description": "Called with the next value on a press; null disables it."
+        },
+        {
+          "name": "label",
+          "type": "String?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "Beside the track, TsuyaSpace.s12 away, in body; when null, the caller's row names it instead (a plain ListItem does), and anywhere else it needs a name from a `Semantics` around it."
+        },
+        {
+          "name": "focusNode",
+          "type": "FocusNode?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "The node to track focus with, when the caller manages one."
+        },
+        {
+          "name": "autofocus",
+          "type": "bool",
+          "required": false,
+          "named": true,
+          "default": "false",
+          "description": "Focuses it as soon as it is built."
+        }
+      ]
+    }
+  ],
+  "statics": []
+}

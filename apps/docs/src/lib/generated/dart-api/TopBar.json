@@ -1,0 +1,45 @@
+{
+  "kind": "class",
+  "description": "The app bar of a website or a desktop app (DESIGN.md, TopBar): glass, at least TsuyaSize.bar tall, TsuyaRadius.md, floating TsuyaSpace.s12 from the top and sides, TsuyaShadows.md. start (a brand or a back button), links, center (a search field) and end (icon buttons). Below TsuyaBreakpoint.tablet the links move into a menu opened from a plain icon button at the end, named by the `more` label. Too wide for the room (a large text scale), the links and center scroll sideways. When start and end do not fit side by side, the bar grows rows instead: start, end, then the links and center.",
+  "constructors": [
+    {
+      "name": "",
+      "description": "A bar with start, links, center and end.",
+      "params": [
+        {
+          "name": "start",
+          "type": "Widget?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "A brand or a back button, at the start."
+        },
+        {
+          "name": "links",
+          "type": "List<TopBarLink>?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "Navigation links, centred; below TsuyaBreakpoint.tablet, in a menu at the end instead."
+        },
+        {
+          "name": "center",
+          "type": "Widget?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "A search field, centred alongside links."
+        },
+        {
+          "name": "end",
+          "type": "Widget?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "Icon buttons, at the end."
+        }
+      ]
+    }
+  ],
+  "statics": []
+}

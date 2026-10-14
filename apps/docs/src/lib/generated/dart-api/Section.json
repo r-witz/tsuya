@@ -1,0 +1,29 @@
+{
+  "kind": "class",
+  "description": "A labelled group of rows in a list (DESIGN.md, List, ListItem, Section): label above children (typically ListItems), its rows separated by 1 px hairlines — not from the label itself.",
+  "constructors": [
+    {
+      "name": "",
+      "description": "A group labelled label, holding children.",
+      "params": [
+        {
+          "name": "label",
+          "type": "String",
+          "required": true,
+          "named": true,
+          "default": "",
+          "description": "The group's label, shown in capitals."
+        },
+        {
+          "name": "children",
+          "type": "List<Widget>",
+          "required": true,
+          "named": true,
+          "default": "",
+          "description": "The group's rows, in order."
+        }
+      ]
+    }
+  ],
+  "statics": []
+}

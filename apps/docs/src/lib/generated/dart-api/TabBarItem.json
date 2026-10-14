@@ -1,0 +1,45 @@
+{
+  "kind": "class",
+  "description": "One tab of a TabBar: identified by value, labelled label, shown over icon.",
+  "constructors": [
+    {
+      "name": "",
+      "description": "A tab for value, labelled label, shown over icon, with an optional badge.",
+      "params": [
+        {
+          "name": "value",
+          "type": "T",
+          "required": true,
+          "named": true,
+          "default": "",
+          "description": "What TabBar.onSelect is called with."
+        },
+        {
+          "name": "label",
+          "type": "String",
+          "required": true,
+          "named": true,
+          "default": "",
+          "description": "The tab's label: shown in TsuyaType.micro under the icon, and read for screen readers (before badge's own meaning, when there is one)."
+        },
+        {
+          "name": "icon",
+          "type": "Widget",
+          "required": true,
+          "named": true,
+          "default": "",
+          "description": "Drawn at TsuyaSize.iconLg: TsuyaColors.accent (by way of Accent.of) when current, otherwise TsuyaColors.textMuted."
+        },
+        {
+          "name": "badge",
+          "type": "TabBarBadge?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "Pinned to the icon's corner; never read itself."
+        }
+      ]
+    }
+  ],
+  "statics": []
+}

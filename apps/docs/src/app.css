@@ -1,0 +1,109 @@
+/* A handful of additions of the docs' own, not shipped by @tsuya/core (which sets muted text colour per component,
+   not through a shared class): kept under the same t- prefix only because the docs already read that way throughout
+   their prose. */
+.t-muted {
+  color: var(--t-text-muted);
+}
+
+/* Shiki's output (#lib/server/highlight.ts), everywhere it appears: a bare fenced code block in a .svx page, or
+   passed as CodeBlock's `html` on a component page. One global rule so both look and behave the same way, instead of
+   a wrapper only CodeBlock's own callers get. Dual-theme: light is inlined directly (color, background-color); the
+   dark alternates live in --shiki-dark / --shiki-dark-bg. */
+.shiki {
+  display: block;
+  margin: 0;
+  overflow-x: auto;
+  padding: var(--t-space-12) var(--t-space-16);
+  border: 1px solid var(--t-border);
+  border-radius: var(--t-radius-md);
+  font: var(--t-type-mono);
+  letter-spacing: var(--t-type-mono-tracking);
+}
+/* !important, as for the background: the light colour is inline on every token and would otherwise win */
+[data-theme='dark'] .shiki,
+[data-theme='dark'] .shiki span {
+  color: var(--shiki-dark) !important;
+}
+[data-theme='dark'] .shiki {
+  background-color: var(--shiki-dark-bg) !important;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) .shiki,
+  :root:not([data-theme='light']) .shiki span {
+    color: var(--shiki-dark) !important;
+  }
+  :root:not([data-theme='light']) .shiki {
+    background-color: var(--shiki-dark-bg) !important;
+  }
+}
+
+/* The HTML an example renders, folded under its code on a component page (routes/components/+layout.server.ts). */
+.markup summary {
+  width: fit-content;
+  padding-block: var(--t-space-8);
+  font: var(--t-type-control);
+  letter-spacing: var(--t-type-control-tracking);
+  color: var(--t-text-muted);
+  cursor: pointer;
+}
+
+/* The 3 pages written as plain Markdown ((prose)/+layout.svelte's .prose): mdsvex's bare h1/h2/h3/p/code/a/ul/li
+   output, styled with the type scale the same way PageHeader and the rest of the site are. Not a tsuya default:
+   components hold no implicit text styling, by design, so a consumer that wants it styles it itself, same as here. */
+.prose h1 {
+  margin: 0;
+  font: var(--t-type-display-s);
+  letter-spacing: var(--t-type-display-s-tracking);
+}
+@media (min-width: 1024px) {
+  .prose h1 {
+    font: var(--t-type-display-m);
+    letter-spacing: var(--t-type-display-m-tracking);
+  }
+}
+.prose h2 {
+  margin: var(--t-space-48) 0 0;
+  font: var(--t-type-title-l);
+  letter-spacing: var(--t-type-title-l-tracking);
+}
+.prose h3 {
+  margin: var(--t-space-32) 0 0;
+  font: var(--t-type-title-m);
+  letter-spacing: var(--t-type-title-m-tracking);
+}
+.prose p,
+.prose li {
+  margin: 0;
+  font: var(--t-type-body);
+  letter-spacing: var(--t-type-body-tracking);
+}
+.prose p {
+  margin-top: var(--t-space-16);
+  max-width: 70ch;
+}
+.prose ul,
+.prose ol {
+  margin: var(--t-space-16) 0 0;
+  padding-inline-start: var(--t-space-24);
+}
+.prose li + li {
+  margin-top: var(--t-space-4);
+}
+.prose code {
+  font: var(--t-type-mono);
+  letter-spacing: var(--t-type-mono-tracking);
+  padding: 0 var(--t-space-4);
+  border-radius: var(--t-radius-xs);
+  background: var(--t-fill);
+}
+.prose pre.shiki {
+  margin-top: var(--t-space-16);
+}
+.prose pre code {
+  padding: 0;
+  background: none;
+}
+.prose a {
+  color: var(--t-text);
+  text-decoration-color: var(--t-accent);
+}

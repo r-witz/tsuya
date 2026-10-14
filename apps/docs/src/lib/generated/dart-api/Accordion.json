@@ -1,0 +1,53 @@
+{
+  "kind": "class",
+  "description": "Rows that open their content below, one at a time or several (DESIGN.md, Accordion): each header is a button in a heading, with a chevron that turns 180° while open; the content's height animates over TsuyaDuration.base (instant under reduced motion). multiple false (the default) keeps at most one value open at a time: opening a row closes the one already open.",
+  "constructors": [
+    {
+      "name": "",
+      "description": "An accordion over items, the rows named in value open.",
+      "params": [
+        {
+          "name": "items",
+          "type": "List<AccordionItemData>",
+          "required": true,
+          "named": true,
+          "default": "",
+          "description": "The rows, in order."
+        },
+        {
+          "name": "multiple",
+          "type": "bool",
+          "required": false,
+          "named": true,
+          "default": "false",
+          "description": "Lets several rows stay open together; otherwise opening one closes the others."
+        },
+        {
+          "name": "value",
+          "type": "List<String>",
+          "required": true,
+          "named": true,
+          "default": "",
+          "description": "The open rows' values."
+        },
+        {
+          "name": "onChanged",
+          "type": "ValueChanged<List<String>>",
+          "required": true,
+          "named": true,
+          "default": "",
+          "description": "Called with the next list of open values when a row is toggled."
+        },
+        {
+          "name": "headingLevel",
+          "type": "int",
+          "required": false,
+          "named": true,
+          "default": "3",
+          "description": "The level of the heading each header sits in."
+        }
+      ]
+    }
+  ],
+  "statics": []
+}

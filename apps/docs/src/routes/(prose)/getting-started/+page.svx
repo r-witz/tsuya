@@ -1,0 +1,286 @@
+<svelte:head>
+  <title>Getting started — tsuya</title>
+</svelte:head>
+
+# Getting started
+
+## Svelte 5
+
+Install `@tsuya/svelte` and `@tsuya/core`. The components are in the first; the CSS, the fonts, the labels and the
+colour engine they style and read are in the second, which is why both:
+
+```bash
+npm install @tsuya/svelte @tsuya/core
+```
+
+The quick start below is for SvelteKit: an app bar, a screen, a dark-mode switch that is remembered and does not
+flash, and a page. Four files.
+
+`src/routes/+layout.svelte` imports the CSS once, wraps the app in `TsuyaProvider`, and holds the screen and its bar:
+
+```svelte
+<script lang="ts">
+  import '@tsuya/core/tsuya.css';
+  import '@tsuya/core/fonts.css';
+  import { labelsEn, themeScript } from '@tsuya/core';
+  import { Screen, SegmentedControl, TsuyaProvider, TopBar } from '@tsuya/svelte';
+  import { onMount, type Snippet } from 'svelte';
+  import { lit } from '../lib/lit.svelte';
+
+  type Mode = 'system' | 'light' | 'dark';
+
+  let { children }: { children: Snippet } = $props();
+
+  // the user's choice, kept in localStorage; themeScript() reads the same key before the first paint
+  let mode = $state('system');
+  onMount(() => {
+    const saved = localStorage.getItem('tsuya-mode');
+    if (saved === 'light' || saved === 'dark') mode = saved;
+  });
+</script>
+
+<svelte:head>
+  <!-- eslint-disable-next-line svelte/no-at-html-tags -- a constant string from @tsuya/core -->
+  {@html `<script>${themeScript('tsuya-mode')}<\/script>`}
+</svelte:head>
+
+<TsuyaProvider mode={mode as Mode} labels={labelsEn}>
+  <Screen ambient={lit.src} ambientOpacity={lit.opacity}>
+    <TopBar links={[{ href: '/', label: 'Library', current: true }]}>
+      {#snippet start()}<strong>My app</strong>{/snippet}
+      {#snippet end()}
+        <SegmentedControl
+          label="Mode"
+          bind:value={mode}
+          onchange={() => localStorage.setItem('tsuya-mode', mode)}
+          options={[
+            { value: 'system', label: 'System' },
+            { value: 'light', label: 'Light' },
+            { value: 'dark', label: 'Dark' },
+          ]}
+        />
+      {/snippet}
+    </TopBar>
+    <main>{@render children()}</main>
+  </Screen>
+</TsuyaProvider>
+
+<style>
+  main {
+    padding-block-start: var(--t-space-24);
+  }
+</style>
+```
+
+`@tsuya/core/tsuya.css` is the tokens, the base, the material and the components' styles; `fonts.css` serves Inter and
+Geist Mono; `labelsEn` (or `labelsFr`, or your own `TsuyaLabels`) gives every component its system strings — close,
+loading, copy and the rest — since no component holds text of its own.
+
+`src/lib/lit.svelte.ts` holds the image that lights the screen, shared by the layout and the pages (see the accent
+below):
+
+```ts
+export const lit = $state<{ src: string | null; opacity?: { light: number; dark: number } }>({ src: null });
+```
+
+`src/routes/+page.svelte` is a page, with a `Button`:
+
+```svelte
+<script lang="ts">
+  import { Button, PageHeader } from '@tsuya/svelte';
+</script>
+
+<PageHeader title="Library" subtitle="4 albums" />
+<Button variant="primary">Create</Button>
+```
+
+### Screen and TopBar
+
+`Screen` is the shell of a page: the surface, the ambient background that its `ambient` image lights (a soft glow
+without one), the film grain, and the content within the side margins and the safe areas. `TopBar` is a glass bar
+floating 12 px from the top, sticky: put it first inside `Screen`, so that the light runs under it and the page does
+not gain a bar's height of scroll. DESIGN.md does not say where the content starts below the bar, so that is the
+layout's: a title right after the bar touches it, hence the `padding-block-start` on `main`.
+
+### Dark mode without a flash
+
+The tokens follow the system's mode. `TsuyaProvider mode` forces one, and the layout above lets the user choose and
+remembers it. A page's background belongs to `<html>`, which no component reaches before JavaScript runs, so the first
+paint needs help:
+
+- for a mode that is always the same, write it on the tag in `src/app.html`, and give `TsuyaProvider` the same
+  `mode`: `<html lang="en" data-theme="dark">`;
+- for a choice the user makes, `themeScript(key)` of `@tsuya/core` returns a few dozen bytes of JavaScript that sets
+  `data-theme` on `<html>` from `localStorage[key]` (`light` or `dark`, anything else is the system's). The layout puts
+  it in the head and writes the same key when the user chooses. With a content security policy, give it your nonce.
+
+### An accent from an image
+
+An accent is a pair of colours, one per mode, computed from the content. `accentFromImage` of `@tsuya/core` reads a
+loaded image; compute it once, in the browser as here or at upload time with `accentFromPixels`, and store it with the
+content. `AccentRegion` gives its pair to everything inside it, and `Screen` takes the image as `ambient`, at the
+opacity the pair computed (`ambientOpacity`), so that text on it stays readable. Replace the page with this one, and
+put an image at `static/cover.jpg`:
+
+```svelte
+<script lang="ts">
+  import { accentFromImage, type ImageAccent } from '@tsuya/core';
+  import { AccentRegion, Button, PageHeader } from '@tsuya/svelte';
+  import { onMount } from 'svelte';
+  import { lit } from '../lib/lit.svelte';
+
+  const cover = '/cover.jpg';
+  let pair = $state<ImageAccent | null>(null);
+
+  onMount(() => {
+    const image = new Image();
+    image.src = cover;
+    image.decode().then(() => {
+      pair = accentFromImage(image);
+      lit.src = cover;
+      lit.opacity = pair.ambient;
+    });
+    return () => {
+      lit.src = null;
+    };
+  });
+</script>
+
+<PageHeader title="Library" subtitle="4 albums" />
+<AccentRegion {pair}>
+  <Button variant="primary">Create</Button>
+</AccentRegion>
+```
+
+The rest of the API is in the components' pages, and `DESIGN.md` is the contract.
+
+## Without a framework
+
+`@tsuya/core` alone serves a site without a framework: `tsuya.css` holds every component's styles, and
+`@tsuya/core/primitives` the behaviours that the Svelte components are built on.
+
+```bash
+npm install @tsuya/core
+```
+
+With a bundler (Vite, esbuild…), import the CSS once, as in Svelte:
+
+```js
+import '@tsuya/core/tsuya.css';
+import '@tsuya/core/fonts.css';
+```
+
+Without one, serve the package's files and link them: `src/css/tsuya.css`, which imports its parts by relative URLs,
+`fonts/fonts.css`, and the modules in `dist/`, named by an import map.
+
+### The markup
+
+Under the code of every example on a component page, **HTML** unfolds the markup that the example renders:
+`tsuya.css` styles it as it is (a class without the `t-` prefix is the example's own layout). Keep its classes and
+its attributes, which the styles read too (`aria-checked`, `aria-invalid`, `disabled`…), and write its text yourself,
+the system strings included ("Close", "Loading"), which `labelsEn` gives the Svelte components. It is the markup at
+rest, as the server renders it: what the components set in the browser (the roving tab stop, `aria-expanded`, a
+dialog's `aria-describedby`, a select's chosen label) is your script's.
+
+### The behaviour
+
+A native control works as it is: a button, a checkbox, a radio, a switch, a text field. Whatever opens, closes, moves
+focus or follows a value (a dialog, a sheet, a menu, a select, a combobox, a popover, a tooltip, tabs, a toast, a
+slider's fill) is your script's, built with the primitives that the Svelte components use: each takes an element and
+returns the function that detaches it. A dialog, with `modal`, which shows it in the top layer, keeps Tab inside,
+gives focus back when it closes, and asks to close on Escape or a press on the scrim:
+
+```html
+<button type="button" class="t-button t-pressable t-button-secondary t-button-md" id="delete">
+  <span class="t-button-label">Delete photo</span>
+</button>
+<dialog class="t-dialog t-dialog-md" id="delete-dialog" aria-labelledby="delete-title" aria-describedby="delete-text">
+  <h2 class="t-dialog-title" id="delete-title">Delete photo?</h2>
+  <p class="t-dialog-description" id="delete-text">It leaves every album it is in. This cannot be undone.</p>
+  <div class="t-dialog-actions">
+    <button type="button" class="t-button t-pressable t-button-secondary t-button-md" data-close autofocus>
+      <span class="t-button-label">Cancel</span>
+    </button>
+    <button type="button" class="t-button t-pressable t-button-danger t-button-md" data-close>
+      <span class="t-button-label">Delete</span>
+    </button>
+  </div>
+</dialog>
+
+<script type="module">
+  import { modal } from '@tsuya/core/primitives';
+
+  const dialog = document.getElementById('delete-dialog');
+  let detach = null;
+  function close() {
+    detach?.();
+    detach = null;
+  }
+  document.getElementById('delete').addEventListener('click', () => {
+    detach = modal(close)(dialog);
+  });
+  // the browser may close it on its own (a close request)
+  dialog.addEventListener('close', close);
+  for (const button of dialog.querySelectorAll('[data-close]')) button.addEventListener('click', close);
+</script>
+```
+
+The Svelte components' sources, in `packages/svelte`, show how each one puts the primitives together. The mode and
+the accent work as above: `data-theme` and `themeScript()` for the mode; `setAccent(element, pair)` and
+`setAmbient(element, src, opacity)` of `@tsuya/core` do what `AccentRegion` and `Screen`'s `ambient` do.
+
+## Flutter
+
+This is the short version; the Flutter package's README (`packages/flutter/README.md`) has the longer one. Add the
+package:
+
+```bash
+flutter pub add tsuya
+```
+
+Use `TsuyaApp`, a `WidgetsApp` with the theme, the labels and fade routes:
+
+```dart
+import 'package:tsuya/tsuya.dart';
+
+void main() => runApp(
+  TsuyaApp(
+    labels: TsuyaLabels.en,
+    home: const HomeScreen(),
+  ),
+);
+```
+
+Or keep your own `MaterialApp`, `CupertinoApp` or `WidgetsApp` and put `TsuyaScope` in its `builder`:
+
+```dart
+MaterialApp(
+  builder: (context, child) => TsuyaScope(
+    labels: TsuyaLabels.en,
+    child: child!,
+  ),
+  home: const HomeScreen(),
+)
+```
+
+Where Material is imported too, alias the import: `Switch`, `Slider`, `Tooltip`, `Dialog`, `Chip`, `Checkbox`,
+`Radio` and `Badge` exist in both.
+
+```dart
+import 'package:tsuya/tsuya.dart' as t;
+```
+
+## Tell your agents
+
+`npx tsuya init` (after `npm install @tsuya/core`) adds a line to `AGENTS.md`/`CLAUDE.md` pointing at the installed
+package's `DESIGN.md`. `dart run tsuya:init` (after `flutter pub add tsuya`) copies `DESIGN.md` into the project and
+adds the same line; run it again after an upgrade to refresh the copy.
+
+## Rules for code that uses tsuya
+
+- Use tokens and component props, never raw values: `var(--t-space-16)`, `TsuyaSpace.s16`.
+- Components hold no text of their own: every system string comes from the labels given once at the root; every
+  visible label is passed by the app.
+- Customise through tokens, props and your own CSS. Never copy a component's code to change it.
+- Global CSS names are prefixed: `--t-` custom properties, `t-` classes, in the cascade layer `tsuya.components`, so
+  any unlayered CSS of yours wins.

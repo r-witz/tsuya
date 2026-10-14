@@ -1,0 +1,61 @@
+{
+  "kind": "class",
+  "description": "A person's avatar (DESIGN.md, Avatar): round, size by default 40: the image, or initials (weight 600, 36 % of size) on TsuyaColors.fill in TsuyaColors.textMuted, or on a gradient of colors (from the top-start corner at 135°) in white when white keeps 4.5:1 on the darker of the two (checked; falls back to TsuyaColors.fill). Decorative unless it has label.",
+  "constructors": [
+    {
+      "name": "",
+      "description": "An avatar size wide.",
+      "params": [
+        {
+          "name": "image",
+          "type": "ImageProvider?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "The photo; initials show while it is null, loading or failed."
+        },
+        {
+          "name": "initials",
+          "type": "String?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "Shown while there is no photo, it is loading, or it failed."
+        },
+        {
+          "name": "size",
+          "type": "double",
+          "required": false,
+          "named": true,
+          "default": "40",
+          "description": "Its width and height, in px. Default 40."
+        },
+        {
+          "name": "colors",
+          "type": "(Color, Color)?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "A gradient of the person's colours; dropped when white would not reach 4.5:1 on the darker one."
+        },
+        {
+          "name": "label",
+          "type": "String?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "The accessible name; decorative when left out."
+        },
+        {
+          "name": "badge",
+          "type": "Widget?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "Pinned on the corner; fold its meaning into label."
+        }
+      ]
+    }
+  ],
+  "statics": []
+}

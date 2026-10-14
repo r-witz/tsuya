@@ -1,0 +1,29 @@
+{
+  "kind": "class",
+  "description": "A group of SidebarItems under its label (DESIGN.md, Sidebar), in TsuyaType.label; collapsed, the label is read only.",
+  "constructors": [
+    {
+      "name": "",
+      "description": "A group named label over children.",
+      "params": [
+        {
+          "name": "label",
+          "type": "String",
+          "required": true,
+          "named": true,
+          "default": "",
+          "description": "The group's heading, shown above children and naming the group for screen readers."
+        },
+        {
+          "name": "children",
+          "type": "List<Widget>",
+          "required": true,
+          "named": true,
+          "default": "",
+          "description": "The group's SidebarItems, in order."
+        }
+      ]
+    }
+  ],
+  "statics": []
+}

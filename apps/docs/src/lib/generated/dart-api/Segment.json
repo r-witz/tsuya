@@ -1,0 +1,37 @@
+{
+  "kind": "class",
+  "description": "One segment of a SegmentedControl: identified by value, labelled label (the accessible name; shown visibly unless icon is given, which then shows alone).",
+  "constructors": [
+    {
+      "name": "",
+      "description": "A segment for value, shown as label or, when given, icon alone.",
+      "params": [
+        {
+          "name": "value",
+          "type": "T",
+          "required": true,
+          "named": true,
+          "default": "",
+          "description": "What SegmentedControl.onChanged is called with."
+        },
+        {
+          "name": "label",
+          "type": "String",
+          "required": true,
+          "named": true,
+          "default": "",
+          "description": "The segment's label: its accessible name always, and its visible content unless icon is given."
+        },
+        {
+          "name": "icon",
+          "type": "Widget?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "Shown alone instead of label; label still names it for screen readers."
+        }
+      ]
+    }
+  ],
+  "statics": []
+}

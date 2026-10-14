@@ -1,0 +1,29 @@
+{
+  "kind": "class",
+  "description": "The hint or the error under a field (DESIGN.md, Field): TsuyaType.small, muted for a hint, TsuyaColors.danger with a leading alert glyph for an error (replacing the hint).",
+  "constructors": [
+    {
+      "name": "",
+      "description": "Shows text, as an error or a plain hint.",
+      "params": [
+        {
+          "name": "text",
+          "type": "String",
+          "required": true,
+          "named": false,
+          "default": "",
+          "description": "The message text."
+        },
+        {
+          "name": "error",
+          "type": "bool",
+          "required": false,
+          "named": true,
+          "default": "false",
+          "description": "Shows the alert glyph and the danger colour instead of a plain muted hint."
+        }
+      ]
+    }
+  ],
+  "statics": []
+}

@@ -1,0 +1,14 @@
+{
+  "kind": "enum",
+  "description": "The width of a Dialog.",
+  "values": [
+    {
+      "name": "md",
+      "description": "At most 420 wide. The default."
+    },
+    {
+      "name": "lg",
+      "description": "At most 560 wide."
+    }
+  ]
+}

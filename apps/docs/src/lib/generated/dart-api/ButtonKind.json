@@ -1,0 +1,26 @@
+{
+  "kind": "enum",
+  "description": "What a Button is for.",
+  "values": [
+    {
+      "name": "primary",
+      "description": "The one accent-filled action of a screen."
+    },
+    {
+      "name": "secondary",
+      "description": "TsuyaColors.fill with a hairline and TsuyaColors.text."
+    },
+    {
+      "name": "ghost",
+      "description": "Text only, TsuyaColors.fill on hover."
+    },
+    {
+      "name": "danger",
+      "description": "A destructive action, in TsuyaColors.danger. Never the accent."
+    },
+    {
+      "name": "glass",
+      "description": "Control glass, over artwork."
+    }
+  ]
+}

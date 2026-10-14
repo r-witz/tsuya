@@ -1,0 +1,45 @@
+{
+  "kind": "class",
+  "description": "One option of a Listbox.",
+  "constructors": [
+    {
+      "name": "",
+      "description": "An option named label, identified by value.",
+      "params": [
+        {
+          "name": "value",
+          "type": "T",
+          "required": true,
+          "named": true,
+          "default": "",
+          "description": "What Listbox.onSelected is called with."
+        },
+        {
+          "name": "label",
+          "type": "String",
+          "required": true,
+          "named": true,
+          "default": "",
+          "description": "Shown by the item, and matched against type-ahead."
+        },
+        {
+          "name": "disabled",
+          "type": "bool",
+          "required": false,
+          "named": true,
+          "default": "false",
+          "description": "Excluded from navigation and selection."
+        },
+        {
+          "name": "group",
+          "type": "String?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "Clusters this option under a heading with the others that share it. Options sharing a group should be adjacent; Listbox draws a heading whenever the group changes from the option before."
+        }
+      ]
+    }
+  ],
+  "statics": []
+}

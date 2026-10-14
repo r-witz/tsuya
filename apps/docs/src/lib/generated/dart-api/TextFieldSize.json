@@ -1,0 +1,14 @@
+{
+  "kind": "enum",
+  "description": "The height TextField.search uses: TsuyaSize.controlSm or TsuyaSize.controlMd.",
+  "values": [
+    {
+      "name": "sm",
+      "description": "TsuyaSize.controlSm: the default for a search field."
+    },
+    {
+      "name": "md",
+      "description": "TsuyaSize.controlMd: the height of every other text field."
+    }
+  ]
+}

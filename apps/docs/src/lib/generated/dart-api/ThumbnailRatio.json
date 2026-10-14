@@ -1,0 +1,18 @@
+{
+  "kind": "enum",
+  "description": "The shape of a Thumbnail: square (the default), portrait (2:3) or wide (16:9).",
+  "values": [
+    {
+      "name": "square",
+      "description": "1:1."
+    },
+    {
+      "name": "portrait",
+      "description": "2:3."
+    },
+    {
+      "name": "wide",
+      "description": "16:9."
+    }
+  ]
+}

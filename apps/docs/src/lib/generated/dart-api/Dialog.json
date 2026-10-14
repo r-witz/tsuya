@@ -1,0 +1,80 @@
+{
+  "kind": "class",
+  "description": "A decision that needs an answer, or a short focused task (DESIGN.md, Dialog): a box at most 420 wide (size lg: 560) of title, body in TsuyaColors.textMuted, optional content, and actions at the end, wrapping when needed — put the main one last. Show it with Dialog.show; it is modal, traps focus, and puts it first on the least destructive action: the first of actions (so, usually, Cancel), or initialFocus. alert gives it the alert dialog role, for one that interrupts.",
+  "constructors": [
+    {
+      "name": "",
+      "description": "A dialog titled title.",
+      "params": [
+        {
+          "name": "title",
+          "type": "String",
+          "required": true,
+          "named": true,
+          "default": "",
+          "description": "What is being asked, in TsuyaType.titleM; also its accessible name."
+        },
+        {
+          "name": "body",
+          "type": "String?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "A sentence of explanation under the title, announced with it."
+        },
+        {
+          "name": "content",
+          "type": "Widget?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "Anything else under the body: a field, a list."
+        },
+        {
+          "name": "actions",
+          "type": "List<Widget>",
+          "required": false,
+          "named": true,
+          "default": "const []",
+          "description": "Buttons at the end, the main one last."
+        },
+        {
+          "name": "size",
+          "type": "DialogSize",
+          "required": false,
+          "named": true,
+          "default": "DialogSize.md",
+          "description": "How wide it grows at most."
+        },
+        {
+          "name": "alert",
+          "type": "bool",
+          "required": false,
+          "named": true,
+          "default": "false",
+          "description": "Announces it as an alert dialog: it interrupts what the person was doing."
+        },
+        {
+          "name": "initialFocus",
+          "type": "FocusNode?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "The node to focus first, instead of the first action."
+        }
+      ]
+    }
+  ],
+  "statics": [
+    {
+      "name": "show",
+      "signature": "Future<T?> show<T>(BuildContext context, {required WidgetBuilder builder, bool dismissible = true, String? barrierLabel})",
+      "description": "Shows builder's dialog above everything, over a scrim, and completes with what close gives, or null once dismissed. Escape and a press on the scrim dismiss it unless dismissible is false (a required decision: only an action's close ends it). barrierLabel names the scrim for a screen reader, which can then dismiss it; it is left out when not dismissible."
+    },
+    {
+      "name": "close",
+      "signature": "void close<T>(BuildContext context, [T? result])",
+      "description": "Closes the dialog context belongs to, completing Dialog.show's future with result."
+    }
+  ]
+}

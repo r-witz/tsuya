@@ -1,0 +1,18 @@
+{
+  "kind": "enum",
+  "description": "Where a floating element aligns along the axis across from AnchorSide: horizontal for AnchorSide.top and AnchorSide.bottom, vertical for AnchorSide.start and AnchorSide.end.",
+  "values": [
+    {
+      "name": "start",
+      "description": "The edge nearest the anchor's own start."
+    },
+    {
+      "name": "center",
+      "description": "Centred on the anchor."
+    },
+    {
+      "name": "end",
+      "description": "The edge nearest the anchor's own end."
+    }
+  ]
+}

@@ -1,0 +1,101 @@
+{
+  "kind": "class",
+  "description": "An icon-only action, round (DESIGN.md, IconButton). label names it for screen readers. With toggled it is a toggle, accent-filled when on.",
+  "constructors": [
+    {
+      "name": "",
+      "description": "An icon button showing icon, named label.",
+      "params": [
+        {
+          "name": "icon",
+          "type": "Widget",
+          "required": true,
+          "named": true,
+          "default": "",
+          "description": "The icon drawn (never read itself; label names the button)."
+        },
+        {
+          "name": "label",
+          "type": "String",
+          "required": true,
+          "named": true,
+          "default": "",
+          "description": "The accessible name; shown as a tooltip on fine pointers (and at once on keyboard focus), unless tooltip is false."
+        },
+        {
+          "name": "onPressed",
+          "type": "VoidCallback?",
+          "required": true,
+          "named": true,
+          "default": "",
+          "description": "Called on a press; null disables it."
+        },
+        {
+          "name": "kind",
+          "type": "IconButtonKind",
+          "required": false,
+          "named": true,
+          "default": "IconButtonKind.filled",
+          "description": "What the button looks like."
+        },
+        {
+          "name": "size",
+          "type": "IconButtonSize",
+          "required": false,
+          "named": true,
+          "default": "IconButtonSize.md",
+          "description": "The button's size."
+        },
+        {
+          "name": "toggled",
+          "type": "bool?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "Makes it a toggle; accent-filled, TsuyaColors.onAccent icon, when true."
+        },
+        {
+          "name": "badge",
+          "type": "Widget?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "Pinned on the corner; fold its meaning into label."
+        },
+        {
+          "name": "expanded",
+          "type": "bool?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "Marks it as open or closed, for a button that discloses a panel (a narrow menu, say)."
+        },
+        {
+          "name": "tooltip",
+          "type": "bool",
+          "required": false,
+          "named": true,
+          "default": "true",
+          "description": "Shows label as a tooltip on fine pointers; set false to turn it off."
+        },
+        {
+          "name": "focusNode",
+          "type": "FocusNode?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "The node to track focus with, when the caller manages one."
+        },
+        {
+          "name": "autofocus",
+          "type": "bool",
+          "required": false,
+          "named": true,
+          "default": "false",
+          "description": "Focuses it as soon as it is built."
+        }
+      ]
+    }
+  ],
+  "statics": []
+}

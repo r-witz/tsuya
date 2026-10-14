@@ -1,0 +1,48 @@
+{
+  "kind": "class",
+  "description": "Content that rises from the bottom (DESIGN.md, Sheet): a box with its top corners TsuyaRadius.lg, a handle to drag down on touch, and child padded TsuyaSpace.s24; on glass when glass, the surface otherwise. Show it with Sheet.show, which also gives it its scrim, Escape and press-outside dismissal, and its focus trap. label names it for a screen reader.",
+  "constructors": [
+    {
+      "name": "",
+      "description": "A sheet named label showing child.",
+      "params": [
+        {
+          "name": "label",
+          "type": "String",
+          "required": true,
+          "named": true,
+          "default": "",
+          "description": "The accessible name: what the sheet is about."
+        },
+        {
+          "name": "child",
+          "type": "Widget",
+          "required": true,
+          "named": true,
+          "default": "",
+          "description": "The sheet's content."
+        },
+        {
+          "name": "glass",
+          "type": "bool",
+          "required": false,
+          "named": true,
+          "default": "false",
+          "description": "Glass instead of the surface, for a sheet that opens from glass."
+        }
+      ]
+    }
+  ],
+  "statics": [
+    {
+      "name": "show",
+      "signature": "Future<T?> show<T>(BuildContext context, {required WidgetBuilder builder, String? barrierLabel, SheetSide side = SheetSide.bottom})",
+      "description": "Shows builder's sheet above everything, over a scrim, sliding in over TsuyaDuration.sheet; completes with what close gives, or null once dismissed (Escape, a press on the scrim, a drag down on touch). side chooses the bottom sheet or the desktop panel. barrierLabel names the scrim for a screen reader."
+    },
+    {
+      "name": "close",
+      "signature": "void close<T>(BuildContext context, [T? result])",
+      "description": "Closes the sheet context belongs to, completing Sheet.show's future with result."
+    }
+  ]
+}

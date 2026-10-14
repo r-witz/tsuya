@@ -1,0 +1,77 @@
+{
+  "kind": "class",
+  "description": "A filter or sort token (DESIGN.md, Chip): TsuyaSize.controlSm tall, TsuyaRadius.sm, a TsuyaColors.fill with a hairline; accent-filled with TsuyaColors.onAccent content when selected. A glass variant over content.",
+  "constructors": [
+    {
+      "name": "",
+      "description": "A chip labelled label.",
+      "params": [
+        {
+          "name": "label",
+          "type": "String",
+          "required": true,
+          "named": true,
+          "default": "",
+          "description": "The chip's one-line label; ellipsized if it must."
+        },
+        {
+          "name": "selected",
+          "type": "bool",
+          "required": true,
+          "named": true,
+          "default": "",
+          "description": "Whether it is chosen."
+        },
+        {
+          "name": "onPressed",
+          "type": "VoidCallback?",
+          "required": true,
+          "named": true,
+          "default": "",
+          "description": "Called on a press; null disables it."
+        },
+        {
+          "name": "icon",
+          "type": "Widget?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "Before the label, in TsuyaColors.textMuted (or on-accent when selected)."
+        },
+        {
+          "name": "glass",
+          "type": "bool",
+          "required": false,
+          "named": true,
+          "default": "false",
+          "description": "Control glass instead of the fill and hairline."
+        },
+        {
+          "name": "focusNode",
+          "type": "FocusNode?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "The node to track focus with, when the caller manages one (ChipGroup sets its own)."
+        },
+        {
+          "name": "autofocus",
+          "type": "bool",
+          "required": false,
+          "named": true,
+          "default": "false",
+          "description": "Focuses it as soon as it is built."
+        },
+        {
+          "name": "checked",
+          "type": "bool",
+          "required": false,
+          "named": true,
+          "default": "false",
+          "description": "Announces it as one radio of a mutually exclusive group rather than a toggle, as a single-select ChipGroup does (\"selected\" rather than \"pressed\")."
+        }
+      ]
+    }
+  ],
+  "statics": []
+}

@@ -1,0 +1,53 @@
+{
+  "kind": "class",
+  "description": "The bar of a pushed screen (DESIGN.md, ScreenBar): at least TsuyaSize.bar tall; a round back button named backLabel at the start (required together with onBack); title centred in TsuyaType.titleM, one line with an ellipsis, an optional subtitle caption below it; at most one action at the end.",
+  "constructors": [
+    {
+      "name": "",
+      "description": "A bar headed title, with subtitle, onBack (named backLabel) and action.",
+      "params": [
+        {
+          "name": "title",
+          "type": "String",
+          "required": true,
+          "named": true,
+          "default": "",
+          "description": "The bar's title, centred on one line."
+        },
+        {
+          "name": "subtitle",
+          "type": "String?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "A caption line under the title."
+        },
+        {
+          "name": "onBack",
+          "type": "VoidCallback?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "Called when the back button is pressed; without it, there is no back button."
+        },
+        {
+          "name": "backLabel",
+          "type": "String?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "The back button's accessible name; required together with onBack."
+        },
+        {
+          "name": "action",
+          "type": "Widget?",
+          "required": false,
+          "named": true,
+          "default": "",
+          "description": "One action at the end."
+        }
+      ]
+    }
+  ],
+  "statics": []
+}
