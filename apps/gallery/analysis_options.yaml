@@ -1,0 +1,40 @@
+include: package:flutter_lints/flutter.yaml
+
+formatter:
+  page_width: 120
+
+analyzer:
+  language:
+    strict-casts: true
+    strict-inference: true
+    strict-raw-types: true
+  # the rules added below are errors, not hints
+  errors:
+    always_declare_return_types: error
+    avoid_dynamic_calls: error
+    cancel_subscriptions: error
+    close_sinks: error
+    directives_ordering: error
+    prefer_final_fields: error
+    prefer_final_locals: error
+    prefer_single_quotes: error
+    public_member_api_docs: error
+    unawaited_futures: error
+    unnecessary_lambdas: error
+  exclude:
+    - build/**
+    - web/**
+
+linter:
+  rules:
+    - always_declare_return_types
+    - avoid_dynamic_calls
+    - cancel_subscriptions
+    - close_sinks
+    - directives_ordering
+    - prefer_final_fields
+    - prefer_final_locals
+    - prefer_single_quotes
+    - public_member_api_docs
+    - unawaited_futures
+    - unnecessary_lambdas

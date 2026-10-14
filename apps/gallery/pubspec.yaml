@@ -1,0 +1,23 @@
+name: tsuya_gallery
+description: The tsuya Flutter gallery. Every component and block, with switches for mode, accent, text scale, direction and transparency. The source of the goldens.
+version: 0.1.0
+publish_to: none
+
+environment:
+  sdk: ^3.12.0
+  flutter: '>=3.44.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  tsuya:
+    path: ../../packages/flutter
+
+dev_dependencies:
+  flutter_lints: ^6.0.0
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  assets:
+    - assets/covers/
