@@ -1,0 +1,16 @@
+{
+  "files": {
+    "packages/core/fonts/geist-mono-400.woff2": "f155240610a56eb4230f039c48f05df66b7a49261e620e6749ee98119e9687e3",
+    "packages/core/fonts/inter-400.woff2": "d284b13dec337e6817bd4eecc9e6f48935ab694c0725d0e713fc28d7501fc376",
+    "packages/core/fonts/inter-500.woff2": "6b464806143d891767278b9e92f0ae1d8e78394ccce2d22f6fa837dd4f219305",
+    "packages/core/fonts/inter-600.woff2": "a4055b3ecb13ba2ec7660d80d014b6c3c79a73254b2aca10fa82062eb9a0c03d",
+    "packages/core/fonts/inter-700.woff2": "6dd5c3d57038b4a3cb88a25901ec28717a46c2bb5ffde021f4857c81cc00cc0c",
+    "packages/core/fonts/inter-800.woff2": "c9ad50c78784a5b37a41ed7839ed0c7d650d3215eb7406f7b0acf9279fffa477",
+    "packages/flutter/fonts/GeistMono-400.ttf": "6928b79d064d77a8830d7f44923de8d93b83128eb72f4bcf714a6817d9e28a59",
+    "packages/flutter/fonts/Inter-400.ttf": "746bfb1ec2af0c6bd39bbb6cde6ad775b64d088a111993166dc1da20a9f52a01",
+    "packages/flutter/fonts/Inter-500.ttf": "9a38aa15cde585012704ad9853b177ed3f4707cb22cc929e575917983f87d84e",
+    "packages/flutter/fonts/Inter-600.ttf": "f3350a3b3c2be72f08d055db3c5233c14a9e6c1840333d8fe55d814c7a7c1456",
+    "packages/flutter/fonts/Inter-700.ttf": "b413dd92d4f7ef52b00709f04a04273ffbc33ff36d7d42f49a3a131121317d71",
+    "packages/flutter/fonts/Inter-800.ttf": "f7076f8314130331821aa15f0b8f93d7807597e90d83c2d34ecdc2ab1fc43acf"
+  }
+}
