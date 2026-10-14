@@ -1,0 +1,27 @@
+{
+  "name": "tsuya",
+  "version": "0.1.0",
+  "description": "npx tsuya init: points your AI agents at the DESIGN.md of the tsuya design system. The design system itself is @tsuya/core and @tsuya/svelte.",
+  "keywords": [
+    "design-system",
+    "tsuya",
+    "agents"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/r-witz/tsuya/tree/main/packages/cli#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/r-witz/tsuya.git",
+    "directory": "packages/cli"
+  },
+  "bugs": {
+    "url": "https://github.com/r-witz/tsuya/issues"
+  },
+  "type": "module",
+  "bin": {
+    "tsuya": "bin/tsuya.mjs"
+  },
+  "files": [
+    "bin"
+  ]
+}
