@@ -1,0 +1,46 @@
+name: Bug report
+description: Something does not behave as DESIGN.md or the docs say.
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: Thanks for the report. A security problem goes through SECURITY.md, not here.
+  - type: dropdown
+    id: package
+    attributes:
+      label: Package
+      options:
+        - '@tsuya/svelte'
+        - '@tsuya/core'
+        - tsuya (Flutter)
+        - Docs site
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      placeholder: 0.1.0
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Where it happens
+      description: Browser and OS, or Flutter version and device.
+      placeholder: Firefox 147 on Linux / Flutter 3.47.5 on a Pixel 9, Android 16
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What happens, and what you expected
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: How to reproduce it
+      description: The smallest code or the steps that show it. A screenshot helps for anything visual.
+    validations:
+      required: true

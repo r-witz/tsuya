@@ -1,0 +1,37 @@
+name: Feature request
+description: A new component, prop or behaviour.
+labels: [enhancement]
+body:
+  - type: markdown
+    attributes:
+      value: >-
+        A component behaves the same in Svelte and in Flutter, and DESIGN.md describes it: a feature is discussed here
+        before it is built.
+  - type: dropdown
+    id: package
+    attributes:
+      label: Package
+      multiple: true
+      options:
+        - '@tsuya/svelte'
+        - '@tsuya/core'
+        - tsuya (Flutter)
+        - Docs site
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: The problem
+      description: What you are trying to build, and what stops you today.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: What you propose
+      description: How it would look and behave, on both platforms if it is a component.
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: What you tried instead
